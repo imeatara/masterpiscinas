@@ -1,6 +1,7 @@
 ﻿---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import pablo from "../assets/Pablo_sinLogo.webp";
 ---
 
 <Layout
@@ -205,31 +206,51 @@ import { Image } from "astro:assets";
       </div>
     </section>
 
-    <!-- ACERCA DE PABLO -->
-    <section class="mx-auto px-6 max-w-6xl">
-      <div class="md:items-center gap-8 grid md:grid-cols-[1fr,1.2fr]">
-        <div class="space-y-4">
-          <span
-            class="font-semibold text-sky-600 text-sm uppercase tracking-[0.3em]"
-            >Acerca de Pablo</span
-          >
-          <h2 class="font-bold text-slate-900 text-3xl md:text-4xl">
-            Atención personalizada y trabajo a conciencia
-          </h2>
-          <p class="text-slate-600 text-base">
-            Pablo lidera Master Piscinas con foco en la calidad del servicio y
-            el trato directo. La prioridad es dejar cada pileta en condiciones
-            seguras y transparentar el trabajo con fotos y reportes simples por
-            WhatsApp.
-          </p>
-          <ul class="pl-5 text-slate-700 text-sm list-disc">
-            <li>Presupuestos claros y coordinación por WhatsApp.</li>
-            <li>Visitas pactadas y seguimiento post-servicio.</li>
-            <li>Consulta por cobertura según tu zona.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<!-- ACERCA DE PABLO -->
+<section class="mx-auto px-6 max-w-6xl">
+  <div class="flex flex-col md:flex-row md:items-center gap-8">
+    
+    <!-- Imagen -->
+    <div class="order-2 md:order-1 flex justify-center md:justify-start mt-6 md:mt-0">
+      <Image
+        src={pablo}
+        alt="Pablo Martínez, especialista en mantenimiento de piscinas"
+        width={220}
+        height={220}
+        class="rounded-4xl object-cover shadow-lg ring-4 ring-white/70"
+        loading="lazy"
+        sizes="(min-width: 768px) 220px, 160px"
+      />
+    </div>
+
+    <!-- Texto -->
+    <div class="order-1 md:order-2 space-y-4 md:flex-1">
+      <span class="font-semibold text-sky-600 text-sm uppercase tracking-[0.3em]">
+        Acerca de Pablo
+      </span>
+      <h2 class="font-bold text-slate-900 text-3xl md:text-4xl">
+        Atención personalizada y trabajo a conciencia
+      </h2>
+      <p class="text-slate-600 text-base">
+        Mi nombre es Pablo Martínez. Desde 2010 ofrecemos servicios profesionales de mantenimiento de piscinas en Buenos Aires y, desde 2013, también en la provincia de San Juan.
+        La experiencia acumulada, junto con nuestra responsabilidad, puntualidad, prolijidad y, sobre todo, la confianza, constituyen los pilares que garantizan tranquilidad y seguridad a cada cliente que elige nuestros servicios.
+        <br /><br />Master Piscinas.
+      </p>
+      <ul class="pl-5 text-slate-700 text-sm list-disc">
+        <li>Presupuestos claros y coordinación por WhatsApp.</li>
+        <li>Visitas pactadas y seguimiento post-servicio.</li>
+        <li>Consulta por cobertura según tu zona.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
 
     <!-- PROCESO -->
     <section class="bg-slate-900 py-16 text-slate-100">
