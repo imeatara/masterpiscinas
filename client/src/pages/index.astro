@@ -150,7 +150,7 @@ const faqs = [
         </a>
         <a
           href="mailto:masterpiscinas.sj@gmail.com"
-          class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/40 rounded-full font-semibold text-white text-sm transition hover:-translate-y-0.5"
+          class="md:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/40 rounded-full font-semibold text-white text-sm transition hover:-translate-y-0.5"
           aria-label="Enviar correo"
         >
           Enviar correo
@@ -224,14 +224,15 @@ const faqs = [
           </ul>
         </div>
 
-        <div class="relative order-2 w-full md:w-1/3 h-64 md:h-auto">
+    <div
+          class="relative order-2 md:order-2 w-full md:w-1/3 md:h-auto aspect-square"
+        >
           <Image
             src={pablo}
             alt="Pablo Martínez, especialista en mantenimiento de piscinas"
-            class="shadow-lg rounded-3xl ring-4 ring-white/70 object-cover aspect-square"
+            class="shadow-lg rounded-3xl ring-4 ring-white/70 w-full h-full object-cover aspect-square"
             style={{ objectPosition: "right bottom" }}
             loading="lazy"
-            sizes="(min-width: 768px) 33vw, 100vw"
           />
         </div>
       </div>
@@ -325,7 +326,7 @@ const faqs = [
             >WhatsApp</a>
             <a
               href="mailto:masterpiscinas.sj@gmail.com"
-              class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/60 rounded-full font-semibold text-white text-sm transition hover:-translate-y-0.5"
+              class="md:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/60 rounded-full font-semibold text-white text-sm transition hover:-translate-y-0.5"
               aria-label="Enviar correo"
             >Enviar correo</a>
           </div>
