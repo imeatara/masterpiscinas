@@ -1,21 +1,47 @@
 ---
 import "@/styles/global.css";
-const { title, description } = Astro.props;
-import Nav from "@/components/Nav.astro";
+
+type Props = {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+};
+
+const {
+  title = "Master Piscinas",
+  description = "Mantenimiento de piscinas en San Juan: limpieza con ácido, desagote, pintura, cambios de piedras/multiválvula, pulido y reparaciones.",
+  canonical,
+  noindex = false,
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es-AR">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <meta
+      name="robots"
+      content={noindex ? "noindex,nofollow" : "index,follow"}
+    />
+    <meta name="theme-color" content="#0369a1" />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    {/* Slot para metas/JSON-LD específicas de cada página */}
+    <slot name="head" />
   </head>
   <body>
-    <!-- <Nav /> -->
+    {/* <Nav /> Si querés navegación global, descomentá y crea el componente */}
     <slot />
   </body>
 </html>
