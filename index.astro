@@ -1,0 +1,503 @@
+﻿---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import heroImage from "../assets/hero.webp";
+import poolCleaning from "../assets/poolCleaning.webp";
+import poolDrain from "../assets/poolDrain.webp";
+import poolPainting from "../assets/poolPainting.webp";
+import filterMaintenance from "../assets/filterMaintenance.webp";
+import stainedTiles from "../assets/stainedTiles.webp";
+import poolWallCrack from "../assets/poolWallCrack.webp";
+import pablo from "../assets/Pablo_sinLogo.webp";
+import whatsappIcon from "../assets/whatsapp.svg";
+
+// === SEO Vars ===
+const siteName = "Master Piscinas";
+const canonicalUrl = "https://masterpiscinassj.com/";
+const logoUrl = `${canonicalUrl}logo.png`;
+const ogImage = `${canonicalUrl}og.webp`;
+const title =
+  "Master Piscinas | Limpieza, desagote, pintura y mantenimiento de piletas en San Juan";
+const description =
+  "Limpieza con ácido, desagote, pintura, cambio de piedras/multiválvula, pulido de placas y reparaciones en fibra. Atención personalizada en San Juan.";
+
+const WSP = "5492644822296";
+const mkWsp = (s: string) =>
+  `https://wa.me/${WSP}?text=${encodeURIComponent(`Hola! Quiero info sobre: ${s}`)}`;
+
+const services = [
+  {
+    title: "Limpieza con ácido",
+    desc: "Restauración de superficies con incrustaciones, algas o manchas.",
+    src: poolCleaning,
+    alt: "Limpieza con ácido en pileta",
+  },
+  {
+    title: "Desagote",
+    desc: "Vaciado seguro y puesta a punto posterior.",
+    src: poolDrain,
+    alt: "Desagote y bombeo de pileta",
+  },
+  {
+    title: "Pintura",
+    desc: "Sellos, preparación y aplicación según tipo de pileta.",
+    src: poolPainting,
+    alt: "Pintura de pileta con rodillo",
+  },
+  {
+    title: "Cambio de piedras / multiválvula",
+    desc: "Reemplazo de medio filtrante y servicio sobre multiválvula.",
+    src: filterMaintenance,
+    alt: "Filtro de arena y multiválvula",
+  },
+  {
+    title: "Pulido de placas",
+    desc: "Recuperación de brillo en bordes y solárium.",
+    src: stainedTiles,
+    alt: "Pulido de placas y bordes de piscina",
+  },
+  {
+    title: "Reparación en fibra / parches",
+    desc: "Sellado de fisuras y parches localizados.",
+    src: poolWallCrack,
+    alt: "Reparación de piscina de fibra de vidrio",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿En qué zonas trabajan?",
+    a: "San Juan y alrededores. Consultá por cobertura según tu barrio o departamento.",
+  },
+  {
+    q: "¿Cuánto tarda un servicio de limpieza con ácido?",
+    a: "Entre 3 y 6 horas según tamaño, estado de la superficie y reposición de agua.",
+  },
+  {
+    q: "¿Qué pinturas utilizan?",
+    a: "Pinturas específicas para piletas (clorado o base acuosa) según el material y estado.",
+  },
+  {
+    q: "¿Pueden coordinar todo por WhatsApp?",
+    a: "Sí. Presupuesto, coordinación y reporte con fotos por WhatsApp.",
+  },
+];
+---
+
+<Layout title={title} description={description} canonical={canonicalUrl}>
+  <Fragment slot="head">
+    <!-- metas y JSON-LD ya existentes -->
+
+    <!-- Animaciones globales -->
+    <style is:global>
+      @media (prefers-reduced-motion: no-preference) {
+        .reveal {
+          opacity: 0;
+          transform: translateY(14px);
+          transition:
+            opacity 0.6s ease,
+            transform 0.6s ease;
+        }
+        .reveal.show {
+          opacity: 1;
+          transform: none;
+        }
+        .reveal.fade-up {
+        }
+        .reveal.fade-in {
+          transform: none;
+        }
+        .reveal.delay-1 {
+          transition-delay: 0.08s;
+        }
+        .reveal.delay-2 {
+          transition-delay: 0.16s;
+        }
+        .reveal.delay-3 {
+          transition-delay: 0.24s;
+        }
+        .reveal.delay-4 {
+          transition-delay: 0.32s;
+        }
+        .reveal.slow {
+          transition-duration: 0.9s;
+        }
+        .parallax-in {
+          opacity: 0;
+          transform: translateY(22px) scale(0.98);
+          transition:
+            opacity 0.8s ease,
+            transform 0.8s ease;
+        }
+        .parallax-in.show {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </Fragment>
+
+  <main class="flex flex-col gap-20 bg-slate-50 pb-24 text-slate-900">
+    <!-- HERO -->
+    <section class="relative overflow-hidden text-white">
+      <div class="absolute inset-0">
+        <Image
+          src={heroImage}
+          alt="Pileta limpia y lista para usar"
+          class="brightness-75 w-full h-full object-cover"
+          width="1600"
+          height="900"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-sky-950/90 via-sky-900/85 to-sky-700/70"
+        >
+        </div>
+      </div>
+
+      <div
+        class="top-6 left-1/2 absolute flex items-center gap-3 -translate-x-1/2 reveal fade-in slow"
+      >
+        <img
+          src="/favicon.svg"
+          alt="Logo Master Piscinas"
+          class="drop-shadow-lg w-14 h-14 object-contain"
+        />
+        <span
+          class="drop-shadow font-bold text-white text-2xl uppercase"
+          style="font-family:'Montserrat',sans-serif">Master Piscinas</span
+        >
+      </div>
+
+      <div
+        class="relative flex md:flex-row flex-col md:justify-between md:items-end gap-10 mx-auto mt-6 px-6 py-24 md:py-36 max-w-6xl"
+      >
+        <div class="space-y-6 max-w-2xl">
+          <p
+            class="font-semibold text-sky-200 text-sm uppercase tracking-[0.3em] reveal fade-up"
+          >
+            Mantenimiento integral de Piscinas
+          </p>
+          <h1
+            class="font-bold text-4xl md:text-5xl leading-tight delay-1 reveal fade-up"
+          >
+            Limpieza, desagote, pintura y mantenimiento de piletas.
+          </h1>
+          <p class="text-sky-100 text-lg delay-2 reveal fade-up">
+            Atención personalizada, presupuestos transparentes y coordinación
+            eficiente.
+          </p>
+          <div
+            class="flex sm:flex-row flex-col sm:items-center gap-4 delay-3 reveal fade-up"
+          >
+            <a
+              href={mkWsp("Consulta general")}
+              class="inline-flex justify-center items-center bg-white hover:bg-sky-100 shadow-lg px-6 py-3 rounded-full font-semibold text-sky-900 text-sm transition"
+              >Hablar por WhatsApp</a
+            >
+            <a
+              href="mailto:masterpiscinas.sj@gmail.com"
+              class="md:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/40 rounded-full font-semibold text-white text-sm transition"
+              >Enviar correo</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="bottom-0 left-0 absolute w-full overflow-hidden leading-[0]"
+        aria-hidden="true"
+      >
+        <!-- ola decorativa -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          class="w-full h-24"
+          ><path
+            fill="#f9fafb"
+            fill-opacity="1"
+            d="M0,128L48,112C96,96,192,64,288,85.3C384,107,480,181,576,224C672,267,768,277,864,261.3C960,245,1056,203,1152,181.3C1248,160,1344,160,1392,160L1440,160L1440,320L0,320Z"
+          ></path></svg
+        >
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="mx-auto px-6 max-w-6xl">
+      <div class="flex flex-col gap-4 mb-12 md:text-left text-center">
+        <span
+          class="font-semibold text-sky-600 text-sm uppercase tracking-[0.3em]"
+          >Servicios</span
+        >
+        <h2 class="font-bold text-slate-900 text-3xl md:text-4xl">Servicios</h2>
+      </div>
+      <div class="gap-6 grid md:grid-cols-3">
+        {
+          services.map((s, i) => (
+            <a
+              href={mkWsp(s.title)}
+              target="_blank"
+              rel="noopener"
+              class={`reveal fade-up ${i % 3 === 1 ? "delay-1" : i % 3 === 2 ? "delay-2" : ""} group block bg-white shadow-lg rounded-3xl overflow-hidden`}
+            >
+              <article>
+                <div class="relative w-full aspect-square overflow-hidden">
+                  <Image
+                    src={s.src}
+                    alt={s.alt}
+                    width="1200"
+                    height="1200"
+                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  />
+                </div>
+                <div class="flex flex-col gap-2 p-8">
+                  <h3 class="font-semibold text-slate-900 text-lg">
+                    {s.title}
+                  </h3>
+                  <p class="text-slate-600 text-sm">{s.desc}</p>
+                </div>
+              </article>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ACERCA DE PABLO -->
+    <section class="mx-auto px-6 max-w-6xl">
+      <div class="flex md:flex-row flex-col md:items-stretch gap-8">
+        <div
+          class="flex flex-col md:flex-1 justify-center space-y-4 order-1 reveal fade-up"
+        >
+          <span
+            class="font-semibold text-sky-600 text-sm uppercase tracking-[0.3em]"
+            >Acerca de Pablo</span
+          >
+          <h2 class="font-bold text-slate-900 text-3xl md:text-4xl">
+            Atención personalizada y trabajo a conciencia
+          </h2>
+          <p class="text-slate-600 text-base">
+            Mi nombre es Pablo Martínez. Desde 2010 ofrecemos servicios
+            profesionales de mantenimiento de piscinas en Buenos Aires y, desde
+            2013, también en la provincia de San Juan. La experiencia acumulada,
+            junto con nuestra responsabilidad, puntualidad y prolijidad,
+            garantizan tranquilidad y seguridad a cada cliente.
+          </p>
+          <ul class="pl-5 text-slate-700 text-sm list-disc">
+            <li>Presupuestos claros y coordinación por WhatsApp.</li>
+            <li>Visitas pactadas y seguimiento post-servicio.</li>
+            <li>Consultá la cobertura según tu zona.</li>
+          </ul>
+        </div>
+        <div
+          class="order-2 md:order-2 w-full md:w-1/3 aspect-square parallax-in"
+        >
+          <Image
+            src={pablo}
+            alt="Pablo Martínez, especialista en mantenimiento de piscinas"
+            class="shadow-lg rounded-3xl ring-4 ring-white/70 w-full h-full object-cover"
+            style={{ objectPosition: "right bottom" }}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="bg-slate-900 py-16 text-slate-100">
+      <div class="mx-auto px-6 max-w-6xl">
+        <div class="flex flex-col gap-4 mb-12 md:text-left text-center">
+          <span
+            class="font-semibold text-sky-300 text-sm uppercase tracking-[0.3em]"
+            >Proceso</span
+          >
+          <h2 class="font-bold text-white text-3xl md:text-4xl">
+            Así trabajamos
+          </h2>
+          <p class="md:max-w-3xl text-slate-300 text-base">
+            Método claro para mantener tu pileta en condiciones seguras y
+            atractivas.
+          </p>
+        </div>
+        <div class="gap-8 grid md:grid-cols-4">
+          <article
+            class="bg-white/5 p-6 border border-white/10 rounded-3xl reveal fade-up"
+          >
+            <span class="font-semibold text-sky-300 text-sm">Paso 1</span>
+            <h3 class="mt-2 font-semibold text-white text-lg">
+              Consulta y visita
+            </h3>
+            <p class="mt-3 text-slate-300 text-sm">
+              Relevamiento del estado del agua y equipos.
+            </p>
+          </article>
+          <article
+            class="bg-white/5 p-6 border border-white/10 rounded-3xl delay-1 reveal fade-up"
+          >
+            <span class="font-semibold text-sky-300 text-sm">Paso 2</span>
+            <h3 class="mt-2 font-semibold text-white text-lg">Presupuesto</h3>
+            <p class="mt-3 text-slate-300 text-sm">
+              Propuesta clara con tareas y materiales.
+            </p>
+          </article>
+          <article
+            class="bg-white/5 p-6 border border-white/10 rounded-3xl delay-2 reveal fade-up"
+          >
+            <span class="font-semibold text-sky-300 text-sm">Paso 3</span>
+            <h3 class="mt-2 font-semibold text-white text-lg">
+              Trabajo en la pileta
+            </h3>
+            <p class="mt-3 text-slate-300 text-sm">
+              Limpieza, balance, pintura o reparación según caso.
+            </p>
+          </article>
+          <article
+            class="bg-white/5 p-6 border border-white/10 rounded-3xl delay-3 reveal fade-up"
+          >
+            <span class="font-semibold text-sky-300 text-sm">Paso 4</span>
+            <h3 class="mt-2 font-semibold text-white text-lg">Seguimiento</h3>
+            <p class="mt-3 text-slate-300 text-sm">
+              Reporte con fotos y recomendaciones por WhatsApp.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section class="mx-auto px-6 max-w-6xl">
+      <div class="flex flex-col gap-3 mb-8 md:text-left text-center">
+        <span
+          class="font-semibold text-sky-600 text-sm uppercase tracking-[0.3em]"
+          >Opiniones</span
+        >
+        <h2 class="font-bold text-slate-900 text-3xl md:text-4xl">
+          Lo que dicen nuestros clientes
+        </h2>
+        <p class="md:max-w-3xl text-slate-600 text-base">
+          Reseñas verificadas en Google.
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Master%20Piscinas%20San%20Juan"
+            class="underline"
+            target="_blank"
+            rel="noopener">Ver en Google Maps</a
+          >
+        </p>
+      </div>
+      <div class="gap-6 grid md:grid-cols-3">
+        <blockquote
+          class="bg-white shadow-lg shadow-slate-900/5 p-6 rounded-3xl reveal fade-up"
+        >
+          <div class="flex items-center gap-2 text-amber-500">★★★★★</div>
+          <p class="mt-3 text-slate-700 text-sm">
+            “Excelente trabajo. Dejaron la pileta impecable y cumplieron con la
+            fecha.”
+          </p>
+          <footer class="mt-4 text-slate-500 text-xs">
+            Lucía R. · Rivadavia
+          </footer>
+        </blockquote>
+        <blockquote
+          class="bg-white shadow-lg shadow-slate-900/5 p-6 rounded-3xl delay-1 reveal fade-up"
+        >
+          <div class="flex items-center gap-2 text-amber-500">★★★★★</div>
+          <p class="mt-3 text-slate-700 text-sm">
+            “Muy buena comunicación por WhatsApp y precios claros.
+            Recomendados.”
+          </p>
+          <footer class="mt-4 text-slate-500 text-xs">
+            Gabriel M. · Rawson
+          </footer>
+        </blockquote>
+        <blockquote
+          class="bg-white shadow-lg shadow-slate-900/5 p-6 rounded-3xl delay-2 reveal fade-up"
+        >
+          <div class="flex items-center gap-2 text-amber-500">★★★★☆</div>
+          <p class="mt-3 text-slate-700 text-sm">
+            “Hicieron limpieza con ácido y pintura, quedó como nueva.”
+          </p>
+          <footer class="mt-4 text-slate-500 text-xs">
+            Mariana P. · Capital
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="mx-auto px-6 max-w-6xl reveal fade-up">
+      <div
+        class="bg-gradient-to-r from-sky-700 to-sky-500 p-10 md:p-14 rounded-3xl text-white"
+      >
+        <div
+          class="flex md:flex-row flex-col md:justify-between md:items-center gap-8"
+        >
+          <div class="space-y-3 max-w-2xl">
+            <h2 class="font-bold text-3xl md:text-4xl">Coordiná tu visita</h2>
+            <p class="text-sky-100 text-base">
+              Escribinos por WhatsApp y te respondemos a la brevedad.
+            </p>
+          </div>
+          <div class="flex sm:flex-row flex-col gap-4">
+            <a
+              href={mkWsp("Coordinación de visita")}
+              class="inline-flex justify-center items-center bg-white hover:bg-sky-100 shadow-lg px-6 py-3 rounded-full font-semibold text-sky-700 text-sm transition"
+              >WhatsApp</a
+            >
+            <a
+              href="mailto:masterpiscinas.sj@gmail.com"
+              class="md:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/60 rounded-full font-semibold text-white text-sm transition"
+              >Enviar correo</a
+            >
+          </div>
+        </div>
+        <dl class="gap-4 grid sm:grid-cols-3 mt-8 text-sky-100 text-sm">
+          <div>
+            <dt class="font-semibold text-white">Cobertura</dt><dd>
+              Consultá por el radio de cobertura de tu zona
+            </dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-white">Contacto</dt><dd>
+              masterpiscinas.sj@gmail.com · +54 9 264 482 2296
+            </dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-white">Horario</dt><dd>
+              Lun a sáb · 9 a 19 h
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <!-- BOTÓN WSP -->
+  <a
+    href="https://wa.me/5492644822296?text=Hola! Quiero más información"
+    class="right-6 bottom-6 fixed flex justify-center items-center bg-green-500 hover:bg-green-600 shadow-lg rounded-full w-14 h-14 reveal fade-in slow"
+    target="_blank"
+    rel="noopener"
+  >
+    <Image src={whatsappIcon} alt="WhatsApp" class="w-8 h-8" />
+  </a>
+
+  <!-- Script de intersección -->
+  <script is:inline>
+    const qs = (s, root = document) => Array.from(root.querySelectorAll(s));
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("show");
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.12 }
+    );
+    qs(".reveal, .parallax-in").forEach((el) => io.observe(el));
+  </script>
+</Layout>
