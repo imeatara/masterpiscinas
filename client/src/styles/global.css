@@ -3,13 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
-  font-family: "Hertz";
-  src: url("/Hertz.woff2");
-}
-
 @theme inline {
-  --font-hertz: Hertz, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
