@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import services from "../../data/services";
+import { Image } from "astro:assets";
 
 // Genera todas las rutas en build
 export async function getStaticPaths() {
@@ -74,11 +75,9 @@ const faq = [
 
     <!-- Imagen principal -->
     <figure class="shadow rounded-xl ring-1 ring-slate-200/60 overflow-hidden">
-      <img
+      <Image
         src={service.src}
         alt={service.alt}
-        loading="lazy"
-        decoding="async"
         width="1280"
         height="720"
         class="w-full h-auto object-cover"

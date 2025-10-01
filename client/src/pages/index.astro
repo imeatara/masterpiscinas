@@ -42,8 +42,6 @@ const PAGE = {
           width="200"
           height="100"
           class="brightness-125"
-          loading="eager"
-          decoding="async"
         />
       </div>
 
@@ -100,13 +98,11 @@ const PAGE = {
             <li class="flex">
               <article class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl w-full overflow-hidden transition">
                 <a href={`/servicios/${s.slug}`}>
-                  <img
+                  <Image
                     src={s.src}
                     alt={s.alt}
                     width="600"
                     height="340"
-                    loading="lazy"
-                    decoding="async"
                     class="w-full h-44 object-cover"
                     transition:name={`img-${s.slug}`}
                   />
@@ -211,8 +207,6 @@ const PAGE = {
             alt="Pablo Martínez, especialista en mantenimiento de piscinas"
             width="500"
             height="500"
-            loading="lazy"
-            decoding="async"
             class="w-full object-cover aspect-square"
             style={{ objectPosition: "right bottom" }}
           />
