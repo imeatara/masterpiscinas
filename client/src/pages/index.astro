@@ -1,15 +1,20 @@
 ﻿---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import services from "@/data/services"; // ← importa tu array
 import pabloImage from "@/assets/pablo.webp";
 import whatsappIcon from "@/assets/whatsapp.svg";
-import { slide } from "astro:transitions";
+
+/* Imágenes de cada servicio (cambiá rutas si hace falta) */
+import limpiezaAcidoImg from "@/assets/asset.png";
+import desagoteImg from "@/assets/asset.png";
+import pinturaImg from "@/assets/asset.png";
+import cambioPiedrasImg from "@/assets/asset.png";
+import pulidoImg from "@/assets/asset.png";
+import reparacionFibraImg from "@/assets/asset.png";
 
 // Helpers
 const WSP = "5492644822296";
-const mkWsp = (msg: string) =>
-  `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
+const mkWsp = (msg) => `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
 
 const PAGE = {
   title:
@@ -24,17 +29,43 @@ const PAGE = {
 ---
 
 <Layout title={PAGE.title} description={PAGE.description}>
-  <!-- HEADER / HERO -->
-  <header
-    role="banner"
-    class="relative bg-gradient-to-b from-neutral-500 to-neutral-50 py-16 md:py-24 overflow-hidden text-center"
-  >
-    <div
-      class="absolute inset-0 bg-[radial-gradient(#0001_1px,transparent_1px)] pointer-events-none [background-size:16px_16px]"
-    >
-    </div>
-    <!-- Marca arriba -->
-    <div class="mx-auto px-6 max-w-6xl">
+  <!-- JSON-LD SEO -->
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "Master Piscinas",
+      url: PAGE.url,
+      email: PAGE.email,
+      telephone: PAGE.phone,
+      areaServed: PAGE.area,
+      image: `${PAGE.url}favicon.webp`,
+      description: PAGE.description,
+      sameAs: [
+        "https://www.google.com/maps/search/?api=1&query=Master%20Piscinas%20San%20Juan"
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "San Juan",
+        addressCountry: "AR"
+      }
+    })}
+  </script>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: PAGE.url }
+      ]
+    })}
+  </script>
+
+  <!-- HERO -->
+  <header class="relative bg-gradient-to-b from-neutral-500 to-neutral-50 py-16 md:py-24 overflow-hidden text-center">
+    <div class="absolute inset-0 bg-[radial-gradient(#0001_1px,transparent_1px)] pointer-events-none [background-size:16px_16px]"></div>
+
+    <div class="mx-auto px-6 container">
       <div class="place-items-center grid">
         <Image
           src="/favicon.webp"
@@ -45,30 +76,25 @@ const PAGE = {
         />
       </div>
 
-      <p
-        class="inline-block bg-blue-700 mt-4 px-3 py-1 rounded-full font-medium text-white text-xs tracking-wide"
-      >
+      <p class="inline-block bg-blue-700 mt-4 px-3 py-1 rounded-full font-medium text-white text-xs tracking-wide">
         +14 años de experiencia
       </p>
 
-      <h1
-        class="drop-shadow mt-4 font-bold text-blue-700 text-4xl md:text-6xl italic leading-tight"
-      >
+      <h1 class="drop-shadow mt-4 font-bold text-blue-700 text-4xl md:text-6xl italic leading-tight">
         Mantenimiento integral de piscinas
       </h1>
 
-      <p class="mx-auto mt-4 max-w-2xl text-slate-600">
-        Limpieza con ácido, desagote, pintura y reparaciones. Atención personal
-        y presupuesto sin cargo.
+      <p class="mt-4 text-slate-700">
+        Limpieza con ácido, desagote, pintura y reparaciones. Atención personal y presupuesto sin cargo.
       </p>
 
-      <div
-        class="flex sm:flex-row flex-col justify-center items-center gap-3 mt-8"
-      >
+      <p class="sr-only">
+        Servicios de Master Piscinas en {PAGE.area}: limpieza, desagote, pintura, cambio de piedras/multiválvula, pulido y reparaciones en fibra.
+      </p>
+
+      <div class="flex sm:flex-row flex-col justify-center items-center gap-3 mt-8">
         <a
-          href={mkWsp(
-            "Hola! Quiero coordinar una visita para mantenimiento de piscina."
-          )}
+          href={mkWsp("Hola! Quiero coordinar una visita para mantenimiento de piscina.")}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-full font-semibold text-white transition"
@@ -80,104 +106,205 @@ const PAGE = {
     </div>
   </header>
 
-  <main id="contenido" role="main" class="bg-neutral-50">
+  <main id="contenido" class="bg-neutral-50">
     <!-- SERVICIOS -->
-    <section class="mx-auto px-6 py-16 max-w-6xl">
-      <div class="mb-8 text-center">
-        <h2 class="font-bold text-slate-900 text-2xl md:text-3xl">
+    <section class="mx-auto px-6 py-16 container" aria-labelledby="servicios-h2">
+      <header class="mb-8 text-center">
+        <h2 id="servicios-h2" class="font-bold text-slate-900 text-2xl md:text-3xl">
           Nuestros servicios
         </h2>
-        <p class="mx-auto max-w-2xl text-slate-600">
-          Soluciones profesionales para que tu pileta quede impecable.
-        </p>
-      </div>
+        <p class="mt-2 text-slate-600">Soluciones profesionales para que tu pileta quede impecable.</p>
+      </header>
 
       <ul class="gap-6 grid sm:grid-cols-2 lg:grid-cols-3">
-        {
-          services.map((s) => (
-            <li class="flex">
-              <article class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl w-full overflow-hidden transition">
-                <a href={`/servicios/${s.slug}`}>
-                  <Image
-                    src={s.src}
-                    alt={s.alt}
-                    width="600"
-                    height="340"
-                    class="w-full h-44 object-cover"
-                    transition:name={`img-${s.slug}`}
-                  />
-                </a>
+        <!-- Limpieza con ácido -->
+        <li>
+          <article class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl w-full overflow-hidden transition" itemscope itemtype="https://schema.org/Service">
+            <a href="/servicios/limpieza-acido" aria-label="Ver más sobre Limpieza con ácido">
+              <Image
+                src={limpiezaAcidoImg}
+                alt="Limpieza con ácido en pileta"
+                width="600"
+                height="340"
+                class="w-full h-44 object-cover"
+                itemprop="image"
+              />
+            </a>
+            <div class="flex flex-col flex-1 justify-between p-5">
+              <div>
+                <h3 class="font-semibold text-slate-900 text-lg" itemprop="name">
+                  <a href="/servicios/limpieza-acido" class="hover:underline">Limpieza con ácido</a>
+                </h3>
+                <p class="mt-1 text-slate-600 text-sm" itemprop="description">Restauración de superficies con incrustaciones, algas o manchas.</p>
+              </div>
+              <nav class="flex gap-3 mt-4" aria-label="Acciones para Limpieza con ácido">
+                <a href="/servicios/limpieza-acido" class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition">Más info</a>
+                <a href={mkWsp("Hola! Quiero solicitar el servicio de Limpieza con ácido")} target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition">Solicitar</a>
+              </nav>
+            </div>
+          </article>
+        </li>
 
-                <div class="flex flex-col flex-1 justify-between p-5">
-                  <div>
-                    <h3 class="font-semibold text-slate-900 text-lg">
-                      {s.title}
-                    </h3>
-                    <p class="mt-1 text-slate-600 text-sm">{s.desc}</p>
-                  </div>
+        <!-- Desagote -->
+        <li>
+          <article class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl w-full overflow-hidden transition" itemscope itemtype="https://schema.org/Service">
+            <a href="/servicios/desagote" aria-label="Ver más sobre Desagote">
+              <Image
+                src={desagoteImg}
+                alt="Desagote y bombeo de piscina"
+                width="600"
+                height="340"
+                class="w-full h-44 object-cover"
+                itemprop="image"
+              />
+            </a>
+            <div class="flex flex-col flex-1 justify-between p-5">
+              <div>
+                <h3 class="font-semibold text-slate-900 text-lg" itemprop="name">
+                  <a href="/servicios/desagote" class="hover:underline">Desagote</a>
+                </h3>
+                <p class="mt-1 text-slate-600 text-sm" itemprop="description">Vaciado seguro y puesta a punto posterior.</p>
+              </div>
+              <nav class="flex gap-3 mt-4" aria-label="Acciones para Desagote">
+                <a href="/servicios/desagote" class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition">Más info</a>
+                <a href={mkWsp("Hola! Quiero solicitar el servicio de Desagote")} target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition">Solicitar</a>
+              </nav>
+            </div>
+          </article>
+        </li>
 
-                  <nav class="flex gap-3 mt-4">
-                    <a
-                      href={`/servicios/${s.slug}`}
-                      class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
-                    >
-                      Más info
-                    </a>
-                    <a
-                      href={mkWsp(
-                        `Hola! Quiero solicitar el servicio de ${s.title}`
-                      )}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Solicitar ${s.title} por WhatsApp`}
-                      class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition"
-                    >
-                      Solicitar
-                    </a>
-                  </nav>
-                </div>
-              </article>
-            </li>
-          ))
-        }
+        <!-- Pintura -->
+        <li>
+          <article class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl w-full overflow-hidden transition" itemscope itemtype="https://schema.org/Service">
+            <a href="/servicios/pintura" aria-label="Ver más sobre Pintura">
+              <Image
+                src={pinturaImg}
+                alt="Pintura de piscina con rodillo"
+                width="600"
+                height="340"
+                class="w-full h-44 object-cover"
+                itemprop="image"
+              />
+            </a>
+            <div class="flex flex-col flex-1 justify-between p-5">
+              <div>
+                <h3 class="font-semibold text-slate-900 text-lg" itemprop="name">
+                  <a href="/servicios/pintura" class="hover:underline">Pintura</a>
+                </h3>
+                <p class="mt-1 text-slate-600 text-sm" itemprop="description">Sellos, preparación y aplicación según tipo de pileta.</p>
+              </div>
+              <nav class="flex gap-3 mt-4" aria-label="Acciones para Pintura">
+                <a href="/servicios/pintura" class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition">Más info</a>
+                <a href={mkWsp("Hola! Quiero solicitar el servicio de Pintura")} target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition">Solicitar</a>
+              </nav>
+            </div>
+          </article>
+        </li>
+
+        <!-- Cambio de piedras / multiválvula -->
+        <li>
+          <article class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl w-full overflow-hidden transition" itemscope itemtype="https://schema.org/Service">
+            <a href="/servicios/cambio-piedras-multivalvula" aria-label="Ver más sobre Cambio de piedras / multiválvula">
+              <Image
+                src={cambioPiedrasImg}
+                alt="Filtro de arena y multiválvula"
+                width="600"
+                height="340"
+                class="w-full h-44 object-cover"
+                itemprop="image"
+              />
+            </a>
+            <div class="flex flex-col flex-1 justify-between p-5">
+              <div>
+                <h3 class="font-semibold text-slate-900 text-lg" itemprop="name">
+                  <a href="/servicios/cambio-piedras-multivalvula" class="hover:underline">Cambio de piedras / multiválvula</a>
+                </h3>
+                <p class="mt-1 text-slate-600 text-sm" itemprop="description">Reemplazo del medio filtrante y servicio sobre multiválvula.</p>
+              </div>
+              <nav class="flex gap-3 mt-4" aria-label="Acciones para Cambio de piedras / multiválvula">
+                <a href="/servicios/cambio-piedras-multivalvula" class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition">Más info</a>
+                <a href={mkWsp("Hola! Quiero solicitar el servicio de Cambio de piedras / multiválvula")} target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition">Solicitar</a>
+              </nav>
+            </div>
+          </article>
+        </li>
+
+        <!-- Pulido -->
+        <li>
+          <article class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl w-full overflow-hidden transition" itemscope itemtype="https://schema.org/Service">
+            <a href="/servicios/pulido" aria-label="Ver más sobre Pulido">
+              <Image
+                src={pulidoImg}
+                alt="Pulido de superficies de piscina"
+                width="600"
+                height="340"
+                class="w-full h-44 object-cover"
+                itemprop="image"
+              />
+            </a>
+            <div class="flex flex-col flex-1 justify-between p-5">
+              <div>
+                <h3 class="font-semibold text-slate-900 text-lg" itemprop="name">
+                  <a href="/servicios/pulido" class="hover:underline">Pulido</a>
+                </h3>
+                <p class="mt-1 text-slate-600 text-sm" itemprop="description">Recupera el brillo y mejora el acabado.</p>
+              </div>
+              <nav class="flex gap-3 mt-4" aria-label="Acciones para Pulido">
+                <a href="/servicios/pulido" class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition">Más info</a>
+                <a href={mkWsp("Hola! Quiero solicitar el servicio de Pulido")} target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition">Solicitar</a>
+              </nav>
+            </div>
+          </article>
+        </li>
+
+        <!-- Reparaciones en fibra -->
+        <li>
+          <article class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl w-full overflow-hidden transition" itemscope itemtype="https://schema.org/Service">
+            <a href="/servicios/reparaciones-fibra" aria-label="Ver más sobre Reparaciones en fibra">
+              <Image
+                src={reparacionFibraImg}
+                alt="Reparaciones en fibra de vidrio para piscina"
+                width="600"
+                height="340"
+                class="w-full h-44 object-cover"
+                itemprop="image"
+              />
+            </a>
+            <div class="flex flex-col flex-1 justify-between p-5">
+              <div>
+                <h3 class="font-semibold text-slate-900 text-lg" itemprop="name">
+                  <a href="/servicios/reparaciones-fibra" class="hover:underline">Reparaciones en fibra</a>
+                </h3>
+                <p class="mt-1 text-slate-600 text-sm" itemprop="description">Parche, refuerzo y terminación según daño y modelo.</p>
+              </div>
+              <nav class="flex gap-3 mt-4" aria-label="Acciones para Reparaciones en fibra">
+                <a href="/servicios/reparaciones-fibra" class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition">Más info</a>
+                <a href={mkWsp("Hola! Quiero solicitar el servicio de Reparaciones en fibra")} target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition">Solicitar</a>
+              </nav>
+            </div>
+          </article>
+        </li>
       </ul>
     </section>
 
     <!-- ACERCA -->
-    <section class="bg-neutral-100 py-20">
-      <div
-        class="items-center gap-12 grid md:grid-cols-2 mx-auto px-6 max-w-6xl"
-      >
-        <!-- Texto -->
-        <div class="space-y-4">
-          <h2 class="font-bold text-slate-900 text-3xl md:text-4xl">
-            Acerca de Pablo
-          </h2>
-          <h3 class="font-semibold text-lg md:text-xl">
-            Más de 14 años de experiencia en mantenimiento de piscinas
-          </h3>
+    <section class="bg-neutral-100 py-20" aria-labelledby="acerca-h2">
+      <div class="items-center gap-12 grid md:grid-cols-2 mx-auto px-6 container">
+        <div>
+          <header class="space-y-2">
+            <h2 id="acerca-h2" class="font-bold text-slate-900 text-3xl md:text-4xl">Acerca de Pablo</h2>
+            <p class="font-semibold text-lg md:text-xl">Más de 14 años de experiencia en mantenimiento de piscinas</p>
+          </header>
 
-          <p class="text-slate-700 leading-relaxed">
-            Mi nombre es <strong>Pablo Martínez</strong>. Desde 2010 brindamos
-            servicios profesionales de mantenimiento de piscinas. Nuestro
-            compromiso es con la <strong>responsabilidad</strong>, <strong
-              >puntualidad</strong
-            > y <strong>prolijidad</strong> — para que disfrutes tu pileta con tranquilidad.
+          <p class="mt-4 text-slate-700 leading-relaxed">
+            Mi nombre es <strong>Pablo Martínez</strong>. Desde 2010 brindamos servicios profesionales de mantenimiento de piscinas.
+            Nuestro compromiso es con la <strong>responsabilidad</strong>, <strong>puntualidad</strong> y <strong>prolijidad</strong> — para que disfrutes tu pileta con tranquilidad.
           </p>
 
           <ul class="space-y-1 mt-4 text-slate-700">
-            <li class="flex items-start gap-2">
-              <span class="text-sky-600">•</span> Presupuesto sin cargo y respuesta
-              rápida
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-sky-600">•</span> Visitas pactadas y seguimiento
-              post-servicio
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-sky-600">•</span> Consultá la cobertura según tu
-              zona
-            </li>
+            <li class="flex items-start gap-2"><span class="text-sky-600">•</span> Presupuesto sin cargo y respuesta rápida</li>
+            <li class="flex items-start gap-2"><span class="text-sky-600">•</span> Visitas pactadas y seguimiento post-servicio</li>
+            <li class="flex items-start gap-2"><span class="text-sky-600">•</span> Consultá la cobertura según tu zona</li>
           </ul>
 
           <div class="flex flex-wrap gap-3 pt-6">
@@ -198,10 +325,7 @@ const PAGE = {
           </div>
         </div>
 
-        <!-- Imagen -->
-        <figure
-          class="relative shadow-lg mx-auto rounded-2xl ring-1 ring-sky-200/70 w-full max-w-sm overflow-hidden"
-        >
+        <figure class="relative shadow-lg mx-auto rounded-2xl ring-1 ring-sky-200/70 w-full max-w-sm overflow-hidden">
           <Image
             src={pabloImage}
             alt="Pablo Martínez, especialista en mantenimiento de piscinas"
@@ -210,9 +334,7 @@ const PAGE = {
             class="w-full object-cover aspect-square"
             style={{ objectPosition: "right bottom" }}
           />
-          <figcaption
-            class="bg-white/90 backdrop-blur-sm px-4 py-3 text-slate-600 text-sm text-center"
-          >
+          <figcaption class="bg-white/90 backdrop-blur-sm px-4 py-3 text-slate-600 text-sm text-center">
             Pablo Martínez — Especialista en mantenimiento de piscinas
           </figcaption>
         </figure>
@@ -220,29 +342,19 @@ const PAGE = {
     </section>
 
     <!-- PROCESO -->
-    <section class="mx-auto px-6 py-16 max-w-6xl">
-      <div class="mb-8 text-center">
-        <h2 class="font-bold text-slate-900 text-2xl md:text-3xl">
-          Así trabajamos
-        </h2>
-        <p class="mx-auto max-w-2xl text-slate-600">
-          Proceso simple y claro para resultados confiables.
-        </p>
-      </div>
+    <section class="mx-auto px-6 py-16 container" aria-labelledby="proceso-h2">
+      <header class="mb-8 text-center">
+        <h2 id="proceso-h2" class="font-bold text-slate-900 text-2xl md:text-3xl">Así trabajamos</h2>
+        <p class="mt-2 text-slate-600">Proceso simple y claro para resultados confiables.</p>
+      </header>
 
       <ol class="gap-6 grid md:grid-cols-4">
         {
           [
-            [
-              "Paso 1: Consulta y visita",
-              "Relevamiento del estado del agua y equipos.",
-            ],
+            ["Paso 1: Consulta y visita", "Relevamiento del estado del agua y equipos."],
             ["Paso 2: Presupuesto", "Propuesta clara con tareas y materiales."],
-            [
-              "Paso 3: Trabajo en la pileta",
-              "Limpieza, balance, pintura o reparación.",
-            ],
-            ["Paso 4: Seguimiento", "Reporte con fotos y recomendaciones."],
+            ["Paso 3: Trabajo en la pileta", "Limpieza, balance, pintura o reparación."],
+            ["Paso 4: Seguimiento", "Reporte con fotos y recomendaciones."]
           ].map(([t, d], i) => (
             <li>
               <article class="bg-white shadow-sm rounded-xl ring-1 ring-slate-200/70 h-full">
@@ -261,228 +373,131 @@ const PAGE = {
     </section>
 
     <!-- OPINIONES -->
-    <section class="mx-auto px-6 py-16 max-w-6xl">
-      <div class="mb-8 text-center">
-        <h2 class="font-bold text-slate-900 text-2xl md:text-3xl">
-          Lo que dicen nuestros clientes
-        </h2>
-        <p class="mx-auto max-w-2xl text-slate-600">
+    <section class="mx-auto px-6 py-16 container" aria-labelledby="opiniones-h2">
+      <header class="mb-8 text-center">
+        <h2 id="opiniones-h2" class="font-bold text-slate-900 text-2xl md:text-3xl">Lo que dicen nuestros clientes</h2>
+        <p class="mt-2 text-slate-600">
           Opiniones reales de quienes confiaron en nosotros.
           <a
             href="https://www.google.com/maps/search/?api=1&query=Master%20Piscinas%20San%20Juan"
             class="hover:text-sky-700 underline transition"
             target="_blank"
-            rel="noopener">Ver en Google Maps</a
-          >
+            rel="noopener"
+          >Ver en Google Maps</a>
         </p>
-      </div>
+      </header>
 
       <ul class="gap-6 grid md:grid-cols-3">
         <li>
-          <article
-            class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-slate-200/70 h-full transition"
-          >
-            <div
-              class="flex items-center gap-1 text-amber-500"
-              aria-label="5 de 5 estrellas"
-            >
-              {
-                Array.from({ length: 5 }).map(() => (
-                  <svg
-                    viewBox="0 0 20 20"
-                    class="w-5 h-5"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                ))
-              }
+          <article class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-slate-200/70 h-full transition">
+            <div class="flex items-center gap-1 text-amber-500" aria-label="5 de 5 estrellas">
+              {Array.from({ length: 5 }).map(() => (
+                <svg viewBox="0 0 20 20" class="w-5 h-5" aria-hidden="true">
+                  <path d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z" fill="currentColor" />
+                </svg>
+              ))}
             </div>
-
-            <p class="mt-3 text-slate-700 text-sm leading-relaxed">
-              “Excelente trabajo. Dejaron la pileta impecable y cumplieron con
-              la fecha.”
-            </p>
-
-            <footer class="mt-4 text-slate-500 text-xs">
-              Lucía R. · Rivadavia
-            </footer>
+            <blockquote class="mt-3 text-slate-700 text-sm leading-relaxed">
+              “Excelente trabajo. Dejaron la pileta impecable y cumplieron con la fecha.”
+            </blockquote>
+            <footer class="mt-4 text-slate-500 text-xs">Lucía R. · Rivadavia</footer>
           </article>
         </li>
 
         <li>
-          <article
-            class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-slate-200/70 h-full transition"
-          >
-            <div
-              class="flex items-center gap-1 text-amber-500"
-              aria-label="5 de 5 estrellas"
-            >
-              {
-                Array.from({ length: 5 }).map(() => (
-                  <svg
-                    viewBox="0 0 20 20"
-                    class="w-5 h-5"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                ))
-              }
+          <article class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-slate-200/70 h-full transition">
+            <div class="flex items-center gap-1 text-amber-500" aria-label="5 de 5 estrellas">
+              {Array.from({ length: 5 }).map(() => (
+                <svg viewBox="0 0 20 20" class="w-5 h-5" aria-hidden="true">
+                  <path d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z" fill="currentColor" />
+                </svg>
+              ))}
             </div>
-
-            <p class="mt-3 text-slate-700 text-sm leading-relaxed">
-              “Muy buena comunicación por WhatsApp y precios claros.
-              Recomendados.”
-            </p>
-
-            <footer class="mt-4 text-slate-500 text-xs">
-              Gabriel M. · Rawson
-            </footer>
+            <blockquote class="mt-3 text-slate-700 text-sm leading-relaxed">
+              “Muy buena comunicación por WhatsApp y precios claros. Recomendados.”
+            </blockquote>
+            <footer class="mt-4 text-slate-500 text-xs">Gabriel M. · Rawson</footer>
           </article>
         </li>
 
         <li>
-          <article
-            class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-slate-200/70 h-full transition"
-          >
-            <div
-              class="flex items-center gap-1 text-amber-500"
-              aria-label="4 de 5 estrellas"
-            >
-              {
-                [...Array(4)].map(() => (
-                  <svg
-                    viewBox="0 0 20 20"
-                    class="w-5 h-5"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path
-                      d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                ))
-              }
-              <svg
-                viewBox="0 0 20 20"
-                class="w-5 h-5 text-amber-300"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path
-                  d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z"
-                  fill="currentColor"
-                  opacity="0.4"></path>
+          <article class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-slate-200/70 h-full transition">
+            <div class="flex items-center gap-1 text-amber-500" aria-label="4 de 5 estrellas">
+              {[...Array(4)].map(() => (
+                <svg viewBox="0 0 20 20" class="w-5 h-5" aria-hidden="true">
+                  <path d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z" fill="currentColor" />
+                </svg>
+              ))}
+              <svg viewBox="0 0 20 20" class="w-5 h-5 text-amber-300" aria-hidden="true">
+                <path d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z" fill="currentColor" opacity="0.4"></path>
               </svg>
             </div>
-
-            <p class="mt-3 text-slate-700 text-sm leading-relaxed">
+            <blockquote class="mt-3 text-slate-700 text-sm leading-relaxed">
               “Hicieron limpieza con ácido y pintura, quedó como nueva.”
-            </p>
-
-            <footer class="mt-4 text-slate-500 text-xs">
-              Mariana P. · Capital
-            </footer>
+            </blockquote>
+            <footer class="mt-4 text-slate-500 text-xs">Mariana P. · Capital</footer>
           </article>
         </li>
       </ul>
     </section>
 
     <!-- CONTACTO -->
-    <section class="mx-auto px-6 pb-20 max-w-6xl">
-      <div
-        class="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white"
-      >
-        <div class="relative">
-          <h2 id="contacto-h2" class="font-bold text-3xl md:text-4xl">
-            Coordiná tu visita
-          </h2>
-          <p class="mt-3 max-w-2xl text-blue-50 text-base md:text-lg">
-            Escribinos por WhatsApp y te respondemos a la brevedad. Brindamos
-            atención personalizada para que coordines tu mantenimiento con total
-            comodidad.
+    <section class="mx-auto px-6 pb-20 container" aria-labelledby="contacto-h2">
+      <div class="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white">
+        <header>
+          <h2 id="contacto-h2" class="font-bold text-3xl md:text-4xl">Coordiná tu visita</h2>
+          <p class="mt-3 max-w-prose text-blue-50 text-base md:text-lg">
+            Escribinos por WhatsApp y te respondemos a la brevedad. Brindamos atención personalizada para que coordines tu mantenimiento con total comodidad.
           </p>
+        </header>
 
-          <!-- Botones -->
-          <div class="flex flex-wrap items-center gap-4 mt-8">
-            <a
-              href={`mailto:${PAGE.email}`}
-              class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
-            >
-              Enviar correo
-            </a>
-            <a
-              href={mkWsp(
-                "Hola! Quiero coordinar una visita para mantenimiento de piscina."
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex justify-center items-center bg-white hover:bg-blue-50 shadow-md px-6 py-3 rounded-full font-semibold text-blue-700 transition"
-            >
-              WhatsApp
-            </a>
-
-            <!-- Solo visible en móvil -->
-            <a
-              href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}
-              class="sm:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
-            >
-              Llamar
-            </a>
-          </div>
-
-          <!-- Info -->
-          <dl
-            class="gap-6 grid sm:grid-cols-3 mt-10 text-blue-50/90 text-sm md:text-base"
+        <div class="flex flex-wrap items-center gap-4 mt-8">
+          <a
+            href={`mailto:${PAGE.email}`}
+            class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
           >
-            <div class="space-y-1">
-              <dt class="font-semibold text-white text-base">Cobertura</dt>
-              <dd>Consultá por el radio de cobertura de tu zona.</dd>
-            </div>
-
-            <div class="space-y-1">
-              <dt class="font-semibold text-white text-base">Contacto</dt>
-              <dd class="flex flex-col">
-                <a
-                  class="hover:text-white underline underline-offset-2"
-                  href={`mailto:${PAGE.email}`}
-                >
-                  {PAGE.email}
-                </a>
-                <a
-                  class="hover:text-white underline underline-offset-2"
-                  href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}
-                >
-                  {PAGE.phone}
-                </a>
-              </dd>
-            </div>
-
-            <div class="space-y-1">
-              <dt class="font-semibold text-white text-base">Horario</dt>
-              <dd>Lunes a sábado · 9 a 19 hs</dd>
-            </div>
-          </dl>
+            Enviar correo
+          </a>
+          <a
+            href={mkWsp("Hola! Quiero coordinar una visita para mantenimiento de piscina.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex justify-center items-center bg-white hover:bg-blue-50 shadow-md px-6 py-3 rounded-full font-semibold text-blue-700 transition"
+          >
+            WhatsApp
+          </a>
+          <a
+            href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}
+            class="sm:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
+          >
+            Llamar
+          </a>
         </div>
+
+        <address class="gap-6 grid sm:grid-cols-3 mt-10 text-blue-50/90 text-sm md:text-base not-italic">
+          <div>
+            <h3 class="font-semibold text-white text-base">Cobertura</h3>
+            <p>Consultá por el radio de cobertura de tu zona.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white text-base">Contacto</h3>
+            <p class="flex flex-col">
+              <a class="hover:text-white underline underline-offset-2" href={`mailto:${PAGE.email}`}>{PAGE.email}</a>
+              <a class="hover:text-white underline underline-offset-2" href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}>{PAGE.phone}</a>
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white text-base">Horario</h3>
+            <p>Lunes a sábado · 9 a 19 hs</p>
+          </div>
+        </address>
       </div>
     </section>
   </main>
 
   <footer class="bg-neutral-50 border-slate-200 border-t">
-    <div class="mx-auto px-6 py-8 max-w-6xl text-slate-500 text-sm text-center">
-      <small
-        >&copy; {new Date().getFullYear()} Master Piscinas — {PAGE.area}</small
-      >
+    <div class="mx-auto px-6 py-8 text-slate-500 text-sm text-center container">
+      <small>&copy; {new Date().getFullYear()} Master Piscinas — {PAGE.area}</small>
     </div>
   </footer>
 
@@ -492,6 +507,7 @@ const PAGE = {
     target="_blank"
     rel="noopener noreferrer"
     class="inline-flex right-4 bottom-4 z-50 fixed justify-center items-center bg-green-500 hover:bg-green-600 shadow-lg rounded-full w-14 h-14 text-white"
+    aria-label="Abrir WhatsApp para consultar"
   >
     <Image
       src={whatsappIcon}

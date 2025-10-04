@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Página no encontrada | Master Piscinas"
+  description="La página solicitada no existe."
+>
+  <section
+    class="flex flex-col justify-center items-center px-6 min-h-[70vh] text-center"
+  >
+    <h1 class="mb-4 font-bold text-blue-800 text-6xl">404</h1>
+    <h2 class="mb-2 font-semibold text-gray-800 text-2xl">
+      Página no encontrada
+    </h2>
+    <p class="mb-6 max-w-md text-gray-600">
+      La página que estás buscando puede haber sido movida, eliminada o el
+      enlace es incorrecto.
+    </p>
+
+    <a
+      href="/"
+      class="inline-block bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-lg font-medium text-white transition"
+    >
+      Volver al inicio
+    </a>
+  </section>
+</Layout>
