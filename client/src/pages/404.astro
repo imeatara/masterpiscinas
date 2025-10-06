@@ -1,28 +1,272 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import whatsappIcon from "@/assets/whatsapp.svg";
+
+// Helpers (mismos que en tu home)
+const WSP = "5492644822296";
+const mkWsp = (msg) => `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
+
+const PAGE = {
+  title: "Página no encontrada | Master Piscinas",
+  description:
+    "La página que buscás no existe o fue movida. Volvé al inicio o escribinos por WhatsApp.",
+  url: "https://masterpiscinassj.com/",
+  phone: "+54 9 264 482 2296",
+  email: "masterpiscinas.sj@gmail.com",
+  area: "San Juan, Argentina",
+};
 ---
 
-<Layout
-  title="Página no encontrada | Master Piscinas"
-  description="La página solicitada no existe."
->
-  <section
-    class="flex flex-col justify-center items-center px-6 min-h-[70vh] text-center"
-  >
-    <h1 class="mb-4 font-bold text-blue-800 text-6xl">404</h1>
-    <h2 class="mb-2 font-semibold text-gray-800 text-2xl">
-      Página no encontrada
-    </h2>
-    <p class="mb-6 max-w-md text-gray-600">
-      La página que estás buscando puede haber sido movida, eliminada o el
-      enlace es incorrecto.
-    </p>
+<Layout title={PAGE.title} description={PAGE.description}>
+  <!-- Evitar indexación del 404 -->
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, nofollow" />
+  </Fragment>
 
-    <a
-      href="/"
-      class="inline-block bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-lg font-medium text-white transition"
+  <!-- HERO 404 -->
+  <header
+    class="relative bg-gradient-to-b from-neutral-500 to-neutral-50 py-16 md:py-24 overflow-hidden text-center"
+  >
+    <!-- patrón sutil de puntos -->
+    <div
+      class="absolute inset-0 bg-[radial-gradient(#0001_1px,transparent_1px)] pointer-events-none [background-size:16px_16px]"
     >
-      Volver al inicio
-    </a>
-  </section>
+    </div>
+
+    <div class="mx-auto px-6 container">
+      <div class="place-items-center grid">
+        <Image
+          src="/favicon.webp"
+          alt="Master Piscinas - Logo"
+          width="200"
+          height="100"
+          class="brightness-125"
+        />
+      </div>
+
+      <p
+        class="inline-block bg-blue-700 mt-4 px-3 py-1 rounded-full font-medium text-white text-xs tracking-wide"
+      >
+        +14 años de experiencia
+      </p>
+
+      <h1
+        class="drop-shadow mt-4 font-bold text-blue-700 text-4xl md:text-6xl italic leading-tight"
+      >
+        Página no encontrada (404)
+      </h1>
+
+      <p class="mt-4 text-slate-700">
+        La página que buscaste no existe o fue movida. Te ayudamos a volver.
+      </p>
+
+      <nav
+        class="flex sm:flex-row flex-col justify-center items-center gap-3 mt-8"
+        aria-label="Acciones principales"
+      >
+        <a
+          href="/"
+          class="inline-flex justify-center items-center hover:bg-slate-50 px-5 py-3 border border-slate-300 rounded-full font-semibold text-slate-800 transition"
+        >
+          Volver al inicio
+        </a>
+        <a
+          href="/#servicios-h2"
+          class="inline-flex justify-center items-center hover:bg-slate-50 px-5 py-3 border border-slate-300 rounded-full font-semibold text-slate-800 transition"
+        >
+          Ver servicios
+        </a>
+        <a
+          href={mkWsp("Hola! Entré a una página que no existe. ¿Me ayudás?")}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-full font-semibold text-white transition"
+          aria-label="Contactar por WhatsApp"
+        >
+          WhatsApp
+        </a>
+      </nav>
+
+      <p class="sr-only">
+        Navegación alternativa: Inicio, Servicios, WhatsApp de Master Piscinas.
+      </p>
+    </div>
+  </header>
+
+  <!-- Sugerencias / Enlaces útiles -->
+  <main id="contenido" class="bg-neutral-50">
+    <section
+      class="mx-auto px-6 py-16 container"
+      aria-labelledby="sugerencias-h2"
+    >
+      <header class="mb-8 text-center">
+        <h2
+          id="sugerencias-h2"
+          class="font-bold text-slate-900 text-2xl md:text-3xl"
+        >
+          Quizás buscabas…
+        </h2>
+        <p class="mt-2 text-slate-600">
+          Accesos rápidos a las secciones más visitadas.
+        </p>
+      </header>
+
+      <ul
+        class="gap-4 grid sm:grid-cols-2 lg:grid-cols-3"
+        aria-label="Enlaces sugeridos"
+      >
+        <li>
+          <a
+            href="/servicios/limpieza-acido"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+          >
+            <span class="font-medium text-slate-800">Limpieza con ácido</span>
+            <span aria-hidden="true" class="text-slate-400">→</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/servicios/desagote"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+          >
+            <span class="font-medium text-slate-800">Desagote</span>
+            <span aria-hidden="true" class="text-slate-400">→</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/servicios/pintura"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+          >
+            <span class="font-medium text-slate-800">Pintura</span>
+            <span aria-hidden="true" class="text-slate-400">→</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/servicios/cambio-piedras-multivalvula"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+          >
+            <span class="font-medium text-slate-800"
+              >Cambio de piedras / multiválvula</span
+            >
+            <span aria-hidden="true" class="text-slate-400">→</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/servicios/pulido"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+          >
+            <span class="font-medium text-slate-800">Pulido</span>
+            <span aria-hidden="true" class="text-slate-400">→</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/servicios/reparaciones-fibra"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+          >
+            <span class="font-medium text-slate-800">Reparaciones en fibra</span
+            >
+            <span aria-hidden="true" class="text-slate-400">→</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Bloque de contacto (coincide con tu estilo) -->
+    <section class="mx-auto px-6 pb-20 container" aria-labelledby="contacto-h2">
+      <div
+        class="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white"
+      >
+        <header>
+          <h2 id="contacto-h2" class="font-bold text-3xl md:text-4xl">
+            ¿Necesitás ayuda?
+          </h2>
+          <p class="mt-3 max-w-prose text-blue-50 text-base md:text-lg">
+            Escribinos por WhatsApp o volvé al inicio para seguir navegando.
+          </p>
+        </header>
+
+        <div class="flex flex-wrap items-center gap-4 mt-8">
+          <a
+            href="/"
+            class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
+          >
+            Ir al inicio
+          </a>
+          <a
+            href={mkWsp(
+              "Hola! Entré a una página que no existe. ¿Me indicás cómo seguir?"
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex justify-center items-center bg-white hover:bg-blue-50 shadow-md px-6 py-3 rounded-full font-semibold text-blue-700 transition"
+          >
+            WhatsApp
+          </a>
+          <a
+            href={`mailto:${PAGE.email}`}
+            class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
+          >
+            Enviar correo
+          </a>
+        </div>
+
+        <address
+          class="gap-6 grid sm:grid-cols-3 mt-10 text-blue-50/90 text-sm md:text-base not-italic"
+        >
+          <div>
+            <h3 class="font-semibold text-white text-base">Cobertura</h3>
+            <p>Consultá por el radio de cobertura de tu zona.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white text-base">Contacto</h3>
+            <p class="flex flex-col">
+              <a
+                class="hover:text-white underline underline-offset-2"
+                href={`mailto:${PAGE.email}`}>{PAGE.email}</a
+              >
+              <a
+                class="hover:text-white underline underline-offset-2"
+                href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}>{PAGE.phone}</a
+              >
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white text-base">Horario</h3>
+            <p>Lunes a sábado · 9 a 19 hs</p>
+          </div>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer mínimo -->
+  <footer class="bg-neutral-50 border-slate-200 border-t">
+    <div class="mx-auto px-6 py-8 text-slate-500 text-sm text-center container">
+      <small
+        >&copy; {new Date().getFullYear()} Master Piscinas — {PAGE.area}</small
+      >
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a
+    href={mkWsp("Hola! Vengo desde la página 404 y quiero hacer una consulta.")}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex right-4 bottom-4 z-50 fixed justify-center items-center bg-green-500 hover:bg-green-600 shadow-lg rounded-full w-14 h-14 text-white"
+    aria-label="Abrir WhatsApp para consultar"
+  >
+    <Image
+      src={whatsappIcon}
+      alt="WhatsApp"
+      width="32"
+      height="32"
+      class="w-7 h-7"
+    />
+  </a>
 </Layout>
