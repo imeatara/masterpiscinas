@@ -1,0 +1,295 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// IMAGEN PRINCIPAL (hero)
+import heroImg from "@/assets/asset.png";
+
+// PARES ANTES/DESPUÉS (cambiá por tus fotos reales)
+import antes1 from "@/assets/asset.png";
+import despues1 from "@/assets/asset.png";
+import antes2 from "@/assets/asset.png";
+import despues2 from "@/assets/asset.png";
+import antes3 from "@/assets/asset.png";
+import despues3 from "@/assets/asset.png";
+
+const service = {
+  title: "Limpieza con ácido",
+  desc: "Restauración profunda de superficies con incrustaciones, algas o manchas, dejando la pileta lista para pintar o volver a usar.",
+  src: heroImg,
+  alt: "Limpieza con ácido en pileta",
+  slug: "limpieza-acido",
+};
+
+const WSP = "5492644822296";
+const mkWsp = (msg) => `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
+
+const BREADCRUMB = [
+  { href: "/", name: "Inicio" },
+  { href: "/servicios", name: "Servicios" },
+  { href: `/servicios/${service.slug}`, name: service.title },
+];
+
+const pairs = [
+  { before: { src: antes1, alt: "Superficie con incrustaciones (antes)" }, after: { src: despues1, alt: "Superficie limpia (después)" } },
+  { before: { src: antes2, alt: "Línea de flotación manchada (antes)" }, after: { src: despues2, alt: "Línea de flotación renovada (después)" } },
+  { before: { src: antes3, alt: "Bordes y paredes opacas (antes)" }, after: { src: despues3, alt: "Bordes y paredes brillantes (después)" } },
+];
+---
+
+<Layout title={`Master Piscinas | ${service.title}`} description={service.desc}>
+  <!-- Migas de pan -->
+  <nav aria-label="Breadcrumb" class="mx-auto mb-6 px-6 container">
+    <ol class="flex flex-wrap gap-2 text-slate-500 text-sm">
+      {BREADCRUMB.map((b, i) => (
+        <li class="flex items-center gap-2">
+          <a href={b.href} class="hover:underline">{b.name}</a>
+          {i < BREADCRUMB.length - 1 && <span aria-hidden="true">/</span>}
+        </li>
+      ))}
+    </ol>
+  </nav>
+
+  <!-- Hero -->
+  <section class="mx-auto px-6 py-10 container">
+    <header class="mb-6">
+      <h1 class="font-bold text-slate-900 text-3xl md:text-4xl">{service.title}</h1>
+      <p class="mt-2 max-w-prose text-slate-600">{service.desc}</p>
+    </header>
+
+    <figure class="relative rounded-2xl ring-1 ring-slate-200/60 h-56 md:h-80 overflow-hidden">
+      <Image
+        src={service.src}
+        alt={service.alt}
+        width={1920}
+        height={1080}
+        class="absolute inset-0 w-full h-full object-center object-cover"
+      />
+      <figcaption class="bottom-0 absolute inset-x-0 bg-black/35 px-4 py-2 text-white text-sm">{service.alt}</figcaption>
+    </figure>
+
+    <div class="flex flex-wrap items-center gap-3 mt-6">
+      <a
+        href={mkWsp(`Hola! Quiero solicitar el servicio de ${service.title}`)}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-full font-semibold text-white transition"
+      >
+        Solicitar por WhatsApp
+      </a>
+      <a href="/servicios" class="inline-flex items-center gap-2 hover:bg-slate-50 px-5 py-3 border border-slate-300 rounded-full text-slate-800 transition">
+        Ver otros servicios
+      </a>
+    </div>
+  </section>
+
+  <!-- Qué incluye -->
+  <section class="mx-auto px-6 py-10 container">
+    <h2 class="font-semibold text-slate-900 text-2xl">¿Qué incluye este servicio?</h2>
+    <ul class="gap-3 grid md:grid-cols-2 mt-4 text-slate-700 text-base">
+      <li>• Coordinamos día y horario de visita.</li>
+      <li>• Inspección inicial para definir dilución y método adecuados.</li>
+      <li>• Protección de bordes, accesorios y zonas sensibles.</li>
+      <li>• Aplicación controlada de <strong>ácido</strong> sobre las superficies (paredes y/o bordes) para remover sarro, algas y manchas.</li>
+      <li>• Cepillado técnico y tiempos de acción seguros.</li>
+      <li>• <strong>Neutralización</strong> y enjuague para estabilizar el pH de la superficie.</li>
+      <li>• Limpieza de línea de flotación (frecuentes manchas por bronceadores).</li>
+      <li>• Retiro de residuos y aclarado final del área de trabajo.</li>
+      <li>• Recomendaciones para sellado/pintura posterior o llenado.</li>
+    </ul>
+    <p class="mt-3 text-slate-500 text-sm">*El uso de ácido se realiza con elementos de seguridad y prácticas responsables.</p>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="mx-auto px-6 py-10 container">
+    <h2 class="font-semibold text-slate-900 text-2xl">Beneficios</h2>
+    <div class="gap-6 grid md:grid-cols-3 mt-4">
+      <article class="bg-white shadow p-5 rounded-xl">
+        <h3 class="font-semibold text-slate-900">Resultados visibles</h3>
+        <p class="mt-1 text-slate-600">Eliminamos incrustaciones y manchas difíciles. La superficie queda lista para pintar o usar.</p>
+      </article>
+      <article class="bg-white shadow p-5 rounded-xl">
+        <h3 class="font-semibold text-slate-900">Sin preocupaciones</h3>
+        <p class="mt-1 text-slate-600">Nos encargamos de todo el proceso, con químicos y equipo adecuados. Vos te olvidás.</p>
+      </article>
+      <article class="bg-white shadow p-5 rounded-xl">
+        <h3 class="font-semibold text-slate-900">Cuidado de materiales</h3>
+        <p class="mt-1 text-slate-600">Aplicación técnica para no dañar revoques ni accesorios. Trabajo prolijo y seguro.</p>
+      </article>
+    </div>
+
+    <div class="mt-6">
+      <a
+        href={mkWsp("Hola! Quiero coordinar Limpieza con ácido y olvidarme de las manchas de mi pileta.")}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-full font-semibold text-white transition"
+      >
+        Quiero coordinar ahora
+      </a>
+    </div>
+  </section>
+
+  <!-- Carrusel ANTES / DESPUÉS -->
+  <section class="mx-auto px-6 py-12 container">
+    <header class="flex justify-between items-end gap-4 mb-2">
+      <h2 class="font-semibold text-slate-900 text-2xl">Antes y después</h2>
+      <span class="text-slate-500 text-sm">Tocá una imagen para ampliar</span>
+    </header>
+
+    <div class="relative border border-slate-200 rounded-2xl overflow-hidden">
+      <div id="slider" class="flex transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-transform">
+        {pairs.map((p) => (
+          <div class="grid grid-cols-1 md:grid-cols-2 min-w-full">
+            <button class="group relative w-full aspect-[4/3] overflow-hidden" data-zoom={p.before.src.src}>
+              <Image src={p.before.src} alt={p.before.alt} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300" />
+              <span class="top-2 left-2 absolute bg-black/60 px-2 py-1 rounded-full font-medium text-white text-xs">ANTES</span>
+            </button>
+            <button class="group relative w-full aspect-[4/3] overflow-hidden" data-zoom={p.after.src.src}>
+              <Image src={p.after.src} alt={p.after.alt} class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300" />
+              <span class="top-2 left-2 absolute bg-black/60 px-2 py-1 rounded-full font-medium text-white text-xs">DESPUÉS</span>
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <!-- Controles -->
+      <button id="prevBtn" class="top-1/2 left-2 absolute bg-white/90 hover:bg-white shadow px-3 py-2 rounded-full -translate-y-1/2" aria-label="Anterior">‹</button>
+      <button id="nextBtn" class="top-1/2 right-2 absolute bg-white/90 hover:bg-white shadow px-3 py-2 rounded-full -translate-y-1/2" aria-label="Siguiente">›</button>
+
+      <!-- Indicadores -->
+      <div id="dots" class="bottom-3 left-1/2 absolute flex gap-2 -translate-x-1/2">
+        {pairs.map((_, i) => (
+          <button class={`h-2 w-2 rounded-full bg-white/60 ring-1 ring-slate-300 ${i === 0 ? "scale-125 bg-white" : ""}`} aria-label={`Ir al slide ${i+1}`}></button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Recomendaciones -->
+  <section class="mx-auto px-6 py-10 container">
+    <h2 class="font-semibold text-slate-900 text-2xl">Recomendaciones</h2>
+    <p class="mt-2 max-w-prose text-slate-700">
+      Sugerimos realizar una limpieza con ácido cuando haya incrustaciones o manchas persistentes.
+      Si vas a pintar, este servicio deja la base preparada para un mejor agarre.
+    </p>
+  </section>
+
+  <!-- CTA final -->
+  <section class="mx-auto px-6 pb-14 container">
+    <div class="flex md:flex-row flex-col justify-between items-start md:items-center gap-4 bg-gradient-to-r from-blue-700 to-blue-500 shadow p-6 md:p-8 rounded-2xl text-white">
+      <div>
+        <p class="font-semibold text-lg">¿Listo para recuperar tu pileta?</p>
+        <p class="text-blue-50">Escribinos por WhatsApp y coordinamos día y horario.</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={mkWsp(`Hola! Quiero solicitar el servicio de ${service.title}`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex justify-center items-center bg-white hover:bg-blue-50 px-5 py-3 rounded-full font-semibold text-blue-700 transition"
+        >
+          Solicitar por WhatsApp
+        </a>
+        <a
+          href={`mailto:masterpiscinas.sj@gmail.com?subject=${encodeURIComponent(`Consulta: ${service.title}`)}`}
+          class="inline-flex justify-center items-center hover:bg-white/10 px-5 py-3 border border-white/80 rounded-full text-white transition"
+        >
+          Enviar correo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" is:inline>
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": service.title,
+      "areaServed": "San Juan, Argentina",
+      "provider": { "@type": "LocalBusiness", "name": "Master Piscinas" },
+      "description": service.desc,
+      "serviceType": "Pool acid wash",
+      "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Incluye",
+        "itemListElement": [
+          "Inspección inicial",
+          "Protecciones y preparación",
+          "Aplicación controlada de ácido",
+          "Cepillado técnico",
+          "Neutralización y enjuague",
+          "Limpieza de línea de flotación"
+        ]
+      }
+    })}
+  </script>
+
+  <!-- Modal Zoom -->
+  <div id="zoomModal" class="hidden z-50 fixed inset-0 place-items-center bg-black/80 p-4">
+    <button id="zoomClose" class="top-4 right-4 absolute bg-white/90 hover:bg-white shadow px-3 py-1 rounded-full text-sm">Cerrar ✕</button>
+    <img id="zoomImg" alt="Vista ampliada" class="shadow-lg rounded-lg w-auto max-h-[90vh]" />
+  </div>
+
+  <!-- JS -->
+  <script is:inline>
+    (function () {
+      const slider = document.getElementById("slider");
+      const prev = document.getElementById("prevBtn");
+      const next = document.getElementById("nextBtn");
+      const dots = Array.from(document.querySelectorAll("#dots > button"));
+      const slides = slider.children.length;
+      let i = 0;
+
+      function go(n) {
+        i = (n + slides) % slides;
+        slider.style.transform = `translateX(-${i * 100}%)`;
+        dots.forEach((d, idx) => {
+          d.classList.toggle("scale-125", idx === i);
+          d.classList.toggle("bg-white", idx === i);
+          d.classList.toggle("bg-white/60", idx !== i);
+        });
+      }
+
+      next.addEventListener("click", () => go(i + 1));
+      prev.addEventListener("click", () => go(i - 1));
+      dots.forEach((d, idx) => d.addEventListener("click", () => go(idx)));
+
+      // Zoom
+      const zoomModal = document.getElementById("zoomModal");
+      const zoomImg = document.getElementById("zoomImg");
+      const zoomClose = document.getElementById("zoomClose");
+
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-zoom]");
+        if (!btn) return;
+        zoomImg.src = btn.getAttribute("data-zoom");
+        zoomModal.classList.remove("hidden");
+      });
+
+      function closeZoom() {
+        zoomModal.classList.add("hidden");
+        zoomImg.src = "";
+      }
+      zoomClose.addEventListener("click", closeZoom);
+      zoomModal.addEventListener("click", (e) => { if (e.target === zoomModal) closeZoom(); });
+
+      // Swipe (móvil)
+      let startX = 0;
+      slider.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX), {passive: true});
+      slider.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 50) go(i + (dx < 0 ? 1 : -1));
+      });
+
+      go(0);
+    })();
+  </script>
+</Layout>
+
+<style>
+  /* Mantener relación 4:3 en los ítems del carrusel */
+  #slider .aspect-\[4\/3\] { aspect-ratio: 4 / 3; }
+</style>
