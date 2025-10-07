@@ -20,8 +20,8 @@ import SpeedDial from "../components/SpeedDial.astro";
 
 // Helpers
 const WSP = "5492644822296";
-const mkWsp = (msg:string):string => 
-`https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
+const mkWsp = (msg: string): string =>
+  `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
 
 const PAGE = {
   title:
@@ -252,7 +252,7 @@ const PAGE = {
           </div>
           <nav class="flex gap-3 mt-4">
             <a
-              href="/servicios/cambio-piedras-multivalvula"
+              href="/servicios/cambio-piedras-multiválvula"
               class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
             >
               Más info
@@ -318,41 +318,41 @@ const PAGE = {
         </div>
       </article>
 
-      <!-- Reparación en piletas de fibra / Parches -->
+      <!-- Reparación de piletas (fibra y cemento) -->
       <article
         class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl overflow-hidden transition"
       >
         <a
-          href="/servicios/reparacion-fibra"
-          aria-label="Ver más sobre Reparaciones en fibra"
+          href="/servicios/reparacion-piletas"
+          aria-label="Ver más sobre Reparación de piletas"
         >
           <Image
             src={reparacionFibraImg}
-            alt="Reparaciones en piletas de fibra de vidrio"
+            alt="Reparación de piletas (fibra y cemento)"
             class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
           />
         </a>
         <div class="flex flex-col flex-1 justify-between p-5">
           <div>
             <h3 class="font-semibold text-slate-900 text-lg">
-              <a href="/servicios/reparacion-fibra" class="hover:underline">
-                Reparación en piletas de fibra / Parches
+              <a href="/servicios/reparacion-piletas" class="hover:underline">
+                Reparación de piletas
               </a>
             </h3>
             <p class="mt-1 text-slate-600 text-sm">
-              Solución de fisuras, burbujas y parches en piletas de fibra.
+              Reparación de fibra con parches y solución de fisuras en piletas de material.
             </p>
           </div>
           <nav class="flex gap-3 mt-4">
             <a
-              href="/servicios/reparacion-fibra"
+              href="/servicios/reparacion-piletas"
               class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
             >
               Más info
             </a>
             <a
               href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Reparación en piletas de fibra / Parches"
+                "Hola! Quiero solicitar el servicio de Reparación de piletas"
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -363,7 +363,8 @@ const PAGE = {
           </nav>
         </div>
       </article>
-      <!-- CTA: ¿No sabés qué servicio necesitás? (estilo igual al CTA de Contacto) -->
+
+      <!-- CTA: ¿No sabés qué servicio necesitás? -->
       <article
         class="relative sm:col-span-2 lg:col-span-3 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white text-center"
       >
