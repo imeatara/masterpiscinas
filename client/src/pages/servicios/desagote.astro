@@ -1,0 +1,136 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import asset from "@/assets/asset.png";
+
+const service = {
+  title: "Desagote de piletas",
+  desc: "Vaciado seguro y controlado de piletas para limpieza profunda, reparaciones o recambio de agua.",
+  src: asset,
+  alt: "Desagote de pileta",
+  slug: "desagote",
+};
+
+const WSP = "5492644822296";
+const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
+  `Hola! Quiero solicitar el servicio de ${service.title}`
+)}`;
+
+const breadcrumbs = [
+  { name: "Inicio", url: "/" },
+  { name: service.title, url: `/servicios/${service.slug}` },
+];
+---
+
+<Layout title={service.title} description={service.desc}>
+  <article class="space-y-10 mx-auto px-6 py-12 container">
+    <nav aria-label="migas de pan">
+      <ol class="flex flex-wrap gap-2 text-slate-500 text-sm">
+        {
+          breadcrumbs.map((b, i) => (
+            <li class="inline-flex items-center gap-2">
+              {i > 0 && <span aria-hidden="true">/</span>}
+              {i < breadcrumbs.length - 1 ? (
+                <a
+                  href={b.url}
+                  class="hover:text-slate-700 underline underline-offset-2"
+                >
+                  {b.name}
+                </a>
+              ) : (
+                <span class="text-slate-700" aria-current="page">
+                  {b.name}
+                </span>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="font-bold text-slate-900 text-3xl md:text-4xl">
+        {service.title}
+      </h1>
+      <p class="text-slate-700 text-lg">{service.desc}</p>
+    </header>
+
+    <figure
+      class="relative shadow rounded-2xl ring-1 ring-slate-200/60 h-56 md:h-80 overflow-hidden"
+    >
+      <Image
+        src={service.src}
+        alt={service.alt}
+        width="1920"
+        height="1080"
+        class="absolute inset-0 w-full h-full object-center object-cover"
+      />
+      <figcaption
+        class="right-0 bottom-0 left-0 absolute bg-black/30 px-4 py-2 text-white text-sm"
+      >
+        {service.alt}
+      </figcaption>
+    </figure>
+
+    <section class="space-y-4">
+      <h2 class="font-semibold text-slate-900 text-2xl">
+        ¿Qué incluye este servicio?
+      </h2>
+      <ul class="gap-3 grid pl-5 text-slate-700 leading-relaxed list-disc">
+        <li>Evaluación previa del estado de la pileta y del entorno.</li>
+        <li>Vaciado controlado con bombas adecuadas y mangueras de descarga.</li>
+        <li>Gestión segura del agua retirada según normativa local.</li>
+        <li>Limpieza básica del vaso y verificación de desagües.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-semibold text-slate-900 text-2xl">Beneficios</h2>
+      <p class="text-slate-700">
+        Permite realizar limpiezas profundas, reparación de fisuras y recambio
+        de agua de forma segura, evitando daños en el revestimiento o el
+        entorno.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="font-semibold text-slate-900 text-2xl">Recomendaciones</h2>
+      <p class="text-slate-700">
+        Recomendado antes de tareas de mantenimiento mayor, cuando el agua está
+        muy deteriorada o al finalizar la temporada. Asegurá accesos libres para
+        la instalación de equipos.
+      </p>
+    </section>
+
+    <section>
+      <div
+        class="flex md:flex-row flex-col justify-between items-start md:items-center gap-4 bg-gradient-to-r from-blue-700 to-blue-500 shadow p-6 md:p-8 rounded-2xl text-white"
+      >
+        <div>
+          <p class="font-semibold text-lg">¿Querés este servicio?</p>
+          <p class="text-blue-50">
+            Escribinos por WhatsApp y coordinamos la visita.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={wspHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex justify-center items-center bg-white hover:bg-blue-50 px-5 py-3 rounded-full font-semibold text-blue-700 transition"
+          >
+            Solicitar por WhatsApp
+          </a>
+          <a
+            href={`mailto:masterpiscinas.sj@gmail.com?subject=${encodeURIComponent(
+              "Consulta: " + service.title
+            )}`}
+            class="inline-flex justify-center items-center hover:bg-white/10 px-5 py-3 border border-white/80 rounded-full text-white transition"
+          >
+            Enviar correo
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Layout>

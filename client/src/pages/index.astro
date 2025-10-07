@@ -20,7 +20,8 @@ import SpeedDial from "../components/SpeedDial.astro";
 
 // Helpers
 const WSP = "5492644822296";
-const mkWsp = (msg) => `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
+const mkWsp = (msg:string):string => 
+`https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
 
 const PAGE = {
   title:
