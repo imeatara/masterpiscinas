@@ -2,7 +2,11 @@
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import pabloImage from "@/assets/pablo.webp";
+import logo from "@/assets/logo.webp";
 import whatsappIcon from "@/assets/whatsapp.svg";
+import tiktokIcon from "@/assets/tiktok.svg";
+import instagramIcon from "@/assets/instagram.svg";
+import facebookIcon from "@/assets/facebook.svg";
 
 /* Imágenes de cada servicio (cambiá rutas si hace falta) */
 import limpiezaAcidoImg from "@/assets/asset.png";
@@ -15,8 +19,6 @@ import mantenimientoImg from "@/assets/asset.png";
 import balanceQuimicoImg from "@/assets/asset.png";
 
 import { MoveRightIcon, PlusIcon } from "lucide-react";
-
-import SpeedDial from "../components/SpeedDial.astro";
 
 // Helpers
 const WSP = "5492644822296";
@@ -48,11 +50,9 @@ const PAGE = {
     <div class="mx-auto px-6 container">
       <div class="place-items-center grid">
         <Image
-          src="/favicon.webp"
+          src={logo}
           alt="Master Piscinas - Logo"
-          width="200"
-          height="100"
-          class="brightness-125"
+          class="brightness-125 w-80 h-auto object-contain"
         />
       </div>
 
@@ -97,6 +97,58 @@ const PAGE = {
     </header>
 
     <div class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Mantenimiento general -->
+      <article
+        class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl overflow-hidden transition"
+      >
+        <a
+          href="/servicios/mantenimiento-general"
+          aria-label="Ver más sobre Mantenimiento general"
+        >
+          <Image
+            src={mantenimientoImg}
+            alt="Mantenimiento general de piscina"
+            class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </a>
+        <div class="flex flex-col flex-1 justify-between p-5">
+          <div>
+            <h3 class="font-semibold text-slate-900 text-lg">
+              <a
+                href="/servicios/mantenimiento-general"
+                class="hover:underline"
+              >
+                Mantenimiento general
+              </a>
+            </h3>
+            <p class="mt-1 text-slate-600 text-sm">
+              Servicio integral que incluye limpieza, control químico y
+              verificación del sistema de filtrado.
+            </p>
+          </div>
+          <nav class="flex gap-3 mt-4">
+            <a
+              href="/servicios/mantenimiento-general"
+              class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
+            >
+              <PlusIcon className="mr-2 size-5" />
+              Más info
+            </a>
+            <a
+              href={mkWsp(
+                "Hola! Quiero solicitar el servicio de Mantenimiento general"
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition"
+            >
+              Solicitar
+              <MoveRightIcon className="ml-2 size-5" />
+            </a>
+          </nav>
+        </div>
+      </article>
+
       <!-- Limpieza con ácido -->
       <article
         class="flex flex-col bg-white shadow hover:shadow-lg rounded-xl overflow-hidden transition"
@@ -127,6 +179,7 @@ const PAGE = {
               href="/servicios/limpieza-acido"
               class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
             >
+              <PlusIcon className="mr-2 size-5" />
               Más info
             </a>
             <a
@@ -138,6 +191,7 @@ const PAGE = {
               class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition"
             >
               Solicitar
+              <MoveRightIcon className="ml-2 size-5" />
             </a>
           </nav>
         </div>
@@ -168,6 +222,7 @@ const PAGE = {
               href="/servicios/desagote"
               class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
             >
+              <PlusIcon className="mr-2 size-5" />
               Más info
             </a>
             <a
@@ -177,6 +232,7 @@ const PAGE = {
               class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition"
             >
               Solicitar
+              <MoveRightIcon className="ml-2 size-5" />
             </a>
           </nav>
         </div>
@@ -207,6 +263,7 @@ const PAGE = {
               href="/servicios/pintura"
               class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
             >
+              <PlusIcon className="mr-2 size-5" />
               Más info
             </a>
             <a
@@ -216,6 +273,7 @@ const PAGE = {
               class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition"
             >
               Solicitar
+              <MoveRightIcon className="ml-2 size-5" />
             </a>
           </nav>
         </div>
@@ -255,6 +313,7 @@ const PAGE = {
               href="/servicios/cambio-piedras-multiválvula"
               class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
             >
+              <PlusIcon className="mr-2 size-5" />
               Más info
             </a>
             <a
@@ -266,6 +325,7 @@ const PAGE = {
               class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition"
             >
               Solicitar
+              <MoveRightIcon className="ml-2 size-5" />
             </a>
           </nav>
         </div>
@@ -302,6 +362,7 @@ const PAGE = {
               href="/servicios/pulido-placas"
               class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
             >
+              <PlusIcon className="mr-2 size-5" />
               Más info
             </a>
             <a
@@ -313,6 +374,7 @@ const PAGE = {
               class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition"
             >
               Solicitar
+              <MoveRightIcon className="ml-2 size-5" />
             </a>
           </nav>
         </div>
@@ -340,7 +402,8 @@ const PAGE = {
               </a>
             </h3>
             <p class="mt-1 text-slate-600 text-sm">
-              Reparación de fibra con parches y solución de fisuras en piletas de material.
+              Reparación de fibra con parches y solución de fisuras en piletas
+              de material.
             </p>
           </div>
           <nav class="flex gap-3 mt-4">
@@ -348,6 +411,7 @@ const PAGE = {
               href="/servicios/reparacion-piletas"
               class="inline-flex justify-center items-center hover:bg-slate-50 px-4 py-2 border border-slate-300 rounded-full text-slate-800 text-sm transition"
             >
+              <PlusIcon className="mr-2 size-5" />
               Más info
             </a>
             <a
@@ -359,6 +423,7 @@ const PAGE = {
               class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition"
             >
               Solicitar
+              <MoveRightIcon className="ml-2 size-5" />
             </a>
           </nav>
         </div>
@@ -366,7 +431,7 @@ const PAGE = {
 
       <!-- CTA: ¿No sabés qué servicio necesitás? -->
       <article
-        class="relative sm:col-span-2 lg:col-span-3 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white text-center"
+        class="relative sm:col-span-2 lg:col-span-2 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white text-center"
       >
         <header>
           <h3 class="font-bold text-3xl md:text-4xl">
@@ -377,7 +442,7 @@ const PAGE = {
           </p>
         </header>
 
-        <div class="flex flex-wrap justify-center items-center gap-4 mt-8">
+        <div class="flex flex-wrap justify-center items-center mt-8">
           <a
             href={mkWsp(
               "Hola! Necesito asesoramiento para elegir el servicio adecuado para mi pileta."
@@ -387,13 +452,8 @@ const PAGE = {
             class="inline-flex justify-center items-center bg-white hover:bg-blue-50 shadow-md px-6 py-3 rounded-full font-semibold text-blue-700 transition"
             aria-label="Consultar por WhatsApp"
           >
-            Consultar por WhatsApp
-          </a>
-          <a
-            href="/servicios"
-            class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
-          >
-            Ver todos los servicios
+            Consulta ahora mismo
+            <MoveRightIcon className="ml-2 size-8" />
           </a>
         </div>
       </article>
@@ -426,14 +486,16 @@ const PAGE = {
 
         <ul class="space-y-1 mt-4 text-slate-700">
           <li class="flex items-start gap-2">
-            <span class="text-sky-600">•</span> Presupuesto sin cargo y respuesta
+            <span class="text-sky-600">•</span> Presupuesto sin cargo, respuesta
             rápida
           </li>
           <li class="flex items-start gap-2">
-            <span class="text-sky-600">•</span> Visitas pactadas y seguimiento post-servicio
+            <span class="text-sky-600">•</span> Visitas pactadas y seguimiento post
+            servicio
           </li>
           <li class="flex items-start gap-2">
             <span class="text-sky-600">•</span> Consultá la cobertura según tu zona
+            (Rivadavia, Rawson, Capital, Chimbas, Santa Lucía, etc.)
           </li>
         </ul>
       </div>
@@ -634,7 +696,7 @@ const PAGE = {
         </p>
       </header>
 
-      <div class="flex flex-wrap items-center gap-4 mt-8">
+      <div class="flex sm:flex-row flex-col flex-wrap gap-4 mt-8">
         <a
           href={`mailto:${PAGE.email}`}
           class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
@@ -681,7 +743,7 @@ const PAGE = {
         </div>
         <div>
           <h3 class="font-semibold text-white text-base">Horario</h3>
-          <p>Lunes a sábado · 9 a 19 hs</p>
+          <p>Lunes a sábado · 7 a 16 hs</p>
         </div>
       </address>
     </div>
@@ -696,20 +758,74 @@ const PAGE = {
   </div>
 </footer>
 
-<SpeedDial />
-<!-- Botón flotante WhatsApp -->
-<!-- <a
-    href={mkWsp("Hola! Vengo desde la web y quiero hacer una consulta.")}
+<div
+  class="top-3/4 right-0 fixed before:absolute before:inset-0 flex flex-col items-center gap-5 bg-white/20 before:bg-gradient-to-br before:from-white/40 before:to-transparent before:opacity-40 backdrop-blur-xl px-2 py-4 border border-white/30 rounded-l-2xl before:rounded-l-2xl before:content-[''] -translate-y-1/2"
+>
+  <!-- Instagram -->
+  <a
+    href="https://instagram.com/tuusuario"
     target="_blank"
-    rel="noopener noreferrer"
-    class="inline-flex right-4 bottom-4 z-50 fixed justify-center items-center bg-green-500 hover:bg-green-600 shadow-lg rounded-full w-14 h-14 text-white"
-    aria-label="Abrir WhatsApp para consultar"
+    aria-label="Instagram"
+    class="relative hover:scale-110 transition-transform duration-300"
+  >
+    <Image
+      src={instagramIcon}
+      alt="Instagram"
+      class="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 transition-transform duration-300 social-icon"
+    />
+  </a>
+
+  <!-- Facebook -->
+  <a
+    href="https://facebook.com/tuusuario"
+    target="_blank"
+    aria-label="Facebook"
+    class="relative hover:scale-110 transition-transform duration-300"
+  >
+    <Image
+      src={facebookIcon}
+      alt="Facebook"
+      class="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 transition-transform duration-300 social-icon"
+    />
+  </a>
+
+  <!-- TikTok -->
+  <a
+    href="https://tiktok.com/@tuusuario"
+    target="_blank"
+    aria-label="TikTok"
+    class="relative hover:scale-110 transition-transform duration-300"
+  >
+    <Image
+      src={tiktokIcon}
+      alt="TikTok"
+      class="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 transition-transform duration-300 social-icon"
+    />
+  </a>
+
+  <!-- WhatsApp -->
+  <a
+    href="https://wa.me/5492644822296"
+    target="_blank"
+    aria-label="WhatsApp"
+    class="relative hover:scale-110 transition-transform duration-300"
   >
     <Image
       src={whatsappIcon}
       alt="WhatsApp"
-      width="32"
-      height="32"
-      class="w-7 h-7"
+      class="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 transition-transform duration-300 social-icon"
     />
-  </a> -->
+  </a>
+</div>
+
+<script>
+  const icons = document.querySelectorAll(".social-icon");
+
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const scale = 1 + Math.sin(scrollY * 0.015) * 0.1; // efecto burbuja suave
+    icons.forEach((icon) => {
+      icon.style.transform = `scale(${scale})`;
+    });
+  });
+</script>
