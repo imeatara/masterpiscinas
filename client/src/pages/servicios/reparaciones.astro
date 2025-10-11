@@ -5,11 +5,11 @@ import asset from "@/assets/asset.png";
 import { MoveLeft, CheckCircle2, ShieldCheck, Sparkles } from "@lucide/astro";
 
 const service = {
-  title: "Limpieza con ácido",
-  desc: "Desagote y limpieza ácida profesional. Proveemos todo el equipo y aplicamos medidas de seguridad.",
+  title: "Reparaciones (fibra, cemento, caños pinchados)",
+  desc: "Parcheo y refuerzos: en fibra usamos resina + fibra y roving en zonas críticas; en cemento, selladores de grietas y, si hace falta, anclajes con hierro. También reparamos caños pinchados.",
   src: asset,
-  alt: "Limpieza con ácido en pileta",
-  slug: "limpieza-acido",
+  alt: "Reparaciones de piletas (fibra, cemento y caños)",
+  slug: "reparaciones",
 };
 
 const WSP = "5492644822296";
@@ -83,7 +83,8 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
 
     <!-- Cards -->
     <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- ¿Qué incluye? (corto) -->
+      <!-- ¿Qué incluye? -->
+      <!-- ¿Qué incluye? (versión corta) -->
       <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <div class="mb-3 inline-flex items-center gap-2">
           <CheckCircle2 class="w-5 h-5 text-emerald-600" />
@@ -92,23 +93,17 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
         <ul class="mt-3 space-y-2 text-slate-700">
           <li class="flex gap-2">
             <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            Desagote completo.
+            <strong>Fibra:</strong> resina + fibra; refuerzo con roving en zonas
+            críticas.
           </li>
           <li class="flex gap-2">
             <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            Limpieza con ácido (superficies y línea de agua).
+            <strong>Cemento:</strong> selladores según fisura; si hace falta, anclajes
+            con hierro.
           </li>
           <li class="flex gap-2">
             <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            Enjuague y neutralizado.
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            Equipo propio (bombas, hidrolavadora, cepillos, químicos).
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            No usamos elementos del hogar.
+            <strong>Caños pinchados:</strong> detección y reparación del tramo afectado.
           </li>
         </ul>
       </div>
@@ -121,12 +116,12 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
         </div>
         <ul class="mt-3 space-y-2 text-slate-700">
           <li class="flex gap-2">
-            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            EPP: guantes, máscaras, anteojos y botas.
+            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"
+            ></span>EPP: guantes, máscaras, anteojos y botas.
           </li>
           <li class="flex gap-2">
-            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            Área delimitada, ventilación y manipulación controlada.
+            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"
+            ></span>Área delimitada y ventilación adecuada.
           </li>
         </ul>
       </div>
@@ -139,14 +134,22 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
         </div>
         <ul class="mt-3 space-y-2 text-slate-700">
           <li class="flex gap-2">
-            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            Sin personas ni mascotas durante el trabajo.
+            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>No
+            excederse con la cantidad de personas al mismo tiempo.
           </li>
           <li class="flex gap-2">
-            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>
-            Según el caso, 24–48&nbsp;h para llenado y estabilización.
+            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"
+            ></span>Evitar golpes y usos bruscos.
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-300"></span>No
+            dejar la pileta <strong>vacía</strong> al solazo.
           </li>
         </ul>
+        <p class="mt-3 text-sm text-slate-500">
+          Nota: las grietas suelen generarse por golpes o por exceso de peso
+          (mucha gente dentro de la pileta).
+        </p>
       </div>
     </section>
 
@@ -158,7 +161,7 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
         <div>
           <p class="text-lg font-semibold">¿Querés este servicio?</p>
           <p class="text-blue-50">
-            Escribinos por WhatsApp y coordinamos la visita.
+            Escribinos por WhatsApp y coordinamos una visita técnica.
           </p>
         </div>
 
@@ -172,9 +175,7 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
             Solicitar por WhatsApp
           </a>
           <a
-            href={`mailto:masterpiscinas.sj@gmail.com?subject=${encodeURIComponent(
-              "Consulta: " + service.title
-            )}`}
+            href={`mailto:masterpiscinas.sj@gmail.com?subject=${encodeURIComponent("Consulta: " + service.title)}`}
             class="inline-flex items-center justify-center rounded-full border border-white/80 px-5 py-3 text-white transition hover:bg-white/10"
           >
             Enviar correo
