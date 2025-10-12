@@ -10,6 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import CarouselGallery from "@/components/CarouselGallery";
 
 const service = {
   title: "Limpieza con ácido",
@@ -23,6 +24,12 @@ const WSP = "5492644822296";
 const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
   `Hola! Quiero solicitar el servicio de ${service.title}`
 )}`;
+
+const slides = [
+  { src: service.src, alt: service.alt },
+  { src: service.src, alt: service.alt + " (proceso)" },
+  { src: service.src, alt: service.alt + " (resultado)" },
+];
 ---
 
 <Layout title={service.title} description={service.desc} image={service.src}>
@@ -50,45 +57,8 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
     </header>
 
     <!-- Cover -->
-    <!-- Cover -> Carousel -->
     <section class="relative">
-      <Carousel className="w-full">
-        <CarouselContent>
-          {
-            slides.map((s) => (
-              <CarouselItem>
-                <figure class="relative shadow rounded-3xl ring-1 ring-neutral-200/60 overflow-hidden">
-                  <div class="relative h-64 md:h-[28rem]">
-                    <Image
-                      src={s.src}
-                      alt={s.alt}
-                      width={1920}
-                      height={1080}
-                      loading="eager"
-                      decoding="async"
-                      class="absolute inset-0 w-full h-full object-center object-cover"
-                    />
-                    <div
-                      class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
-                      aria-hidden="true"
-                    />
-                    <div
-                      class="absolute -inset-10 bg-[radial-gradient(50%_60%_at_50%_100%,rgba(255,255,255,0.25),transparent_70%)] pointer-events-none"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <figcaption class="bottom-0 absolute inset-x-0 flex justify-between items-center gap-4 px-4 md:px-6 py-3 text-white">
-                    <span class="opacity-90 text-sm/5">{s.alt}</span>
-                  </figcaption>
-                </figure>
-              </CarouselItem>
-            ))
-          }
-        </CarouselContent>
-
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+      <CarouselGallery slides={slides} client:load />
     </section>
 
     <!-- Cards -->
