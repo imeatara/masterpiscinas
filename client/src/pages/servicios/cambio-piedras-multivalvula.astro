@@ -5,9 +5,9 @@ import asset from "@/assets/asset.png";
 import {
   MoveLeft,
   CheckCircle2,
-  ShieldCheck,
   Sparkles,
   Wrench,
+  ShieldCheckIcon,
 } from "@lucide/astro";
 
 const service = {
@@ -104,10 +104,28 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
         </ul>
       </div>
 
+      <!-- Beneficios -->
+      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <Sparkles class="w-5 h-5 text-indigo-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
+        </div>
+        <ul class="space-y-2 mt-3 text-neutral-700">
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            Filtrado más eficiente y agua más clara.
+          </li>
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            Mayor vida útil del filtro y menor consumo de químicos.
+          </li>
+        </ul>
+      </div>
+
       <!-- Recomendaciones (retrolavado) -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
-          <Wrench class="w-5 h-5 text-indigo-600" />
+          <ShieldCheckIcon class="w-5 h-5 text-indigo-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">
             Recomendaciones
           </h2>
@@ -125,24 +143,6 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
           <li class="flex gap-2">
             <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
             Es parte del mantenimiento: hacerlo con la frecuencia indicada.
-          </li>
-        </ul>
-      </div>
-
-      <!-- Beneficios -->
-      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
-        <div class="inline-flex items-center gap-2 mb-3">
-          <Sparkles class="w-5 h-5 text-indigo-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
-        </div>
-        <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Filtrado más eficiente y agua más clara.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Mayor vida útil del filtro y menor consumo de químicos.
           </li>
         </ul>
       </div>
