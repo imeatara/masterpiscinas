@@ -2,9 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
-// Assets (ajustá rutas si cambia tu estructura)
+// Assets
 import faviconImg from "@/assets/logo.webp";
 import whatsappIcon from "@/assets/whatsapp.svg";
+import { EyeIcon, MoveLeftIcon, MoveRightIcon } from "@lucide/astro";
 
 // Helpers
 const WSP = "5492644822296";
@@ -21,12 +22,12 @@ const PAGE = {
 ---
 
 <Layout title={PAGE.title} description={PAGE.description}>
-  <!-- Evitar indexación del 404 -->
+  <!-- Evitar indexación -->
   <Fragment slot="head">
     <meta name="robots" content="noindex, nofollow" />
   </Fragment>
 
-  <!-- HERO 404 (coincide con look&feel del sitio) -->
+  <!-- HERO 404 -->
   <header
     class="relative bg-gradient-to-b from-neutral-200 to-neutral-50 py-16 md:py-24 overflow-hidden text-center"
   >
@@ -63,29 +64,32 @@ const PAGE = {
       </p>
 
       <nav
-        class="flex sm:flex-row flex-col justify-center items-center gap-3 mt-8"
+        class="flex sm:flex-row flex-col justify-center items-center gap-3 mx-auto mt-8 w-full max-w-lg"
         aria-label="Acciones principales"
       >
         <a
           href="/"
-          class="inline-flex justify-center items-center hover:bg-neutral-50 px-5 py-3 border border-neutral-300 rounded-full font-semibold text-neutral-800 transition"
+          class="inline-flex justify-center items-center hover:bg-neutral-50 px-5 py-3 border border-neutral-300 rounded-full w-full sm:w-auto font-semibold text-neutral-800 transition"
         >
+          <MoveLeftIcon class="mr-2 w-5 h-5" />
           Volver al inicio
         </a>
         <a
           href="/servicios"
-          class="inline-flex justify-center items-center hover:bg-neutral-50 px-5 py-3 border border-neutral-300 rounded-full font-semibold text-neutral-800 transition"
+          class="inline-flex justify-center items-center hover:bg-neutral-50 px-5 py-3 border border-neutral-300 rounded-full w-full sm:w-auto font-semibold text-neutral-800 transition"
         >
+          <EyeIcon class="mr-2 w-5 h-5" />
           Ver servicios
         </a>
         <a
           href={mkWsp("Hola! Entré a una página que no existe. ¿Me ayudás?")}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-full font-semibold text-white transition"
+          class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-full w-full sm:w-auto font-semibold text-white transition"
           aria-label="Contactar por WhatsApp"
         >
           WhatsApp
+          <MoveRightIcon class="ml-2 w-5 h-5" />
         </a>
       </nav>
 
@@ -95,7 +99,7 @@ const PAGE = {
     </div>
   </header>
 
-  <!-- Sugerencias (slugs y copy alineados a tus páginas) -->
+  <!-- Sugerencias -->
   <main id="contenido" class="bg-neutral-50">
     <section
       class="mx-auto px-6 py-16 container"
@@ -123,7 +127,9 @@ const PAGE = {
             class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
             <span class="font-medium text-neutral-800">Mantenimiento</span>
-            <span aria-hidden="true" class="text-neutral-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">
+              <MoveRightIcon class="w-5 h-5" />
+            </span>
           </a>
         </li>
         <li>
@@ -132,7 +138,9 @@ const PAGE = {
             class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
             <span class="font-medium text-neutral-800">Limpieza con ácido</span>
-            <span aria-hidden="true" class="text-neutral-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">
+              <MoveRightIcon class="w-5 h-5" />
+            </span>
           </a>
         </li>
         <li>
@@ -141,7 +149,9 @@ const PAGE = {
             class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
             <span class="font-medium text-neutral-800">Pintura</span>
-            <span aria-hidden="true" class="text-neutral-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">
+              <MoveRightIcon class="w-5 h-5" />
+            </span>
           </a>
         </li>
         <li>
@@ -152,7 +162,9 @@ const PAGE = {
             <span class="font-medium text-neutral-800"
               >Implementación/adaptación de doble filtrado</span
             >
-            <span aria-hidden="true" class="text-neutral-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">
+              <MoveRightIcon class="w-5 h-5" />
+            </span>
           </a>
         </li>
         <li>
@@ -163,7 +175,9 @@ const PAGE = {
             <span class="font-medium text-neutral-800"
               >Cambio de piedras / Multiválvula</span
             >
-            <span aria-hidden="true" class="text-neutral-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">
+              <MoveRightIcon class="w-5 h-5" />
+            </span>
           </a>
         </li>
         <li>
@@ -172,7 +186,9 @@ const PAGE = {
             class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
             <span class="font-medium text-neutral-800">Pulido de placas</span>
-            <span aria-hidden="true" class="text-neutral-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">
+              <MoveRightIcon class="w-5 h-5" />
+            </span>
           </a>
         </li>
         <li class="sm:col-span-2 lg:col-span-3">
@@ -183,7 +199,9 @@ const PAGE = {
             <span class="font-medium text-neutral-800"
               >Reparaciones (fibra, cemento, caños pinchados)</span
             >
-            <span aria-hidden="true" class="text-neutral-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">
+              <MoveRightIcon class="w-5 h-5" />
+            </span>
           </a>
         </li>
         <li class="sm:col-span-2 lg:col-span-3">
@@ -192,20 +210,22 @@ const PAGE = {
             class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
             <span class="font-medium text-neutral-800">Desagote</span>
-            <span aria-hidden="true" class="text-neutral-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">
+              <MoveRightIcon class="w-5 h-5" />
+            </span>
           </a>
         </li>
       </ul>
     </section>
 
-    <!-- Contacto (mismo estilo de CTA del sitio) -->
+    <!-- Contacto -->
     <section class="mx-auto px-6 pb-20 container" aria-labelledby="contacto-h2">
       <div
         class="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white"
       >
         <header>
           <h2 id="contacto-h2" class="font-bold text-3xl md:text-4xl">
-            Necesitás ayuda? Contactanos
+            ¿Necesitás ayuda? Contactanos
           </h2>
           <p class="mt-3 max-w-prose text-blue-50 text-base md:text-lg">
             Escribinos por WhatsApp y te respondemos a la brevedad. Brindamos
@@ -214,10 +234,12 @@ const PAGE = {
           </p>
         </header>
 
-        <div class="flex sm:flex-row flex-col flex-wrap gap-4 mt-8">
+        <div
+          class="flex sm:flex-row flex-col flex-wrap gap-4 mt-8 w-full md:w-auto"
+        >
           <a
             href={`mailto:${PAGE.email}`}
-            class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
+            class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full w-full sm:w-auto font-medium text-white transition"
           >
             Enviar correo
           </a>
@@ -227,13 +249,13 @@ const PAGE = {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex justify-center items-center bg-white hover:bg-blue-50 shadow-md px-6 py-3 rounded-full font-semibold text-blue-700 transition"
+            class="inline-flex justify-center items-center bg-white hover:bg-blue-50 shadow-md px-6 py-3 rounded-full w-full sm:w-auto font-semibold text-blue-700 transition"
           >
             WhatsApp
           </a>
           <a
             href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}
-            class="sm:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
+            class="sm:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full w-full sm:w-auto font-medium text-white transition"
           >
             Llamar
           </a>
@@ -277,13 +299,15 @@ const PAGE = {
         >&copy; {new Date().getFullYear()} Master Piscinas — {PAGE.area}</small
       >
       <p>
-        Desarrollado por <a
+        Desarrollado por
+        <a
           href="https://imeatara.com"
           target="_blank"
           rel="noopener"
           class="font-medium text-neutral-600 hover:text-neutral-800"
-          >Imeatara</a
         >
+          Imeatara
+        </a>
       </p>
     </div>
   </footer>
