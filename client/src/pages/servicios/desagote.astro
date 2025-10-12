@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import asset from "@/assets/asset.png";
 import { MoveLeft, CheckCircle2, ShieldCheck, Sparkles } from "@lucide/astro";
+import ServiceCTA from "@/components/ServiceCTA.astro";
 
 const service = {
   title: "Desagote de piletas",
@@ -172,36 +173,6 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
     </section>
 
     <!-- CTA -->
-    <section>
-      <div
-        class="flex md:flex-row flex-col justify-between items-start md:items-center gap-5 bg-gradient-to-r from-blue-700 to-blue-500 shadow p-6 md:p-8 rounded-3xl text-white"
-      >
-        <div>
-          <p class="font-semibold text-lg">¿Querés este servicio?</p>
-          <p class="text-blue-50">
-            Escribinos por WhatsApp y coordinamos la visita.
-          </p>
-        </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a
-            href={wspHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex justify-center items-center bg-white hover:bg-blue-50 px-5 py-3 rounded-full font-semibold text-blue-700 transition"
-          >
-            Solicitar por WhatsApp
-          </a>
-          <a
-            href={`mailto:masterpiscinas.sj@gmail.com?subject=${encodeURIComponent(
-              "Consulta: " + service.title
-            )}`}
-            class="inline-flex justify-center items-center hover:bg-white/10 px-5 py-3 border border-white/80 rounded-full text-white transition"
-          >
-            Enviar correo
-          </a>
-        </div>
-      </div>
-    </section>
+    <ServiceCTA />
   </article>
 </Layout>
