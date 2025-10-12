@@ -1,90 +1,40 @@
-﻿---
+---
+import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import Layout from "../layouts/Layout.astro";
-import pabloImage from "@/assets/pablo.webp";
-import logo from "@/assets/logo.webp";
-import whatsappIcon from "@/assets/whatsapp.svg";
-import tiktokIcon from "@/assets/tiktok.svg";
-import instagramIcon from "@/assets/instagram.svg";
-import facebookIcon from "@/assets/facebook.svg";
+import { Plus, MoveRight, MoveLeft } from "@lucide/astro";
 
-/* Imágenes de cada servicio (cambiá rutas si hace falta) */
+// Imágenes (ajustá las rutas a tus assets reales)
+import mantenimientoImg from "@/assets/asset.png";
 import limpiezaAcidoImg from "@/assets/asset.png";
-import desagoteImg from "@/assets/asset.png";
 import pinturaImg from "@/assets/asset.png";
 import dobleFiltradoImg from "@/assets/asset.png";
 import cambioPiedrasImg from "@/assets/asset.png";
 import pulidoImg from "@/assets/asset.png";
 import reparacionFibraImg from "@/assets/asset.png";
-import mantenimientoImg from "@/assets/asset.png";
-import balanceQuimicoImg from "@/assets/asset.png";
+import desagoteImg from "@/assets/asset.png";
 
-import { MoveRight, Plus } from "@lucide/astro";
-
-// Helpers
+// Helper para WhatsApp
 const WSP = "5492644822296";
-const mkWsp = (msg: string): string =>
-  `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
-
-const PAGE = {
-  title:
-    "Master Piscinas | Limpieza, desagote, pintura y mantenimiento de piletas en San Juan",
-  description:
-    "Servicio profesional de mantenimiento de piscinas en San Juan: limpieza con ácido, desagote, pintura, cambio de piedras/multiválvula, pulido y reparaciones en fibra. Presupuesto sin cargo.",
-  url: "https://masterpiscinassj.com/",
-  phone: "+54 9 264 482 2296",
-  email: "masterpiscinas.sj@gmail.com",
-  area: "San Juan, Argentina",
-};
+const mkWsp = (text) => `https://wa.me/${WSP}?text=${encodeURIComponent(text)}`;
 ---
 
-<Layout title={PAGE.title} description={PAGE.description}>
-  <!-- HERO -->
-  <header
-    class="relative bg-gradient-to-b from-neutral-500 to-neutral-50 py-16 md:py-24 overflow-hidden text-center"
-  >
-    <div
-      class="absolute inset-0 bg-[radial-gradient(#0001_1px,transparent_1px)] pointer-events-none [background-size:16px_16px]"
-    >
-    </div>
-
-    <div class="mx-auto px-6 container">
-      <div class="place-items-center grid">
-        <Image
-          src={logo}
-          alt="Master Piscinas - Logo"
-          class="brightness-125 w-80 h-auto object-contain"
-        />
-      </div>
-
-      <p
-        class="inline-block bg-blue-700 mt-4 px-3 py-1 rounded-full font-medium text-white text-xs tracking-wide"
-      >
-        +14 años de experiencia
-      </p>
-
-      <h1
-        class="drop-shadow mt-4 font-bold text-blue-700 text-4xl md:text-6xl italic leading-tight"
-      >
-        Mantenimiento integral de piscinas
-      </h1>
-
-      <p class="mt-4 text-neutral-700">
-        Limpieza con ácido, desagote, pintura y reparaciones. Atención personal
-        y presupuesto sin cargo.
-      </p>
-
-      <p class="sr-only">
-        Servicios de Master Piscinas en {PAGE.area}: limpieza, desagote,
-        pintura, cambio de piedras/multiválvula, pulido y reparaciones en fibra.
-      </p>
-    </div>
-  </header>
-</Layout>
-
-<main id="contenido" class="bg-neutral-50">
-  <!-- SERVICIOS -->
+<Layout
+  title="Servicios"
+  description="Soluciones profesionales para que tu pileta quede impecable."
+>
   <section class="mx-auto px-6 py-16 container" aria-labelledby="servicios-h2">
+    <!-- Botón Volver -->
+    <nav class="flex justify-start items-center mb-10">
+      <a
+        href="javascript:history.back()"
+        aria-label="Volver"
+        class="inline-flex items-center gap-2 bg-neutral-100 hover:bg-neutral-200 px-4 py-2 rounded-full font-medium text-neutral-800 transition-colors"
+      >
+        <MoveLeft class="w-5 h-5" />
+        <span>Volver</span>
+      </a>
+    </nav>
+
     <header class="mb-12 text-center">
       <h2
         id="servicios-h2"
@@ -243,7 +193,7 @@ const PAGE = {
       >
         <a
           href="/servicios/doble-filtrado"
-          aria-label="Ver más sobre Implementación/adaptación de doble filtrado"
+          aria-label="Ver más sobre Doble filtrado"
           class="absolute inset-0"
         >
           <Image
@@ -274,7 +224,7 @@ const PAGE = {
             </a>
             <a
               href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Implementación/adaptación de doble filtrado"
+                "Hola! Quiero solicitar el servicio de Doble filtrado"
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -286,13 +236,13 @@ const PAGE = {
         </div>
       </article>
 
-      <!-- Cambio de piedras / Multiválvula -->
+      <!-- Cambio de piedras -->
       <article
         class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
       >
         <a
           href="/servicios/cambio-piedras-multivalvula"
-          aria-label="Ver más sobre Cambio de piedras / Multiválvula"
+          aria-label="Ver más sobre Cambio de piedras"
           class="absolute inset-0"
         >
           <Image
@@ -335,13 +285,13 @@ const PAGE = {
         </div>
       </article>
 
-      <!-- Pulido de placas -->
+      <!-- Pulido -->
       <article
         class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
       >
         <a
           href="/servicios/pulido-placas"
-          aria-label="Ver más sobre Pulido de placas"
+          aria-label="Ver más sobre Pulido"
           class="absolute inset-0"
         >
           <Image
@@ -416,9 +366,7 @@ const PAGE = {
               <Plus class="mr-2 w-5 h-5" /> Más info
             </a>
             <a
-              href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Reparación de piletas"
-              )}
+              href={mkWsp("Hola! Quiero solicitar el servicio de Reparaciones")}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
@@ -474,7 +422,7 @@ const PAGE = {
         </div>
       </article>
 
-      <!-- CTA dentro del grid -->
+      <!-- CTA final -->
       <article
         class="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-8 md:p-10 rounded-2xl aspect-square text-white text-center"
       >
@@ -500,364 +448,4 @@ const PAGE = {
       </article>
     </div>
   </section>
-
-  <!-- ACERCA -->
-  <section class="bg-neutral-100 py-20" aria-labelledby="acerca-h2">
-    <div class="items-center gap-12 grid md:grid-cols-2 mx-auto px-6 container">
-      <div>
-        <header class="space-y-2">
-          <h2
-            id="acerca-h2"
-            class="font-bold text-neutral-900 text-3xl md:text-4xl"
-          >
-            Acerca de Pablo
-          </h2>
-          <p class="font-semibold text-lg md:text-xl">
-            Más de 14 años de experiencia en mantenimiento de piscinas
-          </p>
-        </header>
-
-        <p class="mt-4 text-neutral-700 leading-relaxed">
-          Mi nombre es Pablo Martínez. Desde 2010 brindamos servicios
-          profesionales de mantenimiento de piscinas. Nuestro compromiso es con
-          la responsabilidad, puntualidad y prolijidad — para que disfrutes tu
-          pileta con tranquilidad.
-        </p>
-
-        <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
-          <li>Presupuesto sin cargo, respuesta rápida</li>
-          <li>Visitas pactadas y seguimiento post servicio</li>
-          <li>
-            Consultá la cobertura según tu zona (Rivadavia, Rawson, Capital,
-            Chimbas, Santa Lucía, etc.)
-          </li>
-        </ul>
-      </div>
-
-      <figure
-        class="relative shadow mx-auto rounded-2xl ring-1 ring-sky-200/70 w-full max-w-sm overflow-hidden"
-      >
-        <Image
-          src={pabloImage}
-          alt="Pablo Martínez, especialista en mantenimiento de piscinas"
-          width={500}
-          height={500}
-          class="w-full object-cover aspect-square"
-          style="object-position: right bottom;"
-        />
-        <figcaption
-          class="bottom-0 absolute inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3 text-white text-xs"
-        >
-          Pablo Martínez, especialista en mantenimiento de piscinas
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- PROCESO -->
-  <!-- <section class="mx-auto px-6 py-16 container" aria-labelledby="proceso-h2">
-    <header class="mb-8 text-center">
-      <h2 id="proceso-h2" class="font-bold text-neutral-900 text-2xl md:text-3xl">
-        Así trabajamos
-      </h2>
-      <p class="mt-2 text-neutral-600">
-        Proceso simple y claro para resultados confiables.
-      </p>
-    </header>
-
-    <ol class="gap-6 grid md:grid-cols-4">
-      {
-        [
-          [
-            "Paso 1: Consulta y visita",
-            "Relevamiento del estado del agua y equipos.",
-          ],
-          ["Paso 2: Presupuesto", "Propuesta clara con tareas y materiales."],
-          [
-            "Paso 3: Trabajo en la pileta",
-            "Limpieza, balance, pintura o reparación.",
-          ],
-          ["Paso 4: Seguimiento", "Reporte con fotos y recomendaciones."],
-        ].map(([t, d], i) => (
-          <li>
-            <article class="bg-white shadow-sm rounded-xl ring-1 ring-neutral-200/70 h-full">
-              <div class="flex items-center gap-3 px-5 py-4 border-neutral-100 border-b">
-                <span class="inline-flex justify-center items-center bg-blue-600 rounded-full w-8 h-8 font-bold text-white text-sm">
-                  {i + 1}
-                </span>
-                <h3 class="font-semibold text-neutral-900">{t}</h3>
-              </div>
-              <p class="px-5 py-4 text-neutral-700">{d}</p>
-            </article>
-          </li>
-        ))
-      }
-    </ol>
-  </section> -->
-
-  <!-- OPINIONES -->
-  <section class="mx-auto px-6 py-16 container" aria-labelledby="opiniones-h2">
-    <header class="mb-8 text-center">
-      <h2
-        id="opiniones-h2"
-        class="font-bold text-neutral-900 text-2xl md:text-3xl"
-      >
-        Lo que dicen nuestros clientes
-      </h2>
-      <p class="mt-2 text-neutral-600">
-        Opiniones reales de quienes confiaron en nosotros.
-        <a
-          href="https://www.google.com/maps/search/?api=1&query=Master%20Piscinas%20San%20Juan"
-          class="hover:text-sky-700 underline transition"
-          target="_blank"
-          rel="noopener">Ver en Google Maps</a
-        >
-      </p>
-    </header>
-
-    <ul class="gap-6 grid md:grid-cols-3">
-      <li>
-        <article
-          class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-neutral-200/70 h-full transition"
-        >
-          <div
-            class="flex items-center gap-1 text-amber-500"
-            aria-label="5 de 5 estrellas"
-          >
-            {
-              Array.from({ length: 5 }).map(() => (
-                <svg viewBox="0 0 20 20" class="w-5 h-5" aria-hidden="true">
-                  <path
-                    d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z"
-                    fill="currentColor"
-                  />
-                </svg>
-              ))
-            }
-          </div>
-          <blockquote class="mt-3 text-neutral-700 text-sm leading-relaxed">
-            “Excelente trabajo. Dejaron la pileta impecable y cumplieron con la
-            fecha.”
-          </blockquote>
-          <footer class="mt-4 text-neutral-500 text-xs">
-            Lucía R. · Rivadavia
-          </footer>
-        </article>
-      </li>
-
-      <li>
-        <article
-          class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-neutral-200/70 h-full transition"
-        >
-          <div
-            class="flex items-center gap-1 text-amber-500"
-            aria-label="5 de 5 estrellas"
-          >
-            {
-              Array.from({ length: 5 }).map(() => (
-                <svg viewBox="0 0 20 20" class="w-5 h-5" aria-hidden="true">
-                  <path
-                    d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z"
-                    fill="currentColor"
-                  />
-                </svg>
-              ))
-            }
-          </div>
-          <blockquote class="mt-3 text-neutral-700 text-sm leading-relaxed">
-            “Muy buena comunicación por WhatsApp y precios claros.
-            Recomendados.”
-          </blockquote>
-          <footer class="mt-4 text-neutral-500 text-xs">
-            Gabriel M. · Rawson
-          </footer>
-        </article>
-      </li>
-
-      <li>
-        <article
-          class="flex flex-col justify-between bg-white shadow-sm hover:shadow-lg p-6 rounded-2xl ring-1 ring-neutral-200/70 h-full transition"
-        >
-          <div
-            class="flex items-center gap-1 text-amber-500"
-            aria-label="4 de 5 estrellas"
-          >
-            {
-              [...Array(4)].map(() => (
-                <svg viewBox="0 0 20 20" class="w-5 h-5" aria-hidden="true">
-                  <path
-                    d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z"
-                    fill="currentColor"
-                  />
-                </svg>
-              ))
-            }
-            <svg
-              viewBox="0 0 20 20"
-              class="w-5 h-5 text-amber-300"
-              aria-hidden="true"
-            >
-              <path
-                d="M10 1.5 12.6 7l6 .5-4.6 3.8 1.5 5.8L10 14.9 4.5 17l1.5-5.8L1.5 7.5l6-.5L10 1.5z"
-                fill="currentColor"
-                opacity="0.4"></path>
-            </svg>
-          </div>
-          <blockquote class="mt-3 text-neutral-700 text-sm leading-relaxed">
-            “Hicieron limpieza con ácido y pintura, quedó como nueva.”
-          </blockquote>
-          <footer class="mt-4 text-neutral-500 text-xs">
-            Mariana P. · Capital
-          </footer>
-        </article>
-      </li>
-    </ul>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="mx-auto px-6 pb-20 container" aria-labelledby="contacto-h2">
-    <div
-      class="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white"
-    >
-      <header>
-        <h2 id="contacto-h2" class="font-bold text-3xl md:text-4xl">
-          Coordiná tu visita
-        </h2>
-        <p class="mt-3 max-w-prose text-blue-50 text-base md:text-lg">
-          Escribinos por WhatsApp y te respondemos a la brevedad. Brindamos
-          atención personalizada para que coordines tu mantenimiento con total
-          comodidad.
-        </p>
-      </header>
-
-      <div class="flex sm:flex-row flex-col flex-wrap gap-4 mt-8">
-        <a
-          href={`mailto:${PAGE.email}`}
-          class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
-        >
-          Enviar correo
-        </a>
-        <a
-          href={mkWsp(
-            "Hola! Quiero coordinar una visita para mantenimiento de piscina."
-          )}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex justify-center items-center bg-white hover:bg-blue-50 shadow-md px-6 py-3 rounded-full font-semibold text-blue-700 transition"
-        >
-          WhatsApp
-        </a>
-        <a
-          href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}
-          class="sm:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
-        >
-          Llamar
-        </a>
-      </div>
-
-      <address
-        class="gap-6 grid sm:grid-cols-3 mt-10 text-blue-50/90 text-sm md:text-base not-italic"
-      >
-        <div>
-          <h3 class="font-semibold text-white text-base">Cobertura</h3>
-          <p>Consultá por el radio de cobertura de tu zona.</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-white text-base">Contacto</h3>
-          <p class="flex flex-col">
-            <a
-              class="hover:text-white underline underline-offset-2"
-              href={`mailto:${PAGE.email}`}>{PAGE.email}</a
-            >
-            <a
-              class="hover:text-white underline underline-offset-2"
-              href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}>{PAGE.phone}</a
-            >
-          </p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-white text-base">Horario</h3>
-          <p>Lunes a sábado · 7 a 16 hs</p>
-        </div>
-      </address>
-    </div>
-  </section>
-</main>
-
-<footer class="bg-neutral-50 border-neutral-200 border-t">
-  <div
-    class="space-y-1 mx-auto px-6 py-8 text-neutral-500 text-sm text-center container"
-  >
-    <small
-      >&copy; {new Date().getFullYear()} Master Piscinas — {PAGE.area}</small
-    >
-    <p>
-      Desarrollado por <a
-        href="https://imeatara.com"
-        target="_blank"
-        rel="noopener"
-        class="font-medium text-neutral-600 hover:text-neutral-800">Imeatara</a
-      >
-    </p>
-  </div>
-</footer>
-
-<div
-  class="top-3/4 right-0 fixed before:absolute before:inset-0 flex flex-col items-center gap-5 bg-white/20 before:bg-gradient-to-br before:from-white/40 before:to-transparent before:opacity-40 backdrop-blur-xl px-2 py-4 border border-white/30 rounded-l-2xl before:rounded-l-2xl before:content-[''] -tranneutral-y-1/2"
->
-  <!-- Instagram -->
-  <a
-    href="https://instagram.com/tuusuario"
-    target="_blank"
-    aria-label="Instagram"
-    class="relative hover:scale-110 transition-transform duration-300"
-  >
-    <Image
-      src={instagramIcon}
-      alt="Instagram"
-      class="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 transition-transform duration-300"
-    />
-  </a>
-
-  <!-- Facebook -->
-  <a
-    href="https://facebook.com/tuusuario"
-    target="_blank"
-    aria-label="Facebook"
-    class="relative hover:scale-110 transition-transform duration-300"
-  >
-    <Image
-      src={facebookIcon}
-      alt="Facebook"
-      class="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 transition-transform duration-300"
-    />
-  </a>
-
-  <!-- TikTok -->
-  <a
-    href="https://tiktok.com/@tuusuario"
-    target="_blank"
-    aria-label="TikTok"
-    class="relative hover:scale-110 transition-transform duration-300"
-  >
-    <Image
-      src={tiktokIcon}
-      alt="TikTok"
-      class="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 transition-transform duration-300"
-    />
-  </a>
-
-  <!-- WhatsApp -->
-  <a
-    href="https://wa.me/5492644822296"
-    target="_blank"
-    aria-label="WhatsApp"
-    class="relative hover:scale-110 transition-transform duration-300"
-  >
-    <Image
-      src={whatsappIcon}
-      alt="WhatsApp"
-      class="w-8 sm:w-9 md:w-10 h-8 sm:h-9 md:h-10 transition-transform duration-300"
-    />
-  </a>
-</div>
+</Layout>

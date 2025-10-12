@@ -2,14 +2,20 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import asset from "@/assets/asset.png";
-import { MoveLeft, CheckCircle2, ShieldCheck, Sparkles } from "@lucide/astro";
+import {
+  MoveLeft,
+  CheckCircle2,
+  ShieldCheck,
+  Sparkles,
+  Wrench,
+} from "@lucide/astro";
 
 const service = {
-  title: "Reparaciones (fibra, cemento, caños pinchados)",
-  desc: "Parcheo y refuerzos: en fibra usamos resina + fibra y roving en zonas críticas; en cemento, selladores de grietas y, si hace falta, anclajes con hierro. También reparamos caños pinchados.",
+  title: "Implementación / adaptación de doble filtrado",
+  desc: "Añadimos un segundo filtro (en paralelo o en serie) para aumentar caudal, claridad y redundancia. Incluye adecuación de cañerías y pruebas.",
   src: asset,
-  alt: "Reparaciones de piletas (fibra, cemento y caños)",
-  slug: "reparaciones",
+  alt: "Adaptación de doble filtrado en sala de máquinas",
+  slug: "doble-filtrado",
 };
 
 const WSP = "5492644822296";
@@ -76,24 +82,21 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
 
     <!-- Cards -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
-      <!-- ¿Qué incluye? (corta) -->
+      <!-- ¿Qué incluye? (corto) -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <CheckCircle2 class="w-5 h-5 text-emerald-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
         </div>
-        <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Fibra: resina + fibra; refuerzo con roving en zonas críticas.
+        <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
+          <li>
+            Diagnóstico hidráulico y esquema: paralelo o serie según tu sala.
           </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Cemento: selladores según fisura; si hace falta, anclajes con hierro.
+          <li>
+            Adaptación de cañerías, válvula selectora/bypass y uniones rápidas.
           </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Caños pinchados: detección y reparación del tramo afectado.
+          <li>
+            Pruebas de presión, fugas y caudal; puesta en marcha y entrega.
           </li>
         </ul>
       </div>
@@ -104,44 +107,61 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
           <ShieldCheck class="w-5 h-5 text-sky-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">Seguridad</h2>
         </div>
-        <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            EPP: guantes, máscaras, anteojos y botas.
+        <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
+          <li>
+            Fijación de equipos, purga de aire y check-valves donde haga falta.
           </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Área delimitada y ventilación adecuada.
+          <li>
+            Orden eléctrico y protección de cables/enchufes en sala húmeda.
           </li>
         </ul>
       </div>
 
-      <!-- Recomendaciones -->
+      <!-- Beneficios -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <Sparkles class="w-5 h-5 text-indigo-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">
-            Recomendaciones
-          </h2>
+          <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
         </div>
-        <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            No excederse con la cantidad de personas al mismo tiempo.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Evitar golpes y usos bruscos.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            No dejar la pileta vacía al solazo.
+        <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
+          <li>Mayor caudal efectivo y agua más clara en menos tiempo.</li>
+          <li>
+            Backwash más eficiente y redundancia ante fallas de un filtro.
           </li>
         </ul>
-        <p class="mt-3 text-neutral-500 text-sm">
-          Nota: las grietas suelen generarse por golpes o por exceso de peso
-          (mucha gente dentro de la pileta).
+        <p class="mt-3 text-neutral-700">
+          Ideal complementar con mantenimiento semanal/quincenal.
         </p>
+      </div>
+
+      <!-- Opcionales / upgrades -->
+      <div
+        class="md:col-span-3 bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl"
+      >
+        <div class="inline-flex items-center gap-2 mb-3">
+          <Wrench class="w-5 h-5 text-indigo-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">Opcionales</h2>
+        </div>
+        <ul
+          class="gap-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-neutral-700"
+        >
+          <li class="flex items-center gap-2">
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"></span>Medios
+            filtrantes: arena, zeolita o vidrio.
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"
+            ></span>Manómetro y caudalímetro para control.
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"></span>Bypass
+            y válvula selectora adicional.
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"
+            ></span>Adecuación de diámetros para menor pérdida de carga.
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -153,7 +173,7 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
         <div>
           <p class="font-semibold text-lg">¿Querés este servicio?</p>
           <p class="text-blue-50">
-            Escribinos por WhatsApp y coordinamos una visita técnica.
+            Escribinos por WhatsApp y coordinamos la visita.
           </p>
         </div>
 

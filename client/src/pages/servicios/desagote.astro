@@ -2,12 +2,13 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import asset from "@/assets/asset.png";
+import { MoveLeft, CheckCircle2, ShieldCheck, Sparkles } from "@lucide/astro";
 
 const service = {
   title: "Desagote de piletas",
-  desc: "Vaciado seguro y controlado de piletas para limpieza profunda, reparaciones o recambio de agua.",
+  desc: "Vaciado seguro y controlado con bombas propias. También desagotamos sótanos, cisternas y viviendas por inundaciones.",
   src: asset,
-  alt: "Desagote de pileta",
+  alt: "Desagote de pileta con bomba sumergible",
   slug: "desagote",
 };
 
@@ -15,96 +16,165 @@ const WSP = "5492644822296";
 const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
   `Hola! Quiero solicitar el servicio de ${service.title}`
 )}`;
-
-const breadcrumbs = [
-  { name: "Inicio", url: "/" },
-  { name: service.title, url: `/servicios/${service.slug}` },
-];
 ---
 
-<Layout title={service.title} description={service.desc}>
+<Layout title={service.title} description={service.desc} image={service.src}>
   <article class="space-y-10 mx-auto px-6 py-12 container">
-    <nav aria-label="migas de pan">
-      <ol class="flex flex-wrap gap-2 text-slate-500 text-sm">
-        {
-          breadcrumbs.map((b, i) => (
-            <li class="inline-flex items-center gap-2">
-              {i > 0 && <span aria-hidden="true">/</span>}
-              {i < breadcrumbs.length - 1 ? (
-                <a
-                  href={b.url}
-                  class="hover:text-slate-700 underline underline-offset-2"
-                >
-                  {b.name}
-                </a>
-              ) : (
-                <span class="text-slate-700" aria-current="page">
-                  {b.name}
-                </span>
-              )}
-            </li>
-          ))
-        }
-      </ol>
+    <!-- Top bar -->
+    <nav class="flex justify-start items-center mb-6">
+      <a
+        href="javascript:history.back()"
+        aria-label="Volver"
+        class="inline-flex items-center gap-2 bg-neutral-100 hover:bg-neutral-200 px-4 py-2 rounded-full font-medium text-neutral-800 transition-colors"
+      >
+        <MoveLeft class="w-5 h-5" />
+        <span>Volver</span>
+      </a>
     </nav>
 
+    <!-- Header -->
     <header class="space-y-4">
-      <h1 class="font-bold text-slate-900 text-3xl md:text-4xl">
+      <h1
+        class="font-bold text-neutral-900 text-3xl md:text-4xl tracking-tight"
+      >
         {service.title}
       </h1>
-      <p class="text-slate-700 text-lg">{service.desc}</p>
+      <p class="text-neutral-700 text-lg">{service.desc}</p>
     </header>
 
+    <!-- Cover -->
     <figure
-      class="relative shadow rounded-2xl ring-1 ring-slate-200/60 h-56 md:h-80 overflow-hidden"
+      class="relative shadow rounded-3xl ring-1 ring-neutral-200/60 overflow-hidden"
     >
-      <Image
-        src={service.src}
-        alt={service.alt}
-        width="1920"
-        height="1080"
-        class="absolute inset-0 w-full h-full object-center object-cover"
-      />
+      <div class="relative h-64 md:h-[28rem]">
+        <Image
+          src={service.src}
+          alt={service.alt}
+          width={1920}
+          height={1080}
+          loading="eager"
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-center object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
+          aria-hidden="true"
+        >
+        </div>
+        <div
+          class="absolute -inset-10 bg-[radial-gradient(50%_60%_at_50%_100%,rgba(255,255,255,0.25),transparent_70%)] pointer-events-none"
+          aria-hidden="true"
+        >
+        </div>
+      </div>
       <figcaption
-        class="right-0 bottom-0 left-0 absolute bg-black/30 px-4 py-2 text-white text-sm"
+        class="bottom-0 absolute inset-x-0 flex justify-between items-center gap-4 px-4 md:px-6 py-3 text-white"
       >
-        {service.alt}
+        <span class="opacity-90 text-sm/5">{service.alt}</span>
       </figcaption>
     </figure>
 
-    <section class="space-y-4">
-      <h2 class="font-semibold text-slate-900 text-2xl">
-        ¿Qué incluye este servicio?
-      </h2>
-      <ul class="gap-3 grid pl-5 text-slate-700 leading-relaxed list-disc">
-        <li>Evaluación previa del estado de la pileta y del entorno.</li>
-        <li>Vaciado controlado con bombas adecuadas y mangueras de descarga.</li>
-        <li>Gestión segura del agua retirada según normativa local.</li>
-        <li>Limpieza básica del vaso y verificación de desagües.</li>
-      </ul>
+    <!-- Cards -->
+    <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
+      <!-- ¿Qué incluye? (corto) -->
+      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <CheckCircle2 class="w-5 h-5 text-emerald-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
+        </div>
+        <ul class="space-y-2 mt-3 text-neutral-700">
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            Bombas de desagote y mangueras propias. No usamos equipos del hogar.
+          </li>
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            Vaciado controlado y monitoreo de nivel para proteger la estructura.
+          </li>
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            Descarga dirigida al punto indicado por el cliente.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Seguridad -->
+      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <ShieldCheck class="w-5 h-5 text-sky-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">Seguridad</h2>
+        </div>
+        <ul class="space-y-2 mt-3 text-neutral-700">
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            EPP: guantes, máscaras, anteojos y botas.
+          </li>
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            Área delimitada, cables protegidos y corte eléctrico si corresponde.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Beneficios -->
+      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <Sparkles class="w-5 h-5 text-indigo-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
+        </div>
+        <ul class="space-y-2 mt-3 text-neutral-700">
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            Base lista para limpieza profunda, reparación o pintura.
+          </li>
+          <li class="flex gap-2">
+            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
+            Proceso rápido y prolijo, cuidando bordes y solados.
+          </li>
+        </ul>
+        <p class="mt-3 text-neutral-700">
+          Al finalizar, ideal complementar con <strong
+            >limpieza con ácido</strong
+          > o
+          <strong>mantenimiento</strong> semanal/quincenal.
+        </p>
+      </div>
+
+      <!-- También desagotamos -->
+      <div
+        class="md:col-span-3 bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl"
+      >
+        <div class="inline-flex items-center gap-2 mb-3">
+          <CheckCircle2 class="w-5 h-5 text-emerald-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">
+            También desagotamos
+          </h2>
+        </div>
+        <ul
+          class="gap-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-neutral-700"
+        >
+          <li class="flex items-center gap-2">
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"></span>Piletas
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"></span>Sótanos
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"
+            ></span>Cisternas
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"></span>Casas
+            por inundaciones
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <section class="space-y-4">
-      <h2 class="font-semibold text-slate-900 text-2xl">Beneficios</h2>
-      <p class="text-slate-700">
-        Permite realizar limpiezas profundas, reparación de fisuras y recambio
-        de agua de forma segura, evitando daños en el revestimiento o el
-        entorno.
-      </p>
-    </section>
-
-    <section class="space-y-4">
-      <h2 class="font-semibold text-slate-900 text-2xl">Recomendaciones</h2>
-      <p class="text-slate-700">
-        Recomendado antes de tareas de mantenimiento mayor, cuando el agua está
-        muy deteriorada o al finalizar la temporada. Asegurá accesos libres para
-        la instalación de equipos.
-      </p>
-    </section>
-
+    <!-- CTA -->
     <section>
       <div
-        class="flex md:flex-row flex-col justify-between items-start md:items-center gap-4 bg-gradient-to-r from-blue-700 to-blue-500 shadow p-6 md:p-8 rounded-2xl text-white"
+        class="flex md:flex-row flex-col justify-between items-start md:items-center gap-5 bg-gradient-to-r from-blue-700 to-blue-500 shadow p-6 md:p-8 rounded-3xl text-white"
       >
         <div>
           <p class="font-semibold text-lg">¿Querés este servicio?</p>
@@ -112,6 +182,7 @@ const breadcrumbs = [
             Escribinos por WhatsApp y coordinamos la visita.
           </p>
         </div>
+
         <div class="flex flex-wrap gap-3">
           <a
             href={wspHref}

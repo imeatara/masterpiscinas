@@ -5,11 +5,11 @@ import asset from "@/assets/asset.png";
 import { MoveLeft, CheckCircle2, ShieldCheck, Sparkles } from "@lucide/astro";
 
 const service = {
-  title: "Reparaciones (fibra, cemento, caños pinchados)",
-  desc: "Parcheo y refuerzos: en fibra usamos resina + fibra y roving en zonas críticas; en cemento, selladores de grietas y, si hace falta, anclajes con hierro. También reparamos caños pinchados.",
+  title: "Mantenimiento",
+  desc: "Servicio integral: limpieza básica, revisión de bomba/filtro y balance químico para que la pileta quede lista para usar.",
   src: asset,
-  alt: "Reparaciones de piletas (fibra, cemento y caños)",
-  slug: "reparaciones",
+  alt: "Mantenimiento de piscina",
+  slug: "mantenimiento",
 };
 
 const WSP = "5492644822296";
@@ -52,8 +52,6 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
           alt={service.alt}
           width={1920}
           height={1080}
-          loading="eager"
-          decoding="async"
           class="absolute inset-0 w-full h-full object-center object-cover"
         />
         <div
@@ -76,71 +74,45 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
 
     <!-- Cards -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
-      <!-- ¿Qué incluye? (corta) -->
+      <!-- Incluye -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <CheckCircle2 class="w-5 h-5 text-emerald-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
         </div>
-        <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Fibra: resina + fibra; refuerzo con roving en zonas críticas.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Cemento: selladores según fisura; si hace falta, anclajes con hierro.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Caños pinchados: detección y reparación del tramo afectado.
-          </li>
+        <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
+          <li>Limpieza de canasto, prefiltro y skimmers.</li>
+          <li>Aspirado de fondo y cepillado de paredes/línea de agua.</li>
+          <li>Backwash y enjuague del filtro (si corresponde).</li>
+          <li>Test y corrección de pH, alcalinidad y cloro.</li>
+          <li>Revisión visual de bomba, cañerías y retornos.</li>
         </ul>
       </div>
 
-      <!-- Seguridad -->
+      <!-- Beneficios -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
-          <ShieldCheck class="w-5 h-5 text-sky-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">Seguridad</h2>
+          <Sparkles class="w-5 h-5 text-indigo-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
         </div>
-        <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            EPP: guantes, máscaras, anteojos y botas.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Área delimitada y ventilación adecuada.
-          </li>
-        </ul>
+        <p class="text-neutral-700">
+          Agua clara y segura, equipos en buen estado y menor consumo de
+          químicos a largo plazo gracias al balance correcto.
+        </p>
       </div>
 
       <!-- Recomendaciones -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
-          <Sparkles class="w-5 h-5 text-indigo-600" />
+          <ShieldCheck class="w-5 h-5 text-sky-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">
             Recomendaciones
           </h2>
         </div>
-        <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            No excederse con la cantidad de personas al mismo tiempo.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Evitar golpes y usos bruscos.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            No dejar la pileta vacía al solazo.
-          </li>
-        </ul>
-        <p class="mt-3 text-neutral-500 text-sm">
-          Nota: las grietas suelen generarse por golpes o por exceso de peso
-          (mucha gente dentro de la pileta).
+        <p class="text-neutral-700">
+          Ideal con frecuencia semanal en temporada y quincenal fuera de
+          temporada. Mantené el nivel de agua a media boca de skimmer para un
+          filtrado óptimo.
         </p>
       </div>
     </section>
@@ -153,7 +125,7 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
         <div>
           <p class="font-semibold text-lg">¿Querés este servicio?</p>
           <p class="text-blue-50">
-            Escribinos por WhatsApp y coordinamos una visita técnica.
+            Escribinos por WhatsApp y coordinamos la visita.
           </p>
         </div>
 

@@ -1,9 +1,12 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// Assets (ajustá rutas si cambia tu estructura)
+import faviconImg from "@/assets/logo.webp";
 import whatsappIcon from "@/assets/whatsapp.svg";
 
-// Helpers (mismos que en tu home)
+// Helpers
 const WSP = "5492644822296";
 const mkWsp = (msg) => `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
 
@@ -11,7 +14,6 @@ const PAGE = {
   title: "Página no encontrada | Master Piscinas",
   description:
     "La página que buscás no existe o fue movida. Volvé al inicio o escribinos por WhatsApp.",
-  url: "https://masterpiscinassj.com/",
   phone: "+54 9 264 482 2296",
   email: "masterpiscinas.sj@gmail.com",
   area: "San Juan, Argentina",
@@ -24,24 +26,23 @@ const PAGE = {
     <meta name="robots" content="noindex, nofollow" />
   </Fragment>
 
-  <!-- HERO 404 -->
+  <!-- HERO 404 (coincide con look&feel del sitio) -->
   <header
-    class="relative bg-gradient-to-b from-neutral-500 to-neutral-50 py-16 md:py-24 overflow-hidden text-center"
+    class="relative bg-gradient-to-b from-neutral-200 to-neutral-50 py-16 md:py-24 overflow-hidden text-center"
   >
-    <!-- patrón sutil de puntos -->
     <div
-      class="absolute inset-0 bg-[radial-gradient(#0001_1px,transparent_1px)] pointer-events-none [background-size:16px_16px]"
+      class="absolute inset-0 bg-[radial-gradient(#00000010_1px,transparent_1px)] pointer-events-none [background-size:16px_16px]"
     >
     </div>
 
     <div class="mx-auto px-6 container">
       <div class="place-items-center grid">
         <Image
-          src="/favicon.webp"
+          src={faviconImg}
           alt="Master Piscinas - Logo"
-          width="200"
-          height="100"
-          class="brightness-125"
+          width={180}
+          height={180}
+          class="drop-shadow"
         />
       </div>
 
@@ -57,7 +58,7 @@ const PAGE = {
         Página no encontrada (404)
       </h1>
 
-      <p class="mt-4 text-slate-700">
+      <p class="mt-4 text-neutral-700">
         La página que buscaste no existe o fue movida. Te ayudamos a volver.
       </p>
 
@@ -67,13 +68,13 @@ const PAGE = {
       >
         <a
           href="/"
-          class="inline-flex justify-center items-center hover:bg-slate-50 px-5 py-3 border border-slate-300 rounded-full font-semibold text-slate-800 transition"
+          class="inline-flex justify-center items-center hover:bg-neutral-50 px-5 py-3 border border-neutral-300 rounded-full font-semibold text-neutral-800 transition"
         >
           Volver al inicio
         </a>
         <a
-          href="/#servicios-h2"
-          class="inline-flex justify-center items-center hover:bg-slate-50 px-5 py-3 border border-slate-300 rounded-full font-semibold text-slate-800 transition"
+          href="/servicios"
+          class="inline-flex justify-center items-center hover:bg-neutral-50 px-5 py-3 border border-neutral-300 rounded-full font-semibold text-neutral-800 transition"
         >
           Ver servicios
         </a>
@@ -94,7 +95,7 @@ const PAGE = {
     </div>
   </header>
 
-  <!-- Sugerencias / Enlaces útiles -->
+  <!-- Sugerencias (slugs y copy alineados a tus páginas) -->
   <main id="contenido" class="bg-neutral-50">
     <section
       class="mx-auto px-6 py-16 container"
@@ -103,11 +104,11 @@ const PAGE = {
       <header class="mb-8 text-center">
         <h2
           id="sugerencias-h2"
-          class="font-bold text-slate-900 text-2xl md:text-3xl"
+          class="font-bold text-neutral-900 text-2xl md:text-3xl"
         >
           Quizás buscabas…
         </h2>
-        <p class="mt-2 text-slate-600">
+        <p class="mt-2 text-neutral-600">
           Accesos rápidos a las secciones más visitadas.
         </p>
       </header>
@@ -118,88 +119,111 @@ const PAGE = {
       >
         <li>
           <a
-            href="/servicios/limpieza-acido"
-            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+            href="/servicios/mantenimiento"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
-            <span class="font-medium text-slate-800">Limpieza con ácido</span>
-            <span aria-hidden="true" class="text-slate-400">→</span>
+            <span class="font-medium text-neutral-800">Mantenimiento</span>
+            <span aria-hidden="true" class="text-neutral-400">→</span>
           </a>
         </li>
         <li>
           <a
-            href="/servicios/desagote"
-            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+            href="/servicios/limpieza-acido"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
-            <span class="font-medium text-slate-800">Desagote</span>
-            <span aria-hidden="true" class="text-slate-400">→</span>
+            <span class="font-medium text-neutral-800">Limpieza con ácido</span>
+            <span aria-hidden="true" class="text-neutral-400">→</span>
           </a>
         </li>
         <li>
           <a
             href="/servicios/pintura"
-            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
-            <span class="font-medium text-slate-800">Pintura</span>
-            <span aria-hidden="true" class="text-slate-400">→</span>
+            <span class="font-medium text-neutral-800">Pintura</span>
+            <span aria-hidden="true" class="text-neutral-400">→</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/servicios/doble-filtrado"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
+          >
+            <span class="font-medium text-neutral-800"
+              >Implementación/adaptación de doble filtrado</span
+            >
+            <span aria-hidden="true" class="text-neutral-400">→</span>
           </a>
         </li>
         <li>
           <a
             href="/servicios/cambio-piedras-multivalvula"
-            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
-            <span class="font-medium text-slate-800"
-              >Cambio de piedras / multiválvula</span
+            <span class="font-medium text-neutral-800"
+              >Cambio de piedras / Multiválvula</span
             >
-            <span aria-hidden="true" class="text-slate-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">→</span>
           </a>
         </li>
         <li>
           <a
-            href="/servicios/pulido"
-            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+            href="/servicios/pulido-placas"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
-            <span class="font-medium text-slate-800">Pulido</span>
-            <span aria-hidden="true" class="text-slate-400">→</span>
+            <span class="font-medium text-neutral-800">Pulido de placas</span>
+            <span aria-hidden="true" class="text-neutral-400">→</span>
           </a>
         </li>
-        <li>
+        <li class="sm:col-span-2 lg:col-span-3">
           <a
-            href="/servicios/reparaciones-fibra"
-            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-slate-200 rounded-xl transition"
+            href="/servicios/reparaciones"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
           >
-            <span class="font-medium text-slate-800">Reparaciones en fibra</span
+            <span class="font-medium text-neutral-800"
+              >Reparaciones (fibra, cemento, caños pinchados)</span
             >
-            <span aria-hidden="true" class="text-slate-400">→</span>
+            <span aria-hidden="true" class="text-neutral-400">→</span>
+          </a>
+        </li>
+        <li class="sm:col-span-2 lg:col-span-3">
+          <a
+            href="/servicios/desagote"
+            class="flex justify-between items-center bg-white hover:shadow-md px-5 py-4 border border-neutral-200 rounded-xl transition"
+          >
+            <span class="font-medium text-neutral-800">Desagote</span>
+            <span aria-hidden="true" class="text-neutral-400">→</span>
           </a>
         </li>
       </ul>
     </section>
 
-    <!-- Bloque de contacto (coincide con tu estilo) -->
+    <!-- Contacto (mismo estilo de CTA del sitio) -->
     <section class="mx-auto px-6 pb-20 container" aria-labelledby="contacto-h2">
       <div
         class="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-10 md:p-14 rounded-3xl text-white"
       >
         <header>
           <h2 id="contacto-h2" class="font-bold text-3xl md:text-4xl">
-            ¿Necesitás ayuda?
+            Necesitás ayuda? Contactanos
           </h2>
           <p class="mt-3 max-w-prose text-blue-50 text-base md:text-lg">
-            Escribinos por WhatsApp o volvé al inicio para seguir navegando.
+            Escribinos por WhatsApp y te respondemos a la brevedad. Brindamos
+            atención personalizada para que coordines tu mantenimiento con total
+            comodidad.
           </p>
         </header>
 
-        <div class="flex flex-wrap items-center gap-4 mt-8">
+        <div class="flex sm:flex-row flex-col flex-wrap gap-4 mt-8">
           <a
-            href="/"
+            href={`mailto:${PAGE.email}`}
             class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
           >
-            Ir al inicio
+            Enviar correo
           </a>
           <a
             href={mkWsp(
-              "Hola! Entré a una página que no existe. ¿Me indicás cómo seguir?"
+              "Hola! Quiero coordinar una visita para mantenimiento de piscina."
             )}
             target="_blank"
             rel="noopener noreferrer"
@@ -208,10 +232,10 @@ const PAGE = {
             WhatsApp
           </a>
           <a
-            href={`mailto:${PAGE.email}`}
-            class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
+            href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}
+            class="sm:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
           >
-            Enviar correo
+            Llamar
           </a>
         </div>
 
@@ -237,36 +261,30 @@ const PAGE = {
           </div>
           <div>
             <h3 class="font-semibold text-white text-base">Horario</h3>
-            <p>Lunes a sábado · 9 a 19 hs</p>
+            <p>Lunes a sábado · 7 a 16 hs</p>
           </div>
         </address>
       </div>
     </section>
   </main>
 
-  <!-- Footer mínimo -->
-  <footer class="bg-neutral-50 border-slate-200 border-t">
-    <div class="mx-auto px-6 py-8 text-slate-500 text-sm text-center container">
+  <!-- Footer -->
+  <footer class="bg-neutral-50 border-neutral-200 border-t">
+    <div
+      class="space-y-1 mx-auto px-6 py-8 text-neutral-500 text-sm text-center container"
+    >
       <small
         >&copy; {new Date().getFullYear()} Master Piscinas — {PAGE.area}</small
       >
+      <p>
+        Desarrollado por <a
+          href="https://imeatara.com"
+          target="_blank"
+          rel="noopener"
+          class="font-medium text-neutral-600 hover:text-neutral-800"
+          >Imeatara</a
+        >
+      </p>
     </div>
   </footer>
-
-  <!-- Botón flotante WhatsApp -->
-  <a
-    href={mkWsp("Hola! Vengo desde la página 404 y quiero hacer una consulta.")}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="inline-flex right-4 bottom-4 z-50 fixed justify-center items-center bg-green-500 hover:bg-green-600 shadow-lg rounded-full w-14 h-14 text-white"
-    aria-label="Abrir WhatsApp para consultar"
-  >
-    <Image
-      src={whatsappIcon}
-      alt="WhatsApp"
-      width="32"
-      height="32"
-      class="w-7 h-7"
-    />
-  </a>
 </Layout>
