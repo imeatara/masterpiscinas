@@ -19,7 +19,7 @@ import reparacionFibraImg from "@/assets/asset.png";
 import mantenimientoImg from "@/assets/asset.png";
 import balanceQuimicoImg from "@/assets/asset.png";
 
-import { MoveRight, Plus } from "@lucide/astro";
+import { MoveRight, MoveRightIcon, Plus } from "@lucide/astro";
 
 // Helpers
 const WSP = "5492644822296";
@@ -736,6 +736,7 @@ const PAGE = {
           class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
         >
           Enviar correo
+          <MoveRightIcon class="ml-2 w-5 h-5" />
         </a>
         <a
           href={mkWsp(
@@ -746,12 +747,14 @@ const PAGE = {
           class="inline-flex justify-center items-center bg-white hover:bg-blue-50 shadow-md px-6 py-3 rounded-full font-semibold text-blue-700 transition"
         >
           WhatsApp
+          <MoveRightIcon class="ml-2 w-5 h-5" />
         </a>
         <a
           href={`tel:${PAGE.phone.replace(/\s+/g, "")}`}
           class="sm:hidden inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full font-medium text-white transition"
         >
           Llamar
+          <MoveRightIcon class="ml-2 w-5 h-5" />
         </a>
       </div>
 
