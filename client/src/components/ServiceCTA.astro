@@ -1,4 +1,6 @@
 ---
+import { MoveRightIcon } from "@lucide/astro";
+
 const {
   serviceTitle = "Servicio",
   wspHref = "#",
@@ -26,13 +28,15 @@ const mailHref = `mailto:${email}?subject=${encodeURIComponent("Consulta: " + se
         rel="noopener noreferrer"
         class="inline-flex justify-center items-center bg-white hover:bg-blue-50 px-5 py-3 rounded-full w-full sm:w-auto font-semibold text-blue-700 transition"
       >
-        Solicitar por WhatsApp
+        Escribinos ahora
+        <MoveRightIcon class="ml-2 w-5 h-5" />
       </a>
       <a
         href={mailHref}
         class="inline-flex justify-center items-center hover:bg-white/10 px-5 py-3 border border-white/80 rounded-full w-full sm:w-auto text-white transition"
       >
         Enviar correo
+        <MoveRightIcon class="ml-2 w-5 h-5" />
       </a>
     </div>
   </div>
