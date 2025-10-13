@@ -8,6 +8,7 @@ import {
   MoveLeft,
   ShieldCheck,
   Sparkles,
+  Wrench,
   CircleCheckIcon,
 } from "@lucide/astro";
 import CarouselGallery from "@/components/CarouselGallery";
@@ -15,7 +16,7 @@ import ServiceCTA from "@/components/ServiceCTA.astro";
 
 const service = {
   title: "Mantenimiento",
-  desc: "Servicio integral: limpieza básica, revisión de bomba/filtro y balance químico para que la pileta quede lista para usar.",
+  desc: "Servicio integral: limpieza, revisión de equipos, balance químico y optimización del sistema de filtrado.",
   src: asset,
   alt: "Mantenimiento de piscina",
   slug: "mantenimiento",
@@ -27,8 +28,8 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
 )}`;
 
 const slides = [
-  { src: mantenimientoAntes, alt: service.alt + " (antes)" },
-  { src: mantenimientoDespues, alt: service.alt + " (después)" },
+  { src: mantenimientoAntes, alt: "Reparaciones" },
+  { src: mantenimientoDespues, alt: "Reparaciones" },
 ];
 ---
 
@@ -37,12 +38,12 @@ const slides = [
     <!-- Top bar -->
     <nav class="flex justify-start items-center mb-6">
       <a
-        href="javascript:history.back()"
-        aria-label="Volver"
+        href="/"
+        aria-label="Volver al inicio"
         class="inline-flex items-center gap-2 bg-neutral-100 hover:bg-neutral-200 px-4 py-2 rounded-full font-medium text-neutral-800 transition-colors"
       >
         <MoveLeft class="w-5 h-5" />
-        <span>Volver</span>
+        <span>Inicio</span>
       </a>
     </nav>
 
@@ -61,36 +62,35 @@ const slides = [
       <CarouselGallery slides={slides} client:load />
     </section>
 
-    <!-- Cards -->
+    <!-- BLOQUE 1: Mantenimiento general -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
-      <!-- Incluye -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <CircleCheckIcon class="w-5 h-5 text-emerald-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
         </div>
-        <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
+        <ul
+          class="space-y-2 mt-4 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
+        >
           <li>Limpieza de canasto, prefiltro y skimmers.</li>
           <li>Aspirado de fondo y cepillado de paredes/línea de agua.</li>
-          <li>Backwash y enjuague del filtro (si corresponde).</li>
+          <li>Backwash y enjuague del filtro.</li>
           <li>Test y corrección de pH, alcalinidad y cloro.</li>
-          <li>Revisión visual de bomba, cañerías y retornos.</li>
+          <li>Revisión de bomba, cañerías y retornos.</li>
         </ul>
       </div>
 
-      <!-- Beneficios -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <Sparkles class="w-5 h-5 text-indigo-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
         </div>
         <p class="text-neutral-700">
-          Agua clara y segura, equipos en buen estado y menor consumo de
-          químicos a largo plazo gracias al balance correcto.
+          Agua cristalina, equipos duraderos y menos consumo de químicos gracias
+          al mantenimiento constante.
         </p>
       </div>
 
-      <!-- Recomendaciones -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <ShieldCheck class="w-5 h-5 text-sky-600" />
@@ -99,14 +99,81 @@ const slides = [
           </h2>
         </div>
         <p class="text-neutral-700">
-          Ideal con frecuencia semanal en temporada y quincenal fuera de
-          temporada. Mantené el nivel de agua a media boca de skimmer para un
-          filtrado óptimo.
+          Mantenimiento semanal en temporada y quincenal fuera de temporada.
+          Mantener el nivel de agua correcto y revisar periódicamente el estado
+          del filtro.
         </p>
       </div>
     </section>
 
+    <!-- ADICIONALES -->
+    <section aria-labelledby="adicionales-h2" class="space-y-4">
+      <header class="flex items-center gap-3">
+        <h2 id="adicionales-h2" class="font-semibold text-neutral-900 text-2xl">
+          Servicios adicionales
+        </h2>
+        <span
+          class="inline-flex items-center bg-amber-100 px-3 py-1 rounded-full font-medium text-amber-800 text-xs"
+          >Opcionales</span
+        >
+      </header>
+
+      <div class="gap-6 grid grid-cols-1">
+        <!-- Adicional: Cambio de piedras / Multiválvula / Retrolavado -->
+        <article
+          class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl"
+        >
+          <div class="flex justify-between items-center gap-3 mb-2">
+            <div class="inline-flex items-center gap-2">
+              <Wrench class="w-5 h-5 text-amber-600" />
+              <h3 class="font-semibold text-neutral-900 text-xl">
+                Cambio de piedras / Multiválvula / Retrolavado
+              </h3>
+            </div>
+            <span
+              class="bg-neutral-100 px-2 py-0.5 rounded-full text-neutral-700 text-xs"
+              >Adicional</span
+            >
+          </div>
+
+          <div class="gap-6 grid grid-cols-1 sm:grid-cols-3 mt-4">
+            <div>
+              <h4 class="font-medium text-neutral-900">¿Qué incluye?</h4>
+              <ul
+                class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
+              >
+                <li>Cambio de medio filtrante: arena, zeolita o vidrio.</li>
+                <li>Limpieza del filtro y revisión de crepinas.</li>
+                <li>Service de multiválvula: juntas, fugas y selector.</li>
+                <li>Chequeo y retrolavado completo del sistema.</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-medium text-neutral-900">Beneficios</h4>
+              <ul
+                class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
+              >
+                <li>Filtrado más eficiente y agua más clara.</li>
+                <li>Mayor vida útil del sistema de filtrado.</li>
+                <li>Optimización del flujo y menor consumo energético.</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-medium text-neutral-900">Tips de uso</h4>
+              <ul
+                class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
+              >
+                <li>Retrolavado semanal o según presión del manómetro.</li>
+                <li>No dejar el filtro cerrado al apagar.</li>
+                <li>Elegir medios filtrantes de buena calidad.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- CTA -->
-    <ServiceCTA />
+    <ServiceCTA serviceTitle={service.title} wspHref={wspHref} />
   </article>
 </Layout>
