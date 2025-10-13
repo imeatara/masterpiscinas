@@ -2,7 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import asset from "@/assets/asset.png";
-import { MoveLeft, CheckCircle2, ShieldCheck, Sparkles } from "@lucide/astro";
+import mantenimientoAntes from "@/assets/mantenimientoAntes.webp";
+import mantenimientoDespues from "@/assets/mantenimientoDespues.webp";
+import {
+  MoveLeft,
+  ShieldCheck,
+  Sparkles,
+  CircleCheckIcon,
+} from "@lucide/astro";
+import CarouselGallery from "@/components/CarouselGallery";
 import ServiceCTA from "@/components/ServiceCTA.astro";
 
 const service = {
@@ -17,6 +25,11 @@ const WSP = "5492644822296";
 const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
   `Hola! Quiero solicitar el servicio de ${service.title}`
 )}`;
+
+const slides = [
+  { src: mantenimientoAntes, alt: service.alt + " (antes)" },
+  { src: mantenimientoDespues, alt: service.alt + " (después)" },
+];
 ---
 
 <Layout title={service.title} description={service.desc} image={service.src}>
@@ -44,41 +57,16 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
     </header>
 
     <!-- Cover -->
-    <figure
-      class="relative shadow rounded-3xl ring-1 ring-neutral-200/60 overflow-hidden"
-    >
-      <div class="relative h-64 md:h-[28rem]">
-        <Image
-          src={service.src}
-          alt={service.alt}
-          width={1920}
-          height={1080}
-          class="absolute inset-0 w-full h-full object-center object-cover"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
-          aria-hidden="true"
-        >
-        </div>
-        <div
-          class="absolute -inset-10 bg-[radial-gradient(50%_60%_at_50%_100%,rgba(255,255,255,0.25),transparent_70%)] pointer-events-none"
-          aria-hidden="true"
-        >
-        </div>
-      </div>
-      <figcaption
-        class="bottom-0 absolute inset-x-0 flex justify-between items-center gap-4 px-4 md:px-6 py-3 text-white"
-      >
-        <span class="opacity-90 text-sm/5">{service.alt}</span>
-      </figcaption>
-    </figure>
+    <section class="relative">
+      <CarouselGallery slides={slides} client:load />
+    </section>
 
     <!-- Cards -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
       <!-- Incluye -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
-          <CheckCircle2 class="w-5 h-5 text-emerald-600" />
+          <CircleCheckIcon class="w-5 h-5 text-emerald-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
         </div>
         <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">

@@ -1,18 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-
-// Assets
 import faviconImg from "@/assets/logo.webp";
-import whatsappIcon from "@/assets/whatsapp.svg";
-import {
-  EyeIcon,
-  MoveLeftIcon,
-  MoveRightIcon,
-  MoveUpRightIcon,
-} from "@lucide/astro";
+import { EyeIcon, MoveLeftIcon, MoveRightIcon } from "@lucide/astro";
 
-// Helpers
 const WSP = "5492644822296";
 const mkWsp = (msg) => `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
 
@@ -247,7 +238,7 @@ const PAGE = {
             class="inline-flex justify-center items-center hover:bg-white/10 px-6 py-3 border border-white/70 rounded-full w-full sm:w-auto font-medium text-white transition"
           >
             Enviar correo
-            <MoveUpRightIcon class="ml-2 w-5 h-5" />
+            <MoveRightIcon class="ml-2 w-5 h-5" />
           </a>
           <a
             href={mkWsp(

@@ -2,15 +2,18 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import asset from "@/assets/asset.png";
+import pinturaAntes from "@/assets/pinturaAntes.webp";
+import pinturaDespues from "@/assets/pinturaDespues.webp";
 import {
   MoveLeft,
-  CheckCircle2,
   ShieldCheck,
   Sparkles,
   Calendar,
   Thermometer,
+  CircleCheckIcon,
 } from "@lucide/astro";
 import ServiceCTA from "@/components/ServiceCTA.astro";
+import CarouselGallery from "@/components/CarouselGallery";
 
 const service = {
   title: "Pintura",
@@ -24,9 +27,14 @@ const WSP = "5492644822296";
 const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
   `Hola! Quiero solicitar el servicio de ${service.title}`
 )}`;
+
+const slides = [
+  { src: pinturaAntes, alt: service.alt + " (antes)" },
+  { src: pinturaDespues, alt: service.alt + " (después)" },
+];
 ---
 
-<Layout title={service.title} description={service.desc} image={service.src}>
+<Layout title={service.title} description={service.desc}>
   <article class="space-y-10 mx-auto px-6 py-12 container">
     <!-- Top bar -->
     <nav class="flex justify-start items-center mb-6">
@@ -55,8 +63,8 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
         <p class="inline-flex items-center gap-2 text-neutral-700">
           <Calendar class="w-4 h-4 text-neutral-600" aria-hidden="true" />
           <span>
-            Temporada recomendada: aprox. abril a fines de octubre (San Juan).
-            Se agenda desde mayo según clima.
+            Temporada recomendada: aprox. abril a fines de octubre. Se agenda
+            desde mayo según clima.
           </span>
         </p>
         <p class="inline-flex items-center gap-2 mt-2 md:mt-0 text-neutral-600">
@@ -67,43 +75,16 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
     </header>
 
     <!-- Cover -->
-    <figure
-      class="relative shadow rounded-3xl ring-1 ring-neutral-200/60 overflow-hidden"
-    >
-      <div class="relative h-64 md:h-[28rem]">
-        <Image
-          src={service.src}
-          alt={service.alt}
-          width={1920}
-          height={1080}
-          loading="eager"
-          decoding="async"
-          class="absolute inset-0 w-full h-full object-center object-cover"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
-          aria-hidden="true"
-        >
-        </div>
-        <div
-          class="absolute -inset-10 bg-[radial-gradient(50%_60%_at_50%_100%,rgba(255,255,255,0.25),transparent_70%)] pointer-events-none"
-          aria-hidden="true"
-        >
-        </div>
-      </div>
-      <figcaption
-        class="bottom-0 absolute inset-x-0 flex justify-between items-center gap-4 px-4 md:px-6 py-3 text-white"
-      >
-        <span class="opacity-90 text-sm/5">{service.alt}</span>
-      </figcaption>
-    </figure>
+    <section class="relative">
+      <CarouselGallery slides={slides} client:load />
+    </section>
 
     <!-- Cards -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
       <!-- ¿Qué incluye? -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
-          <CheckCircle2 class="w-5 h-5 text-emerald-600" />
+          <CircleCheckIcon class="w-5 h-5 text-emerald-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
         </div>
         <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
