@@ -16,7 +16,7 @@ import ServiceCTA from "@/components/ServiceCTA.astro";
 
 const service = {
   title: "Mantenimiento",
-  desc: "Servicio integral: limpieza, revisión de equipos, balance químico y optimización del sistema de filtrado.",
+  desc: "Tu pileta siempre lista: limpia, balanceada y con el filtrado rindiendo al 100%.",
   src: asset,
   alt: "Mantenimiento de piscina",
   slug: "mantenimiento",
@@ -28,8 +28,8 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
 )}`;
 
 const slides = [
-  { src: mantenimientoAntes, alt: "Reparaciones" },
-  { src: mantenimientoDespues, alt: "Reparaciones" },
+  { src: mantenimientoAntes, alt: "Antes" },
+  { src: mantenimientoDespues, alt: "Después" },
 ];
 ---
 
@@ -48,74 +48,103 @@ const slides = [
     </nav>
 
     <!-- Header -->
-    <header class="space-y-4">
+    <header class="space-y-3">
       <h1
         class="font-bold text-neutral-900 text-3xl md:text-4xl tracking-tight"
       >
         {service.title}
       </h1>
       <p class="text-neutral-700 text-lg">{service.desc}</p>
+      <p class="font-medium text-blue-700/90">
+        💧 Planes semanal y quincenal — sin vueltas, sin sorpresas.
+      </p>
     </header>
 
-    <!-- Cover -->
+    <!-- Cover / Antes-Después -->
     <section class="relative">
       <CarouselGallery slides={slides} client:load />
     </section>
 
     <!-- BLOQUE 1: Mantenimiento general -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
+      <!-- Qué incluye -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
-        <div class="inline-flex items-center gap-2 mb-3">
+        <div class="inline-flex items-center gap-2 mb-2">
           <CircleCheckIcon class="w-5 h-5 text-emerald-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
+          <h2 class="font-semibold text-neutral-900 text-xl">
+            ¿Qué hacemos por vos?
+          </h2>
         </div>
         <ul
-          class="space-y-2 mt-4 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
+          class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
         >
+          <li>Aspirado completo y cepillado de paredes/línea de agua.</li>
           <li>Limpieza de canasto, prefiltro y skimmers.</li>
-          <li>Aspirado de fondo y cepillado de paredes/línea de agua.</li>
-          <li>Backwash y enjuague del filtro.</li>
-          <li>Test y corrección de pH, alcalinidad y cloro.</li>
-          <li>Revisión de bomba, cañerías y retornos.</li>
+          <li>Retrolavado y enjuague del filtro cuando corresponde.</li>
+          <li>Testeamos y ajustamos pH, alcalinidad y cloro.</li>
+          <li>Chequeo de bomba, cañerías y retornos para que todo fluya.</li>
         </ul>
-      </div>
-
-      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
-        <div class="inline-flex items-center gap-2 mb-3">
-          <Sparkles class="w-5 h-5 text-indigo-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
-        </div>
-        <p class="text-neutral-700">
-          Agua cristalina, equipos duraderos y menos consumo de químicos gracias
-          al mantenimiento constante.
+        <p class="mt-4 text-neutral-600 text-sm">
+          <strong>Resultado:</strong> agua clara, sin olor, sin arder los ojos y
+          lista para usar.
         </p>
       </div>
 
+      <!-- Beneficios -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
-        <div class="inline-flex items-center gap-2 mb-3">
-          <ShieldCheck class="w-5 h-5 text-sky-600" />
+        <div class="inline-flex items-center gap-2 mb-2">
+          <Sparkles class="w-5 h-5 text-indigo-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">
-            Recomendaciones
+            Beneficios que vas a notar
           </h2>
         </div>
-        <p class="text-neutral-700">
-          Mantenimiento semanal en temporada y quincenal fuera de temporada.
-          Mantener el nivel de agua correcto y revisar periódicamente el estado
-          del filtro.
+        <ul
+          class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
+        >
+          <li>
+            Agua <strong>cristalina</strong> y estables los valores químicos.
+          </li>
+          <li>Equipos que duran más y trabajan sin sobrecarga.</li>
+          <li>
+            <strong>Menos químicos</strong> gracias a un filtrado eficiente.
+          </li>
+          <li>Te olvidás de la pileta: nosotros nos ocupamos.</li>
+        </ul>
+      </div>
+
+      <!-- Recomendaciones / Frecuencia -->
+      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
+        <div class="inline-flex items-center gap-2 mb-2">
+          <ShieldCheck class="w-5 h-5 text-sky-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">
+            Frecuencia ideal
+          </h2>
+        </div>
+        <ul
+          class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
+        >
+          <li><strong>Verano:</strong> visita semanal.</li>
+          <li><strong>Resto del año:</strong> quincenal.</li>
+          <li>Mantené el nivel de agua y avisá si notás baja presión.</li>
+        </ul>
+        <p class="mt-3 text-neutral-700">
+          ¿Recibís visitas o hay mucho polvo? Ajustamos el plan sin costo extra
+          de alta/baja.
         </p>
       </div>
     </section>
 
-    <!-- ADICIONALES -->
+    <!-- ADICIONALES (Vendedor) -->
     <section aria-labelledby="adicionales-h2" class="space-y-4">
       <header class="flex items-center gap-3">
         <h2 id="adicionales-h2" class="font-semibold text-neutral-900 text-2xl">
-          Servicios adicionales
+          Sumale potencia al filtrado
         </h2>
         <span
           class="inline-flex items-center bg-amber-100 px-3 py-1 rounded-full font-medium text-amber-800 text-xs"
-          >Opcionales</span
         >
+          Recomendado
+        </span>
       </header>
 
       <div class="gap-6 grid grid-cols-1">
@@ -127,53 +156,72 @@ const slides = [
             <div class="inline-flex items-center gap-2">
               <Wrench class="w-5 h-5 text-amber-600" />
               <h3 class="font-semibold text-neutral-900 text-xl">
-                Cambio de piedras / Multiválvula / Retrolavado
+                Filtro al 100%: cambio de piedras + service de multiválvula
               </h3>
             </div>
             <span
               class="bg-neutral-100 px-2 py-0.5 rounded-full text-neutral-700 text-xs"
-              >Adicional</span
             >
+              Adicional
+            </span>
           </div>
 
           <div class="gap-6 grid grid-cols-1 sm:grid-cols-3 mt-4">
             <div>
-              <h4 class="font-medium text-neutral-900">¿Qué incluye?</h4>
+              <h4 class="font-medium text-neutral-900">¿Qué hacemos?</h4>
               <ul
                 class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
               >
-                <li>Cambio de medio filtrante: arena, zeolita o vidrio.</li>
-                <li>Limpieza del filtro y revisión de crepinas.</li>
+                <li>Reemplazo del medio filtrante (arena/zeolita/vidrio).</li>
+                <li>Limpieza interna del filtro y revisión de crepinas.</li>
                 <li>Service de multiválvula: juntas, fugas y selector.</li>
-                <li>Chequeo y retrolavado completo del sistema.</li>
+                <li>Retrolavado y calibración final.</li>
               </ul>
             </div>
             <div>
-              <h4 class="font-medium text-neutral-900">Beneficios</h4>
+              <h4 class="font-medium text-neutral-900">¿Qué ganás?</h4>
               <ul
                 class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
               >
-                <li>Filtrado más eficiente y agua más clara.</li>
-                <li>Mayor vida útil del sistema de filtrado.</li>
-                <li>Optimización del flujo y menor consumo energético.</li>
+                <li>Agua <strong>más clara</strong> en menos tiempo.</li>
+                <li>
+                  Mejor <strong>caudal</strong> y menos esfuerzo de la bomba.
+                </li>
+                <li>Menor consumo de químicos y energía.</li>
               </ul>
             </div>
             <div>
-              <h4 class="font-medium text-neutral-900">Tips de uso</h4>
+              <h4 class="font-medium text-neutral-900">Tips útiles</h4>
               <ul
                 class="space-y-2 mt-3 pl-6 text-neutral-700 marker:text-neutral-400 list-disc"
               >
-                <li>Retrolavado semanal o según presión del manómetro.</li>
-                <li>No dejar el filtro cerrado al apagar.</li>
-                <li>Elegir medios filtrantes de buena calidad.</li>
+                <li>Hacé retrolavado cuando sube la presión del manómetro.</li>
+                <li>No apagues con la válvula en “cerrado”.</li>
+                <li>Elegí medios filtrantes de calidad: rinden más.</li>
               </ul>
             </div>
+          </div>
+
+          <div class="mt-5">
+            <a
+              href={`https://wa.me/${WSP}?text=${encodeURIComponent("Hola! Quiero dejar el filtro al 100% con cambio de piedras y service de multiválvula.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-5 py-2.5 rounded-full font-semibold text-white text-sm transition"
+            >
+              Quiero mejorar mi filtrado
+            </a>
           </div>
         </article>
       </div>
     </section>
 
     <!-- CTA -->
-    <ServiceCTA serviceTitle={service.title} wspHref={wspHref} />
+    <ServiceCTA
+      serviceTitle={service.title}
+      wspHref={wspHref}
+      title="¿Querés que nos ocupemos de todo?"
+      subtitle="Coordinamos visita y dejamos tu pileta impecable desde la primera semana."
+    />
   </article>
 </Layout>

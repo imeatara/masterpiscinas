@@ -13,7 +13,7 @@ import ServiceCTA from "@/components/ServiceCTA.astro";
 
 const service = {
   title: "Limpieza con ácido",
-  desc: "Desagote y limpieza ácida profesional. Proveemos todo el equipo y aplicamos medidas de seguridad.",
+  desc: "Tu pileta como nueva: limpieza ácida + hidrolavado profesional, con equipo propio y protocolos de seguridad.",
   alt: "Limpieza con ácido en pileta",
   slug: "limpieza-acido",
 };
@@ -44,13 +44,16 @@ const slides = [
     </nav>
 
     <!-- Header -->
-    <header class="space-y-4">
+    <header class="space-y-2">
       <h1
         class="font-bold text-neutral-900 text-3xl md:text-4xl tracking-tight"
       >
         {service.title}
       </h1>
       <p class="text-neutral-700 text-lg">{service.desc}</p>
+      <p class="font-medium text-blue-700/90">
+        💥 Resultado: superficies impecables, listas para llenar o pintar.
+      </p>
     </header>
 
     <!-- Cover -->
@@ -60,18 +63,24 @@ const slides = [
 
     <!-- Cards -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
-      <!-- ¿Qué incluye? (corto) -->
+      <!-- ¿Qué incluye? -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <CircleCheckIcon class="w-5 h-5 text-emerald-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
+          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué hacemos?</h2>
         </div>
         <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
-          <li>Desagote completo.</li>
-          <li>Limpieza con ácido (superficies y línea de agua).</li>
-          <li>Enjuague y neutralizado.</li>
-          <li>Equipo propio (bombas, hidrolavadora, cepillos, químicos).</li>
-          <li>No usamos elementos del hogar.</li>
+          <li>Desagote completo con bombas propias.</li>
+          <li>
+            Limpieza con ácido controlada (paredes, piso y línea de agua).
+          </li>
+          <li>
+            <strong>Hidrolavado</strong> para despegar sarro y suciedad adherida.
+          </li>
+          <li>
+            Enjuague y <strong>neutralizado</strong> para cuidar superficies y solados.
+          </li>
+          <li>Todo el equipo es nuestro. No usamos elementos del hogar.</li>
         </ul>
       </div>
 
@@ -83,15 +92,16 @@ const slides = [
         </div>
 
         <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
-          <li>
-            Pileta inmaculada: libre de bacterias, sarro y hongos; lista para
-            usar.
-          </li>
+          <li>Color y brillo original. Se va el sarro, algas y manchas.</li>
+          <li>Olor neutralizado y superficies seguras al tacto.</li>
+          <li>Mejor adherencia si después querés <strong>pintar</strong>.</li>
+          <li>Proceso rápido y prolijo: cuidamos bordes y venecitas.</li>
         </ul>
 
         <p class="mt-3 text-neutral-700">
-          Al finalizar, lo ideal es complementar con mantenimiento semanal o
-          quincenal, según el uso y las necesidades de tu pileta.
+          Luego, mantenemos el resultado con <strong
+            >mantenimiento semanal o quincenal</strong
+          >.
         </p>
       </div>
 
@@ -102,13 +112,14 @@ const slides = [
           <h2 class="font-semibold text-neutral-900 text-xl">Seguridad</h2>
         </div>
         <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
-          <li>EPP: guantes, máscaras, anteojos y botas.</li>
-          <li>Área delimitada, ventilación y manipulación controlada.</li>
+          <li>EPP completo: guantes, máscaras, anteojos y botas.</li>
+          <li>Área delimitada, ventilación y manipulación segura.</li>
+          <li>Neutralizado final antes de retomar el uso de la pileta.</li>
         </ul>
       </div>
     </section>
 
     <!-- CTA -->
-    <ServiceCTA />
+    <ServiceCTA serviceTitle={service.title} wspHref={wspHref} />
   </article>
 </Layout>

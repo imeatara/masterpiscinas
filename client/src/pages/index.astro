@@ -9,15 +9,13 @@ import instagramIcon from "@/assets/instagram.svg";
 import facebookIcon from "@/assets/facebook.svg";
 
 /* Imágenes de cada servicio (cambiá rutas si hace falta) */
-import limpiezaAcidoImg from "@/assets/limpiezaAcido.webp";
-import desagoteImg from "@/assets/asset.png";
-import pinturaImg from "@/assets/pintura.webp";
-import dobleFiltradoImg from "@/assets/asset.png";
-import cambioPiedrasImg from "@/assets/asset.png";
-import pulidoImg from "@/assets/asset.png";
-import reparacionFibraImg from "@/assets/asset.png";
 import mantenimientoImg from "@/assets/mantenimiento.webp";
-import balanceQuimicoImg from "@/assets/asset.png";
+import limpiezaAcidoImg from "@/assets/limpiezaAcido.webp";
+import pinturaImg from "@/assets/pintura.webp";
+import cambioLlaves from "@/assets/cambioLlaves.webp";
+import pulidoImg from "@/assets/pulidoPlacas.webp";
+import reparacionImg from "@/assets/reparaciones.webp";
+import desagoteImg from "@/assets/desagote.webp";
 
 import { MoveRight, MoveRightIcon, Plus } from "@lucide/astro";
 
@@ -120,9 +118,10 @@ const PAGE = {
         <div
           class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
         >
-          <h3 class="font-semibold text-lg">Mantenimiento</h3>
+          <h3 class="font-semibold text-lg">Mantenimiento integral</h3>
           <p class="mt-1 text-white/80 text-sm">
-            Limpieza, balance químico y verificación del filtrado.
+            Tu pileta siempre limpia, balanceada y lista para disfrutar todo el
+            año.
           </p>
           <div class="flex gap-3 mt-4">
             <a
@@ -133,7 +132,7 @@ const PAGE = {
             </a>
             <a
               href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Mantenimiento"
+                "Hola! Quiero mantener mi pileta limpia y en condiciones todo el año."
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -167,9 +166,10 @@ const PAGE = {
         <div
           class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
         >
-          <h3 class="font-semibold text-lg">Limpieza con ácido</h3>
+          <h3 class="font-semibold text-lg">Limpieza profunda</h3>
           <p class="mt-1 text-white/80 text-sm">
-            Remoción de sarro, algas y manchas.
+            Eliminamos sarro, algas y manchas para que tu pileta vuelva a
+            brillar como nueva.
           </p>
           <div class="flex gap-3 mt-4">
             <a
@@ -180,7 +180,7 @@ const PAGE = {
             </a>
             <a
               href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Limpieza con ácido"
+                "Hola! Quiero dejar mi pileta como nueva con una limpieza profunda."
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -203,7 +203,7 @@ const PAGE = {
         >
           <Image
             src={pinturaImg}
-            alt="Pintura de piscina con rodillo"
+            alt="Pintura de piscina"
             class="absolute inset-0 w-full h-full object-cover"
           />
           <div
@@ -214,9 +214,10 @@ const PAGE = {
         <div
           class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
         >
-          <h3 class="font-semibold text-lg">Pintura</h3>
+          <h3 class="font-semibold text-lg">Pintura profesional</h3>
           <p class="mt-1 text-white/80 text-sm">
-            Preparación, triple lavado y aplicación.
+            Renovamos el color y la protección de tu pileta con acabados
+            duraderos.
           </p>
           <div class="flex gap-3 mt-4">
             <a
@@ -226,7 +227,7 @@ const PAGE = {
               <Plus class="mr-2 w-5 h-5" /> Más info
             </a>
             <a
-              href={mkWsp("Hola! Quiero solicitar el servicio de Pintura")}
+              href={mkWsp("Hola! Quiero renovar la pintura de mi pileta.")}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
@@ -237,17 +238,17 @@ const PAGE = {
         </div>
       </article>
 
-      <!-- Cambio de llaves -->
+      <!-- Cambio e independización de llaves -->
       <article
         class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
       >
         <a
           href="/servicios/cambio-llaves"
-          aria-label="Ver más sobre Cambio de llaves"
+          aria-label="Ver más sobre Cambio e independización de llaves"
           class="absolute inset-0"
         >
           <Image
-            src={cambioPiedrasImg}
+            src={cambioLlaves}
             alt="Cambio de llaves en sala de máquinas"
             class="absolute inset-0 w-full h-full object-cover"
           />
@@ -256,16 +257,16 @@ const PAGE = {
           >
           </div>
         </a>
-
         <div
           class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
         >
-          <h3 class="font-semibold text-lg">Cambio de llaves</h3>
+          <h3 class="font-semibold text-lg">
+            Cambio e independización de llaves
+          </h3>
           <p class="mt-1 text-white/80 text-sm">
-            Instalación de llaves nuevas para manejar skimmer, fondo y
-            barrefondo por separado.
+            Más control, mejor filtrado y agua más clara con llaves nuevas e
+            independientes.
           </p>
-
           <div class="flex gap-3 mt-4">
             <a
               href="/servicios/cambio-llaves"
@@ -275,7 +276,7 @@ const PAGE = {
             </a>
             <a
               href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Cambio de llaves"
+                "Hola! Quiero mejorar el rendimiento de mi pileta con el cambio e independización de llaves."
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -311,7 +312,8 @@ const PAGE = {
         >
           <h3 class="font-semibold text-lg">Pulido de placas</h3>
           <p class="mt-1 text-white/80 text-sm">
-            Recupera textura, estética y estado atérmico.
+            Devolvemos el brillo, suavidad y color original de tu superficie
+            atérmica.
           </p>
           <div class="flex gap-3 mt-4">
             <a
@@ -322,7 +324,7 @@ const PAGE = {
             </a>
             <a
               href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Pulido de placas"
+                "Hola! Quiero restaurar el brillo de las placas de mi pileta."
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -344,8 +346,8 @@ const PAGE = {
           class="absolute inset-0"
         >
           <Image
-            src={reparacionFibraImg}
-            alt="Reparaciones en piletas de fibra y cemento"
+            src={reparacionImg}
+            alt="Reparaciones de piscina"
             class="absolute inset-0 w-full h-full object-cover"
           />
           <div
@@ -358,7 +360,8 @@ const PAGE = {
         >
           <h3 class="font-semibold text-lg">Reparaciones</h3>
           <p class="mt-1 text-white/80 text-sm">
-            Fibra, material y caños. Parches y refuerzos.
+            Solucionamos filtraciones, grietas y daños en fibra o material. Como
+            nueva.
           </p>
           <div class="flex gap-3 mt-4">
             <a
@@ -369,7 +372,7 @@ const PAGE = {
             </a>
             <a
               href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Reparación de piletas"
+                "Hola! Necesito reparar mi pileta, tiene pérdidas o fisuras."
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -392,7 +395,7 @@ const PAGE = {
         >
           <Image
             src={desagoteImg}
-            alt="Desagote y bombeo de piscina"
+            alt="Desagote de piscina, sótano o cisterna"
             class="absolute inset-0 w-full h-full object-cover"
           />
           <div
@@ -400,13 +403,16 @@ const PAGE = {
           >
           </div>
         </a>
+
         <div
           class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
         >
-          <h3 class="font-semibold text-lg">Desagote</h3>
+          <h3 class="font-semibold text-lg">Desagote profesional</h3>
           <p class="mt-1 text-white/80 text-sm">
-            Vaciado seguro y puesta a punto.
+            Vaciamos piletas, sótanos, cisternas y casas inundadas con bombas
+            propias y descarga controlada.
           </p>
+
           <div class="flex gap-3 mt-4">
             <a
               href="/servicios/desagote"
@@ -415,7 +421,9 @@ const PAGE = {
               <Plus class="mr-2 w-5 h-5" /> Más info
             </a>
             <a
-              href={mkWsp("Hola! Quiero solicitar el servicio de Desagote")}
+              href={mkWsp(
+                "Hola! Necesito desagotar una pileta, sótano o cisterna. ¿Podrían ayudarme?"
+              )}
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
@@ -435,7 +443,8 @@ const PAGE = {
             ¿No sabés qué servicio necesitás?
           </h3>
           <p class="mt-3 max-w-prose text-blue-50 text-sm md:text-base">
-            Contanos tu caso y te orientamos sin compromiso.
+            Contanos tu caso y te asesoramos sin compromiso para que tu pileta
+            quede perfecta.
           </p>
           <a
             href={mkWsp(
@@ -446,7 +455,7 @@ const PAGE = {
             class="inline-flex items-center bg-white hover:bg-blue-50 shadow-md mt-6 px-6 py-3 rounded-full font-semibold text-blue-700 transition"
             aria-label="Consultar por WhatsApp"
           >
-            Consulta ahora mismo <MoveRight class="ml-2 w-6 h-6" />
+            Solicitar <MoveRight class="ml-2 w-6 h-6" />
           </a>
         </div>
       </article>
