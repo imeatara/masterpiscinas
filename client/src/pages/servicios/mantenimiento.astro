@@ -1,7 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import asset from "@/assets/asset.png";
 import mantenimientoAntes from "@/assets/mantenimientoAntes.webp";
 import mantenimientoDespues from "@/assets/mantenimientoDespues.webp";
 import {
@@ -15,9 +13,8 @@ import CarouselGallery from "@/components/CarouselGallery";
 import ServiceCTA from "@/components/ServiceCTA.astro";
 
 const service = {
-  title: "Mantenimiento",
+  title: "Mantenimiento integral",
   desc: "Tu pileta siempre lista: limpia, balanceada y con el filtrado rindiendo al 100%.",
-  src: asset,
   alt: "Mantenimiento de piscina",
   slug: "mantenimiento",
 };
@@ -28,12 +25,12 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
 )}`;
 
 const slides = [
-  { src: mantenimientoAntes, alt: "Antes" },
-  { src: mantenimientoDespues, alt: "Después" },
+  { src: mantenimientoAntes, alt: "Mantenimiento integral (antes)" },
+  { src: mantenimientoDespues, alt: "Mantenimiento integral (después)" },
 ];
 ---
 
-<Layout title={service.title} description={service.desc} image={service.src}>
+<Layout title={service.title} description={service.desc}>
   <article class="space-y-10 mx-auto px-6 py-12 container">
     <!-- Top bar -->
     <nav class="flex justify-start items-center mb-6">
@@ -55,12 +52,9 @@ const slides = [
         {service.title}
       </h1>
       <p class="text-neutral-700 text-lg">{service.desc}</p>
-      <p class="font-medium text-blue-700/90">
-        💧 Planes semanal y quincenal — sin vueltas, sin sorpresas.
-      </p>
     </header>
 
-    <!-- Cover / Antes-Después -->
+    <!-- Cover -->
     <section class="relative">
       <CarouselGallery slides={slides} client:load />
     </section>

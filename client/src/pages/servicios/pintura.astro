@@ -17,7 +17,7 @@ import CarouselGallery from "@/components/CarouselGallery";
 
 const service = {
   title: "Pintura",
-  desc: "Proceso completo: desagote, limpieza, lijado exhaustivo, triple lavado y pintura. Presupuestos sin cargos, con o sin materiales.",
+  desc: "Tu pileta renovada de punta a punta: preparamos la superficie y aplicamos pintura premium para un acabado parejo y duradero.",
   src: asset,
   alt: "Pintura de pileta",
   slug: "pintura",
@@ -29,8 +29,8 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
 )}`;
 
 const slides = [
-  { src: pinturaAntes, alt: service.alt + " (antes)" },
-  { src: pinturaDespues, alt: service.alt + " (después)" },
+  { src: pinturaAntes, alt: "Pintura de pileta (antes)" },
+  { src: pinturaDespues, alt: "Pintura de pileta (después)" },
 ];
 ---
 
@@ -49,27 +49,31 @@ const slides = [
     </nav>
 
     <!-- Header -->
-    <header class="space-y-4">
+    <header class="space-y-3">
       <h1
         class="font-bold text-neutral-900 text-3xl md:text-4xl tracking-tight"
       >
         {service.title}
       </h1>
       <p class="text-neutral-700 text-lg">{service.desc}</p>
+
       <!-- Temporada / Temperatura -->
       <div
         class="md:flex md:justify-between md:items-center gap-4 bg-white p-4 border border-neutral-200 rounded-2xl"
       >
         <p class="inline-flex items-center gap-2 text-neutral-700">
           <Calendar class="w-4 h-4 text-neutral-600" aria-hidden="true" />
-          <span>
-            Temporada recomendada: aprox. abril a fines de octubre. Se agenda
-            desde mayo según clima.
-          </span>
+          <span
+            ><strong>Mejor temporada:</strong> abril → octubre (agendamos desde mayo
+            según clima).</span
+          >
         </p>
         <p class="inline-flex items-center gap-2 mt-2 md:mt-0 text-neutral-600">
           <Thermometer class="w-4 h-4 text-neutral-600" aria-hidden="true" />
-          <span> Rango de aplicación: 5&nbsp;°C a 25&nbsp;°C. </span>
+          <span
+            ><strong>Aplicación ideal:</strong> 5&nbsp;°C a 25&nbsp;°C, sin sol directo
+            ni viento fuerte.</span
+          >
         </p>
       </div>
     </header>
@@ -85,15 +89,18 @@ const slides = [
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <CircleCheckIcon class="w-5 h-5 text-emerald-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
+          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué hacemos?</h2>
         </div>
         <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
-          <li>
-            Desagote, limpieza y lijado exhaustivo (retiro de pintura vieja).
-          </li>
+          <li>Desagote y limpieza profunda de toda la superficie.</li>
+          <li>Lijado exhaustivo y retiro de pintura floja.</li>
           <li>Triple lavado: detergente → cloro → ácido.</li>
-          <li>Secado 2–3 días y aplicación de pintura.</li>
+          <li>Secado 48–72&nbsp;hs y aplicación de pintura premium.</li>
+          <li>Con o sin materiales, según prefieras.</li>
         </ul>
+        <p class="mt-3 text-neutral-600 text-sm">
+          Elegimos <em>tipo y color</em> con vos (según base existente y uso).
+        </p>
       </div>
 
       <!-- Beneficios -->
@@ -102,8 +109,15 @@ const slides = [
           <Sparkles class="w-5 h-5 text-indigo-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
         </div>
-        <p class="text-neutral-700">
-          Visualmente más estética y con un acabado premium.
+        <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
+          <li>Acabado parejo y colores que realzan el agua.</li>
+          <li>Mejor sensación al tacto y fácil limpieza.</li>
+          <li>Protección de la superficie frente al sol y químicos.</li>
+        </ul>
+        <p class="mt-3 text-neutral-700">
+          ¿La querés perfecta? Sumá <strong
+            >limpieza con ácido + hidrolavado</strong
+          > previo.
         </p>
       </div>
 
@@ -111,19 +125,25 @@ const slides = [
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <ShieldCheck class="w-5 h-5 text-sky-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">
-            Cómo proteger la pintura
-          </h2>
+          <h2 class="font-semibold text-neutral-900 text-xl">Cómo dura más</h2>
         </div>
         <ul class="space-y-2 mt-4 pl-6 text-neutral-700 list-disc">
-          <li>El sol sanjuanino es durísimo: usá cobertor cuando no se use.</li>
-          <li>Filtrar el agua con la frecuencia indicada.</li>
-          <li>Agregar químicos en su justa medida.</li>
+          <li>Usá cobertor cuando no se utilice (sol sanjuanino intenso).</li>
+          <li>Filtrado según plan y retrolavado cuando sube la presión.</li>
+          <li>Dosificación correcta de químicos (sin excesos).</li>
         </ul>
+        <p class="mt-3 text-neutral-700">
+          Te dejamos <strong>instrucciones post-pintura</strong> claras y simples.
+        </p>
       </div>
     </section>
 
     <!-- CTA -->
-    <ServiceCTA />
+    <ServiceCTA
+      serviceTitle={service.title}
+      wspHref={wspHref}
+      title="¿Listo para renovar tu pileta?"
+      subtitle="Coordinamos visita, te asesoramos en colores y dejamos todo preparado para que luzca impecable."
+    />
   </article>
 </Layout>

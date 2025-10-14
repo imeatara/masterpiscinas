@@ -6,10 +6,10 @@ import { MoveLeft, CheckCircle2, ShieldCheck, Sparkles } from "@lucide/astro";
 import ServiceCTA from "@/components/ServiceCTA.astro";
 
 const service = {
-  title: "Desagote de piletas",
-  desc: "Vaciado seguro y controlado con bombas propias. También desagotamos sótanos, cisternas y viviendas por inundaciones.",
+  title: "Desagote profesional",
+  desc: "Vaciamos rápido y seguro con bombas propias y descarga controlada. También atendemos sótanos, cisternas y viviendas inundadas.",
   src: asset,
-  alt: "Desagote de pileta con bomba sumergible",
+  alt: "Desagote con bomba sumergible",
   slug: "desagote",
 };
 
@@ -34,7 +34,7 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
     </nav>
 
     <!-- Header -->
-    <header class="space-y-4">
+    <header class="space-y-3">
       <h1
         class="font-bold text-neutral-900 text-3xl md:text-4xl tracking-tight"
       >
@@ -44,57 +44,41 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
     </header>
 
     <!-- Cover -->
-    <figure
-      class="relative shadow rounded-3xl ring-1 ring-neutral-200/60 overflow-hidden"
-    >
-      <div class="relative h-64 md:h-[28rem]">
-        <Image
-          src={service.src}
-          alt={service.alt}
-          width={1920}
-          height={1080}
-          loading="eager"
-          decoding="async"
-          class="absolute inset-0 w-full h-full object-center object-cover"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
-          aria-hidden="true"
-        >
-        </div>
-        <div
-          class="absolute -inset-10 bg-[radial-gradient(50%_60%_at_50%_100%,rgba(255,255,255,0.25),transparent_70%)] pointer-events-none"
-          aria-hidden="true"
-        >
-        </div>
-      </div>
-      <figcaption
-        class="bottom-0 absolute inset-x-0 flex justify-between items-center gap-4 px-4 md:px-6 py-3 text-white"
-      >
-        <span class="opacity-90 text-sm/5">{service.alt}</span>
-      </figcaption>
-    </figure>
 
     <!-- Cards -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
-      <!-- ¿Qué incluye? (corto) -->
+      <!-- ¿Qué hacemos? -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <CheckCircle2 class="w-5 h-5 text-emerald-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
+          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué hacemos?</h2>
         </div>
         <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Bombas de desagote y mangueras propias. No usamos equipos del hogar.
+          <li class="flex items-start gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span
+              >Bombas y mangueras propias. <strong>No</strong> usamos tus equipos.</span
+            >
           </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Vaciado controlado y monitoreo de nivel para proteger la estructura.
+          <li class="flex items-start gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span
+              >Vaciado <strong>controlado</strong> con monitoreo de nivel para cuidar
+              la estructura.</span
+            >
           </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Descarga dirigida al punto indicado por el cliente.
+          <li class="flex items-start gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span
+              >Descarga dirigida al punto que indiques (zanjas, cámaras, calle,
+              etc.).</span
+            >
           </li>
         </ul>
       </div>
@@ -106,20 +90,29 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
           <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
         </div>
         <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Base lista para limpieza profunda, reparación o pintura.
+          <li class="flex items-start gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span
+              >Dejá lista la base para <strong
+                >limpieza, reparación o pintura</strong
+              >.</span
+            >
           </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Proceso rápido y prolijo, cuidando bordes y solados.
+          <li class="flex items-start gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span
+              >Trabajo <strong>rápido y prolijo</strong> sin ensuciar tus veredas
+              ni bordes.</span
+            >
           </li>
         </ul>
         <p class="mt-3 text-neutral-700">
-          Al finalizar, ideal complementar con <strong
-            >limpieza con ácido</strong
-          > o
-          <strong>mantenimiento</strong> semanal/quincenal.
+          Tip: combiná con <strong>Limpieza con ácido + hidrolavado</strong> o con
+          <strong>Mantenimiento</strong> semanal/quincenal.
         </p>
       </div>
 
@@ -130,13 +123,20 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
           <h2 class="font-semibold text-neutral-900 text-xl">Seguridad</h2>
         </div>
         <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            EPP: guantes, máscaras, anteojos y botas.
+          <li class="flex items-start gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span>EPP completo (guantes, mascarilla, anteojos y botas).</span>
           </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Área delimitada, cables protegidos y corte eléctrico si corresponde.
+          <li class="flex items-start gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span
+              >Área delimitada, cables protegidos y corte eléctrico si hace
+              falta.</span
+            >
           </li>
         </ul>
       </div>
@@ -155,24 +155,39 @@ const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
           class="gap-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-neutral-700"
         >
           <li class="flex items-center gap-2">
-            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"></span>Piletas
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span>Piletas</span>
           </li>
           <li class="flex items-center gap-2">
-            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"></span>Sótanos
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span>Sótanos</span>
           </li>
           <li class="flex items-center gap-2">
-            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"
-            ></span>Cisternas
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span>Cisternas</span>
           </li>
           <li class="flex items-center gap-2">
-            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5"></span>Casas
-            por inundaciones
+            <span class="bg-neutral-300 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span>Viviendas por inundaciones</span>
           </li>
         </ul>
+        <p class="mt-3 text-neutral-700">
+          Emergencias: prioridad de atención y coordinación inmediata por
+          WhatsApp.
+        </p>
       </div>
     </section>
 
     <!-- CTA -->
-    <ServiceCTA />
+    <ServiceCTA
+      serviceTitle={service.title}
+      wspHref={wspHref}
+      title="¿Necesitás desagotar ya?"
+      subtitle="Lo resolvemos con equipo propio y descarga controlada. Escribinos y coordinamos."
+    />
   </article>
 </Layout>

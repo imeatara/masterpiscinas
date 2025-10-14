@@ -4,6 +4,10 @@ import { Image } from "astro:assets";
 import asset from "@/assets/asset.png";
 import reparacionesUno from "@/assets/reparacionesUno.webp";
 import reparacionesDos from "@/assets/reparacionesDos.webp";
+import reparacionesTres from "@/assets/reparacionesTres.webp";
+import reparacionesCuatro from "@/assets/reparacionesCuatro.webp";
+import reparacionesCinco from "@/assets/reparacionesCinco.webp";
+import reparacionesSeis from "@/assets/reparacionesSeis.webp";
 import {
   ShieldCheck,
   Sparkles,
@@ -14,8 +18,8 @@ import ServiceCTA from "@/components/ServiceCTA.astro";
 import CarouselGallery from "@/components/CarouselGallery";
 
 const service = {
-  title: "Reparaciones (fibra, cemento, caños pinchados)",
-  desc: "Parcheo y refuerzos: en fibra usamos resina + fibra y roving en zonas críticas; en cemento, selladores de grietas y, si hace falta, anclajes con hierro. También reparamos caños pinchados.",
+  title: "Reparaciones",
+  desc: "Arreglamos tu pileta y las cañerías para que vuelva a lucir y funcionar como debe: sin pérdidas, sin grietas y con máxima seguridad.",
   src: asset,
   alt: "Reparaciones de piletas (fibra, cemento y caños)",
   slug: "reparaciones",
@@ -23,12 +27,16 @@ const service = {
 
 const WSP = "5492644822296";
 const wspHref = `https://wa.me/${WSP}?text=${encodeURIComponent(
-  `Hola! Quiero solicitar el servicio de ${service.title}`
+  "Hola! Quiero coordinar una reparación en mi pileta (fibra/cemento o caños)."
 )}`;
 
 const slides = [
-  { src: reparacionesUno, alt: "Mantenimiento integral (antes)" },
-  { src: reparacionesDos, alt: "Mantenimiento integral (después)" },
+  { src: reparacionesUno, alt: "Reparación de pileta (antes)" },
+  { src: reparacionesDos, alt: "Reparación de pileta (después)" },
+  { src: reparacionesTres, alt: "Reparación de pileta (preparado)" },
+  { src: reparacionesCuatro, alt: "Reparación de pileta (relleno)" },
+  { src: reparacionesCinco, alt: "Reparación de pileta (fibra)" },
+  { src: reparacionesSeis, alt: "Reparación de pileta (pintado)" },
 ];
 ---
 
@@ -47,7 +55,7 @@ const slides = [
     </nav>
 
     <!-- Header -->
-    <header class="space-y-4">
+    <header class="space-y-3">
       <h1
         class="font-bold text-neutral-900 text-3xl md:text-4xl tracking-tight"
       >
@@ -63,76 +71,106 @@ const slides = [
 
     <!-- Cards -->
     <section class="gap-6 grid grid-cols-1 md:grid-cols-3">
-      <!-- ¿Qué incluye? (corta) -->
+      <!-- ¿Qué hacemos? -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
           <CircleCheckIcon class="w-5 h-5 text-emerald-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué incluye?</h2>
+          <h2 class="font-semibold text-neutral-900 text-xl">¿Qué hacemos?</h2>
+        </div>
+
+        <ul class="space-y-2 mt-3 text-neutral-700">
+          <li class="flex gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span>
+              <strong>Fibra:</strong> resina + manta de fibra; refuerzos con roving
+              en zonas críticas.
+            </span>
+          </li>
+          <li class="flex gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span>
+              <strong>Cemento:</strong> selladores para fisuras y, si hace falta,
+              anclajes con hierro.
+            </span>
+          </li>
+          <li class="flex gap-2">
+            <span
+              class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5 shrink-0"
+            ></span>
+            <span>
+              <strong>Caños pinchados:</strong> detección de fuga y reparación del
+              tramo afectado.
+            </span>
+          </li>
+        </ul>
+
+        <p class="mt-3 text-neutral-600 text-sm">
+          Incluye limpieza de la zona, preparación correcta y terminación
+          prolija.
+        </p>
+      </div>
+
+      <!-- Beneficios (vendedor) -->
+      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <Sparkles class="w-5 h-5 text-indigo-600" />
+          <h2 class="font-semibold text-neutral-900 text-xl">Beneficios</h2>
         </div>
         <ul class="space-y-2 mt-3 text-neutral-700">
           <li class="flex gap-2">
             <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Fibra: resina + fibra; refuerzo con roving en zonas críticas.
+            <strong>Chau pérdidas</strong> y consumo extra de agua/químicos.
           </li>
           <li class="flex gap-2">
             <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Cemento: selladores según fisura; si hace falta, anclajes con hierro.
+            <strong>Estructura segura</strong> y superficie lista para usar o pintar.
           </li>
           <li class="flex gap-2">
             <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Caños pinchados: detección y reparación del tramo afectado.
+            <strong>Trabajo prolijo</strong> que se integra con el resto de la pileta.
           </li>
         </ul>
+        <p class="mt-3 text-neutral-700">
+          Si lo necesitás, coordinamos <strong>desagote</strong> y dejamos todo listo
+          para el arreglo.
+        </p>
       </div>
 
-      <!-- Recomendaciones -->
+      <!-- Seguridad / Buen uso -->
       <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
         <div class="inline-flex items-center gap-2 mb-3">
-          <Sparkles class="w-5 h-5 text-indigo-600" />
+          <ShieldCheck class="w-5 h-5 text-sky-600" />
           <h2 class="font-semibold text-neutral-900 text-xl">
-            Recomendaciones
+            Seguridad y cuidado
           </h2>
         </div>
         <ul class="space-y-2 mt-3 text-neutral-700">
           <li class="flex gap-2">
             <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            No excederse con la cantidad de personas al mismo tiempo.
+            EPP completo y área delimitada/ventilada durante el trabajo.
           </li>
           <li class="flex gap-2">
             <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Evitar golpes y usos bruscos.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            No dejar la pileta vacía al solazo.
+            Evitar golpes, sobrecarga de gente y dejar la pileta vacía al sol fuerte.
           </li>
         </ul>
         <p class="mt-3 text-neutral-500 text-sm">
-          Nota: las grietas suelen generarse por golpes o por exceso de peso
-          (mucha gente dentro de la pileta).
+          Muchas grietas vienen de <em>golpes</em> o <em>exceso de peso</em>. Te
+          asesoramos para que no se repita.
         </p>
-      </div>
-
-      <!-- Seguridad -->
-      <div class="bg-white shadow-sm p-6 border border-neutral-200 rounded-2xl">
-        <div class="inline-flex items-center gap-2 mb-3">
-          <ShieldCheck class="w-5 h-5 text-sky-600" />
-          <h2 class="font-semibold text-neutral-900 text-xl">Seguridad</h2>
-        </div>
-        <ul class="space-y-2 mt-3 text-neutral-700">
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            EPP: guantes, máscaras, anteojos y botas.
-          </li>
-          <li class="flex gap-2">
-            <span class="bg-neutral-300 mt-1.5 rounded-full w-1.5 h-1.5"></span>
-            Área delimitada y ventilación adecuada.
-          </li>
-        </ul>
       </div>
     </section>
 
     <!-- CTA -->
-    <ServiceCTA />
+    <ServiceCTA
+      serviceTitle={service.title}
+      wspHref={wspHref}
+      title="¿Tenés una pérdida o grieta?"
+      subtitle="La reparamos y dejamos tu pileta segura y prolija. Coordinemos una visita."
+    />
   </article>
 </Layout>
