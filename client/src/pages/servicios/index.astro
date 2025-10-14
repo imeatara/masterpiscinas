@@ -1,29 +1,31 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { Plus, MoveRight, MoveLeft } from "@lucide/astro";
+import { FlameIcon, MoveRight, Plus, MoveLeft } from "@lucide/astro";
 
-// Imágenes (ajustá las rutas a tus assets reales)
-import mantenimientoImg from "@/assets/asset.png";
-import limpiezaAcidoImg from "@/assets/asset.png";
-import pinturaImg from "@/assets/asset.png";
-import dobleFiltradoImg from "@/assets/asset.png";
-import cambioPiedrasImg from "@/assets/asset.png";
-import pulidoImg from "@/assets/asset.png";
-import reparacionFibraImg from "@/assets/asset.png";
-import desagoteImg from "@/assets/asset.png";
+/* Imágenes de cada servicio */
+import mantenimientoImg from "@/assets/mantenimiento.webp";
+import limpiezaAcidoImg from "@/assets/limpiezaAcido.webp";
+import pinturaImg from "@/assets/pintura.webp";
+import cambioLlaves from "@/assets/cambioLlaves.webp";
+import pulidoImg from "@/assets/pulidoPlacas.webp";
+import reparacionImg from "@/assets/reparaciones.webp";
+import desagoteImg from "@/assets/desagote.webp";
 
-// Helper para WhatsApp
+/* Helper WSP (sin TS) */
 const WSP = "5492644822296";
-const mkWsp = (text) => `https://wa.me/${WSP}?text=${encodeURIComponent(text)}`;
+const mkWsp = (msg) => `https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`;
+
+const PAGE = {
+  title: "Servicios | Master Piscinas",
+  description:
+    "Limpieza con ácido, desagote, pintura, cambio de llaves, pulido y reparaciones en San Juan. Presupuesto sin cargo.",
+};
 ---
 
-<Layout
-  title="Servicios"
-  description="Soluciones profesionales para que tu pileta quede impecable."
->
-  <section class="mx-auto px-6 py-16 container" aria-labelledby="servicios-h2">
-    <!-- Botón Volver -->
+<Layout title={PAGE.title} description={PAGE.description}>
+  <article class="space-y-10 mx-auto px-6 py-12 container">
+    <!-- Volver al inicio -->
     <nav class="flex justify-start items-center mb-6">
       <a
         href="/"
@@ -35,417 +37,389 @@ const mkWsp = (text) => `https://wa.me/${WSP}?text=${encodeURIComponent(text)}`;
       </a>
     </nav>
 
-    <header class="mb-12 text-center">
-      <h2
-        id="servicios-h2"
-        class="font-bold text-neutral-900 text-2xl md:text-3xl"
+    <!-- Encabezado (estilo detalle) -->
+    <header class="space-y-2 md:text-left text-center">
+      <h1
+        class="font-bold text-neutral-900 text-3xl md:text-4xl tracking-tight"
       >
         Nuestros servicios
-      </h2>
-      <p class="mt-2 text-neutral-600">
+      </h1>
+      <p class="text-neutral-700 text-lg">
         Soluciones profesionales para que tu pileta quede impecable.
       </p>
     </header>
 
-    <div class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Mantenimiento -->
-      <article
-        class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
-      >
-        <a
-          href="/servicios/mantenimiento"
-          aria-label="Ver más sobre Mantenimiento"
-          class="absolute inset-0"
-        >
-          <Image
-            src={mantenimientoImg}
-            alt="Mantenimiento de piscina"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
-        </a>
-        <div
-          class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
-        >
-          <h3 class="font-semibold text-lg">Mantenimiento</h3>
-          <p class="mt-1 text-white/80 text-sm">
-            Limpieza, balance químico y verificación del filtrado.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a
-              href="/servicios/mantenimiento"
-              class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
-            >
-              <Plus class="mr-2 w-5 h-5" /> Más info
-            </a>
-            <a
-              href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Mantenimiento"
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
-            >
-              Solicitar <MoveRight class="ml-2 w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </article>
+    <!-- GRID de cards (tu mismo layout) -->
+    <section class="mx-auto pt-2" aria-labelledby="servicios-h2">
+      <h2 id="servicios-h2" class="sr-only">Listado de servicios</h2>
 
-      <!-- Limpieza con ácido -->
-      <article
-        class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
-      >
-        <a
-          href="/servicios/limpieza-acido"
-          aria-label="Ver más sobre Limpieza con ácido"
-          class="absolute inset-0"
+      <div class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Mantenimiento -->
+        <article
+          class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
         >
-          <Image
-            src={limpiezaAcidoImg}
-            alt="Limpieza con ácido en pileta"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
-        </a>
-        <div
-          class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
-        >
-          <h3 class="font-semibold text-lg">Limpieza con ácido</h3>
-          <p class="mt-1 text-white/80 text-sm">
-            Remoción de sarro, algas y manchas.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a
-              href="/servicios/limpieza-acido"
-              class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
-            >
-              <Plus class="mr-2 w-5 h-5" /> Más info
-            </a>
-            <a
-              href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Limpieza con ácido"
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
-            >
-              Solicitar <MoveRight class="ml-2 w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Pintura -->
-      <article
-        class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
-      >
-        <a
-          href="/servicios/pintura"
-          aria-label="Ver más sobre Pintura"
-          class="absolute inset-0"
-        >
-          <Image
-            src={pinturaImg}
-            alt="Pintura de piscina con rodillo"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
-        </a>
-        <div
-          class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
-        >
-          <h3 class="font-semibold text-lg">Pintura</h3>
-          <p class="mt-1 text-white/80 text-sm">
-            Preparación, triple lavado y aplicación.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a
-              href="/servicios/pintura"
-              class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
-            >
-              <Plus class="mr-2 w-5 h-5" /> Más info
-            </a>
-            <a
-              href={mkWsp("Hola! Quiero solicitar el servicio de Pintura")}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
-            >
-              Solicitar <MoveRight class="ml-2 w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Doble filtrado -->
-      <article
-        class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
-      >
-        <a
-          href="/servicios/doble-filtrado"
-          aria-label="Ver más sobre Doble filtrado"
-          class="absolute inset-0"
-        >
-          <Image
-            src={dobleFiltradoImg}
-            alt="Doble filtrado en sala de máquinas"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
-        </a>
-        <div
-          class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
-        >
-          <h3 class="font-semibold text-lg">
-            Implementación/adaptación de doble filtrado
-          </h3>
-          <p class="mt-1 text-white/80 text-sm">
-            Mayor caudal, claridad y redundancia.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a
-              href="/servicios/doble-filtrado"
-              class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
-            >
-              <Plus class="mr-2 w-5 h-5" /> Más info
-            </a>
-            <a
-              href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Doble filtrado"
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
-            >
-              Solicitar <MoveRight class="ml-2 w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Cambio de piedras -->
-      <article
-        class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
-      >
-        <a
-          href="/servicios/cambio-piedras-multivalvula"
-          aria-label="Ver más sobre Cambio de piedras"
-          class="absolute inset-0"
-        >
-          <Image
-            src={cambioPiedrasImg}
-            alt="Cambio de piedras y multiválvula en filtro"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
-        </a>
-        <div
-          class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
-        >
-          <h3 class="font-semibold text-lg">
-            Cambio de piedras / Multiválvula
-          </h3>
-          <p class="mt-1 text-white/80 text-sm">
-            Medio filtrante y service de válvula selectora.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a
-              href="/servicios/cambio-piedras-multivalvula"
-              class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
-            >
-              <Plus class="mr-2 w-5 h-5" /> Más info
-            </a>
-            <a
-              href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Cambio de piedras / Multiválvula"
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
-            >
-              Solicitar <MoveRight class="ml-2 w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Pulido -->
-      <article
-        class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
-      >
-        <a
-          href="/servicios/pulido-placas"
-          aria-label="Ver más sobre Pulido"
-          class="absolute inset-0"
-        >
-          <Image
-            src={pulidoImg}
-            alt="Pulido de placas de piscina"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
-        </a>
-        <div
-          class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
-        >
-          <h3 class="font-semibold text-lg">Pulido de placas</h3>
-          <p class="mt-1 text-white/80 text-sm">
-            Recupera textura, estética y estado atérmico.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a
-              href="/servicios/pulido-placas"
-              class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
-            >
-              <Plus class="mr-2 w-5 h-5" /> Más info
-            </a>
-            <a
-              href={mkWsp(
-                "Hola! Quiero solicitar el servicio de Pulido de placas"
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
-            >
-              Solicitar <MoveRight class="ml-2 w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Reparaciones -->
-      <article
-        class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
-      >
-        <a
-          href="/servicios/reparaciones"
-          aria-label="Ver más sobre Reparaciones"
-          class="absolute inset-0"
-        >
-          <Image
-            src={reparacionFibraImg}
-            alt="Reparaciones en piletas de fibra y cemento"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
-        </a>
-        <div
-          class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
-        >
-          <h3 class="font-semibold text-lg">Reparaciones</h3>
-          <p class="mt-1 text-white/80 text-sm">
-            Fibra, material y caños. Parches y refuerzos.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a
-              href="/servicios/reparaciones"
-              class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
-            >
-              <Plus class="mr-2 w-5 h-5" /> Más info
-            </a>
-            <a
-              href={mkWsp("Hola! Quiero solicitar el servicio de Reparaciones")}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
-            >
-              Solicitar <MoveRight class="ml-2 w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Desagote -->
-      <article
-        class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
-      >
-        <a
-          href="/servicios/desagote"
-          aria-label="Ver más sobre Desagote"
-          class="absolute inset-0"
-        >
-          <Image
-            src={desagoteImg}
-            alt="Desagote y bombeo de piscina"
-            class="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
-        </a>
-        <div
-          class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
-        >
-          <h3 class="font-semibold text-lg">Desagote</h3>
-          <p class="mt-1 text-white/80 text-sm">
-            Vaciado seguro y puesta a punto.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a
-              href="/servicios/desagote"
-              class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
-            >
-              <Plus class="mr-2 w-5 h-5" /> Más info
-            </a>
-            <a
-              href={mkWsp("Hola! Quiero solicitar el servicio de Desagote")}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
-            >
-              Solicitar <MoveRight class="ml-2 w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- CTA final -->
-      <article
-        class="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-8 md:p-10 rounded-2xl aspect-square text-white text-center"
-      >
-        <div class="flex flex-col justify-center items-center h-full">
-          <h3 class="font-bold text-2xl md:text-3xl">
-            ¿No sabés qué servicio necesitás?
-          </h3>
-          <p class="mt-3 max-w-prose text-blue-50 text-sm md:text-base">
-            Contanos tu caso y te orientamos sin compromiso.
-          </p>
           <a
-            href={mkWsp(
-              "Hola! Necesito asesoramiento para elegir el servicio adecuado para mi pileta."
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center bg-white hover:bg-blue-50 shadow-md mt-6 px-6 py-3 rounded-full font-semibold text-blue-700 transition"
-            aria-label="Consultar por WhatsApp"
+            href="/servicios/mantenimiento"
+            aria-label="Ver más sobre Mantenimiento"
+            class="absolute inset-0"
           >
-            Consulta ahora mismo <MoveRight class="ml-2 w-6 h-6" />
+            <Image
+              src={mantenimientoImg}
+              alt="Mantenimiento de piscina"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+            >
+            </div>
           </a>
-        </div>
-      </article>
-    </div>
-  </section>
+
+          <!-- Badge -->
+          <span
+            class="top-4 right-4 absolute flex items-center gap-1 bg-blue-600/90 shadow backdrop-blur px-3 py-1.5 rounded-full font-semibold text-white text-xs"
+          >
+            <FlameIcon class="w-4 h-4" />
+            Más pedido
+          </span>
+
+          <div
+            class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
+          >
+            <h3 class="font-semibold text-lg">Mantenimiento integral</h3>
+            <p class="mt-1 text-white/80 text-sm">
+              Tu pileta siempre limpia, balanceada y lista para disfrutar todo
+              el año.
+            </p>
+            <div class="flex gap-3 mt-4">
+              <a
+                href="/servicios/mantenimiento"
+                class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
+              >
+                <Plus class="mr-2 w-5 h-5" /> Más info
+              </a>
+              <a
+                href={mkWsp(
+                  "Hola! Quiero mantener mi pileta limpia y en condiciones todo el año."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
+              >
+                Solicitar <MoveRight class="ml-2 w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Limpieza con ácido -->
+        <article
+          class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
+        >
+          <a
+            href="/servicios/limpieza-acido"
+            aria-label="Ver más sobre Limpieza con ácido"
+            class="absolute inset-0"
+          >
+            <Image
+              src={limpiezaAcidoImg}
+              alt="Limpieza con ácido en pileta"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+            >
+            </div>
+          </a>
+          <div
+            class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
+          >
+            <h3 class="font-semibold text-lg">Limpieza profunda</h3>
+            <p class="mt-1 text-white/80 text-sm">
+              Eliminamos sarro, algas y manchas para que tu pileta vuelva a
+              brillar.
+            </p>
+            <div class="flex gap-3 mt-4">
+              <a
+                href="/servicios/limpieza-acido"
+                class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
+              >
+                <Plus class="mr-2 w-5 h-5" /> Más info
+              </a>
+              <a
+                href={mkWsp(
+                  "Hola! Quiero dejar mi pileta como nueva con una limpieza profunda."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
+              >
+                Solicitar <MoveRight class="ml-2 w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pintura -->
+        <article
+          class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
+        >
+          <a
+            href="/servicios/pintura"
+            aria-label="Ver más sobre Pintura"
+            class="absolute inset-0"
+          >
+            <Image
+              src={pinturaImg}
+              alt="Pintura de piscina"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+            >
+            </div>
+          </a>
+          <div
+            class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
+          >
+            <h3 class="font-semibold text-lg">Pintura profesional</h3>
+            <p class="mt-1 text-white/80 text-sm">
+              Renovamos el color y la protección con acabados duraderos.
+            </p>
+            <div class="flex gap-3 mt-4">
+              <a
+                href="/servicios/pintura"
+                class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
+              >
+                <Plus class="mr-2 w-5 h-5" /> Más info
+              </a>
+              <a
+                href={mkWsp("Hola! Quiero renovar la pintura de mi pileta.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
+              >
+                Solicitar <MoveRight class="ml-2 w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cambio e independización de llaves -->
+        <article
+          class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
+        >
+          <a
+            href="/servicios/cambio-llaves"
+            aria-label="Ver más sobre Cambio e independización de llaves"
+            class="absolute inset-0"
+          >
+            <Image
+              src={cambioLlaves}
+              alt="Cambio de llaves en sala de máquinas"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+            >
+            </div>
+          </a>
+          <div
+            class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
+          >
+            <h3 class="font-semibold text-lg">
+              Cambio e independización de llaves
+            </h3>
+            <p class="mt-1 text-white/80 text-sm">
+              Más control, mejor filtrado y agua más clara.
+            </p>
+            <div class="flex gap-3 mt-4">
+              <a
+                href="/servicios/cambio-llaves"
+                class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
+              >
+                <Plus class="mr-2 w-5 h-5" /> Más info
+              </a>
+              <a
+                href={mkWsp(
+                  "Hola! Quiero mejorar el rendimiento con el cambio e independización de llaves."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
+              >
+                Solicitar <MoveRight class="ml-2 w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pulido de placas -->
+        <article
+          class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
+        >
+          <a
+            href="/servicios/pulido-placas"
+            aria-label="Ver más sobre Pulido de placas"
+            class="absolute inset-0"
+          >
+            <Image
+              src={pulidoImg}
+              alt="Pulido de placas de piscina"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+            >
+            </div>
+          </a>
+          <div
+            class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
+          >
+            <h3 class="font-semibold text-lg">Pulido de placas</h3>
+            <p class="mt-1 text-white/80 text-sm">
+              Devolvemos brillo, suavidad y color original.
+            </p>
+            <div class="flex gap-3 mt-4">
+              <a
+                href="/servicios/pulido-placas"
+                class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
+              >
+                <Plus class="mr-2 w-5 h-5" /> Más info
+              </a>
+              <a
+                href={mkWsp(
+                  "Hola! Quiero restaurar el brillo de las placas de mi pileta."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
+              >
+                Solicitar <MoveRight class="ml-2 w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reparaciones -->
+        <article
+          class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
+        >
+          <a
+            href="/servicios/reparaciones"
+            aria-label="Ver más sobre Reparaciones"
+            class="absolute inset-0"
+          >
+            <Image
+              src={reparacionImg}
+              alt="Reparaciones de piscina"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+            >
+            </div>
+          </a>
+          <div
+            class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
+          >
+            <h3 class="font-semibold text-lg">Reparaciones</h3>
+            <p class="mt-1 text-white/80 text-sm">
+              Filtraciones, grietas y daños en fibra o material.
+            </p>
+            <div class="flex gap-3 mt-4">
+              <a
+                href="/servicios/reparaciones"
+                class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
+              >
+                <Plus class="mr-2 w-5 h-5" /> Más info
+              </a>
+              <a
+                href={mkWsp(
+                  "Hola! Necesito reparar mi pileta, tiene pérdidas o fisuras."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
+              >
+                Solicitar <MoveRight class="ml-2 w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Desagote -->
+        <article
+          class="group relative bg-white shadow hover:shadow-lg rounded-2xl ring-1 ring-neutral-200 aspect-square overflow-hidden transition"
+        >
+          <a
+            href="/servicios/desagote"
+            aria-label="Ver más sobre Desagote"
+            class="absolute inset-0"
+          >
+            <Image
+              src={desagoteImg}
+              alt="Desagote de piscina, sótano o cisterna"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+            >
+            </div>
+          </a>
+          <div
+            class="bottom-0 absolute inset-x-0 p-5 text-white pointer-events-none"
+          >
+            <h3 class="font-semibold text-lg">Desagote profesional</h3>
+            <p class="mt-1 text-white/80 text-sm">
+              Piletas, sótanos y cisternas con bombas propias.
+            </p>
+            <div class="flex gap-3 mt-4">
+              <a
+                href="/servicios/desagote"
+                class="inline-flex items-center hover:bg-white/10 backdrop-blur px-4 py-2 border border-white/70 rounded-full text-sm pointer-events-auto"
+              >
+                <Plus class="mr-2 w-5 h-5" /> Más info
+              </a>
+              <a
+                href={mkWsp(
+                  "Hola! Necesito desagotar una pileta, sótano o cisterna. ¿Podrían ayudarme?"
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full font-semibold text-white text-sm transition pointer-events-auto"
+              >
+                Solicitar <MoveRight class="ml-2 w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- CTA dentro del grid -->
+        <article
+          class="relative col-span-1 sm:col-span-2 bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 shadow-xl p-8 md:p-10 rounded-2xl aspect-square sm:aspect-auto text-white text-center"
+        >
+          <div class="flex flex-col justify-center items-center h-full">
+            <h3 class="font-bold text-2xl md:text-3xl">
+              ¿No sabés qué servicio necesitás?
+            </h3>
+            <p class="mt-3 max-w-prose text-blue-50 text-sm md:text-base">
+              Contanos tu caso y te asesoramos sin compromiso para que tu pileta
+              quede perfecta.
+            </p>
+            <a
+              href={mkWsp(
+                "Hola! Necesito asesoramiento para elegir el servicio adecuado para mi pileta."
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center bg-white hover:bg-blue-50 shadow-md mt-6 px-6 py-3 rounded-full font-semibold text-blue-700 transition"
+              aria-label="Consultar por WhatsApp"
+            >
+              Solicitar <MoveRight class="ml-2 w-6 h-6" />
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </article>
 </Layout>
