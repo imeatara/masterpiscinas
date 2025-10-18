@@ -47,7 +47,13 @@ const PAGE = {
     </div>
 
     <div class="mx-auto px-6 container">
-      <div class="place-items-center grid">
+      <p
+        class="inline-block bg-blue-700 px-3 py-1 rounded-full font-medium text-white text-xs tracking-wide"
+      >
+        +14 años de experiencia
+      </p>
+
+      <div class="place-items-center grid mt-4">
         <Image
           src={logo}
           alt="Master Piscinas - Logo"
@@ -55,21 +61,19 @@ const PAGE = {
         />
       </div>
 
-      <p
-        class="inline-block bg-blue-700 mt-4 px-3 py-1 rounded-full font-medium text-white text-xs tracking-wide"
-      >
-        +14 años de experiencia
-      </p>
-
       <h1
-        class="drop-shadow mt-4 font-bold text-blue-700 text-4xl md:text-6xl italic leading-tight"
+        class="drop-shadow mt-4 font-bold text-blue-700 text-4xl md:text-6xl italic leading-tight text-center"
       >
         Mantenimiento integral de piscinas
       </h1>
 
-      <p class="mt-4 text-neutral-700">
-        Limpieza con ácido, desagote, pintura y reparaciones. Atención personal
-        y presupuesto sin cargo.
+      <p
+        class="mt-4 text-neutral-700 text-center max-w-md mx-auto leading-relaxed"
+      >
+        Limpieza con ácido, desagote, pintura y reparaciones.
+        <strong>Atención personal</strong> y presupuesto <strong
+          >sin cargo</strong
+        >.
       </p>
 
       <p class="sr-only">
@@ -584,6 +588,16 @@ const PAGE = {
           target="_blank"
           rel="noopener">Ver en Google Maps</a
         >
+      </p>
+      <p class="mt-4">
+        <a
+          href="https://share.google/UfR5vs8YqYeBbc1qZ"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center bg-white hover:bg-neutral-100 shadow px-5 py-2.5 rounded-full font-medium text-neutral-700 text-sm border border-neutral-200 transition"
+        >
+          ⭐ Ver perfil completo en Google
+        </a>
       </p>
     </header>
 
